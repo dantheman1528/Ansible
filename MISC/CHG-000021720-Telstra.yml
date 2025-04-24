@@ -1,0 +1,110 @@
+#CHG-000021720 - Migrate Telstra from 1G to 10G in Darwin Exchange
+
+
+
+
+Pre-check:
+on bdr01-met-27harvey-drw.au:
+    show interfaces diagnostics optics ge-0/0/25
+    show chassis pic fpc-slot 0 pic-slot 0
+    show interfaces ge-0/0/25 media
+
+on bdr01-ipt-27harvey-drw.au:
+    sh bgp neighbor 203.54.191.133
+    sh bgp neighbor 203.54.191.133 routes | utility wc
+    sh bgp neighbor 203.54.191.133 advertised-count
+    sh bgp ipv6 unicast neighbor 2001:8000:10a:17::1 routes | utility wc
+    sh bgp ipv6 unicast neighbor 2001:8000:10a:17::1 advertised-count
+
+
+Curl:
+Tx/Rx
+    https://obs-carrier.au.superloop.systems/device/device=597/tab=health/metric=dbm/id=50219/
+    https://obs-carrier.au.superloop.systems/device/device=597/tab=health/metric=dbm/id=50220/
+
+Traffic:
+    https://obs-carrier.au.superloop.systems/device/device=597/tab=port/port=57049/
+
+
+
+
+During the Change:
+    Drain the Traffic:
+
+    bdr01-ipt-27harvey-drw.au:
+      
+      router bgp 38195 neighbor 203.54.191.133 address-family ipv4 unicast route-policy DENY in
+      router bgp 38195 neighbor 203.54.191.133 address-family ipv4 unicast route-policy DENY out
+      router bgp 38195 neighbor 2001:8000:10a:17::1 address-family ipv6 unicast route-policy DENY in
+      router bgp 38195 neighbor 2001:8000:10a:17::1 address-family ipv6 unicast route-policy DENY out
+
+Check the traffic picked up on EdgeIX: 
+  https://obs-carrier.au.superloop.systems/device/device=503/tab=port/port=36770/
+
+
+      :>traffic picked up to telstra  SY3 N2700113R
+      https://portal.kentik.com/v4/core/explorer/def7a409243d8ec8d1ba33265cae26eb
+
+Check kentik where did the traffic went:
+  https://portal.kentik.com/v4/core/explorer/2051d60fc7847045c7f441d347115a67
+
+
+Repoint the circuit from ge25 to ae60:
+ bdr01-met-27harvey-drw.au:
+  set interfaces ae60  unit 16384 apply-groups IFL-PARAMETERS-VLAN-BRIDGE
+  set interfaces ae60  unit 16384 description "Prov: new Telstra IPT"
+  set interfaces ae60  unit 16384 vlan-tags outer 105
+  set vlans S21693 interface ae60.16384
+  delete vlan S21693 interface ge-0/0/25.16384
+      
+
+
+After repoint, confirm light levels, CRC errors and advertisements:
+
+ bdr01-ipt-27harvey-drw.au:
+      
+    router bgp 38195 neighbor 203.54.191.133 address-family ipv4 unicast route-policy AS1221-21693-IPV4-IN in
+    router bgp 38195 neighbor 203.54.191.133 address-family ipv4 unicast route-policy AS1221-21693-IPV4-OUT out
+
+    router bgp 38195 neighbor 2001:8000:10a:17::1 address-family ipv6 unicast route-policy AS1221-21693-IPV6-IN in
+    router bgp 38195 neighbor 2001:8000:10a:17::1 address-family ipv6 unicast route-policy AS1221-21693-IPV6-OUT out
+
+
+Postchecks:
+  same as prechecks:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+set interfaces ge-0/0/25 apply-groups INTERFACE-PARAMETERS-TAGGED
+set interfaces ge-0/0/25 disable
+set interfaces ge-0/0/25 native-vlan-id 105
+set interfaces ge-0/0/25 speed 1g
+set interfaces ge-0/0/25 link-mode full-duplex
+set interfaces ge-0/0/25 ether-options no-auto-negotiation
+set interfaces ge-0/0/25 unit 16384 apply-groups IFL-PARAMETERS-VLAN-BRIDGE
+set interfaces ge-0/0/25 unit 16384 description "Cust: Superloop (Australia) Pty Ltd - SP-TW-IP1 [1000Mbit]{21693}"
+set interfaces ge-0/0/25 unit 16384 vlan-tags outer 105
+
+
+[edit vlans S21693]
+     interface ae1.16384 { ... }
++    interface ae60.16384;
+-    interface ge-0/0/25.16384;

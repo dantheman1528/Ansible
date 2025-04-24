@@ -1,0 +1,43 @@
+#CHG-000021699 - draining SAT-IPT traffic to change FAT labelling in ETP
+
+Pre/Post checks:
+
+SAT-IPT vrf INTERNET Primary: https://obs-carrier.au.superloop.systems/device/device=905/tab=port/port=227362/
+SAT-IPT vrf INTERNET Secondary: https://obs-carrier.au.superloop.systems/device/device=905/tab=port/port=227363/
+SAT-IPT vrf CGNAT Primary: https://obs-carrier.au.superloop.systems/device/device=905/tab=port/port=227367/
+SAT-IPT vrf CGNAT Secondary: https://obs-carrier.au.superloop.systems/device/device=905/tab=port/port=227368/
+
+sh bgp vrf INTERNET ipv4 unicast summary
+sh bgp vrf CGNAT ipv6 unicast summary
+
+
+bdr01-sat-20wharfs
+
+   router bgp 64590 vrf INTERNET neighbor 27.122.114.132 address-family ipv4 unicast route-policy AS38195_V4_CROSS_PEER_IN in
+   router bgp 64590 vrf INTERNET neighbor 27.122.114.132 address-family ipv4 unicast route-policy AS38195_V4_CROSS_PEER_OUT out
+
+   router bgp 64590 vrf INTERNET neighbor 27.122.114.194 address-family ipv4 unicast route-policy AS38195_V4_LOCAL_PEER_IN in
+   router bgp 64590 vrf INTERNET neighbor 27.122.114.194 address-family ipv4 unicast route-policy AS38195_V4_LOCAL_PEER_OUT out
+
+
+   router bgp 64590 vrf INTERNET neighbor 2401:d000:7101::1f1 address-family ipv6 unicast route-policy AS38195_V6_CROSS_PEER_IN in
+   router bgp 64590 vrf INTERNET neighbor 2401:d000:7101::1f1 address-family ipv6 unicast route-policy AS38195_V6_CROSS_PEER_OUT out
+
+   router bgp 64590 vrf INTERNET neighbor 2401:d000:7101::201 address-family ipv6 unicast route-policy AS38195_V6_LOCAL_PEER_IN in
+   router bgp 64590 vrf INTERNET neighbor 2401:d000:7101::201 address-family ipv6 unicast route-policy AS38195_V6_LOCAL_PEER_OUT out
+
+
+   router bgp 64590 vrf CGNAT neighbor 2401:d000:7101::241 address-family ipv6 unicast route-policy AS38195_V6_CGNAT_CROSS_PEER_IN in
+   router bgp 64590 vrf CGNAT neighbor 2401:d000:7101::241 address-family ipv6 unicast route-policy AS38195_V6_CGNAT_CROSS_PEER_OUT out
+
+
+   router bgp 64590 vrf CGNAT neighbor 2401:d000:7101::251 address-family ipv6 unicast route-policy AS38195_V6_CGNAT_LOCAL_PEER_IN in
+   router bgp 64590 vrf CGNAT neighbor 2401:d000:7101::251 address-family ipv6 unicast route-policy AS38195_V6_CGNAT_LOCAL_PEER_OUT out
+
+
+
+   show commit changes diff
+
+   commit confirmed 770 
+
+

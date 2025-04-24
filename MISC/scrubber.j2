@@ -1,0 +1,178 @@
+
+
+
+ipv4 access-list FRAGMENTED-UDP-FLOOD
+ 9 remark SL269186
+ 10 deny udp any any fragments icmp-off
+ 999 permit ipv4 any any
+
+
+router bgp 64590 neighbor 2401:d000:16::12 local-as 38195 no-prepend replace-as
+router bgp 64590 neighbor 2401:d000:16::12 shutdown
+router bgp 64590 neighbor 2401:d000:16::12 remote-as 64911
+router bgp 64590 neighbor 2401:d000:16::12 description Prov: scr01-ipt-15pionee-sin.sg
+router bgp 64590 neighbor 2401:d000:16::12 address-family ipv6 unicast
+router bgp 64590 neighbor 2401:d000:16::12 address-family ipv6 unicast route-policy AS64911-IPV6-IN in
+router bgp 64590 neighbor 2401:d000:16::12 address-family ipv6 unicast route-policy AS64911-IPV6-OUT out
+router bgp 64590 neighbor 2401:d000:16::12 address-family ipv6 unicast next-hop-self
+router bgp 64590 neighbor 2401:d000:16::12 address-family ipv6 unicast soft-reconfiguration inbound always
+
+
+router bgp 64590 neighbor 202.177.40.17 local-as 38195 no-prepend replace-as
+router bgp 64590 neighbor 202.177.40.17 shutdown
+router bgp 64590 neighbor 202.177.40.17 remote-as 64911
+router bgp 64590 neighbor 202.177.40.17 description Prov: scr01-ipt-15pionee-sin.sg
+router bgp 64590 neighbor 202.177.40.17 address-family ipv4 unicast
+router bgp 64590 neighbor 202.177.40.17 address-family ipv4 unicast route-policy AS64911-IPV4-IN in
+router bgp 64590 neighbor 202.177.40.17 address-family ipv4 unicast route-policy AS64911-IPV4-OUT out
+router bgp 64590 neighbor 202.177.40.17 address-family ipv4 unicast next-hop-self
+router bgp 64590 neighbor 202.177.40.17 address-family ipv4 unicast soft-reconfiguration inbound always
+
+
+
+interface Bundle-Ether20
+interface Bundle-Ether20 description Prov: NNI-DOSP: scr01-ipt-15pionee-sin.sg
+interface Bundle-Ether20 mtu 9212
+interface Bundle-Ether20 load-interval 30
+
+
+interface HundredGigE0/0/0/23.101
+interface HundredGigE0/0/0/23.101 description Prov: DOSP: scr01-ipt-15pionee-sin.sg Dirty Traffic {1344722}
+interface HundredGigE0/0/0/23.101 ipv4 mtu 1500
+interface HundredGigE0/0/0/23.101 ipv4 address 202.177.40.16 255.255.255.254
+interface HundredGigE0/0/0/23.101 ipv4 unreachables disable
+interface HundredGigE0/0/0/23.101 ipv6 nd suppress-ra
+interface HundredGigE0/0/0/23.101 ipv6 mtu 1500
+interface HundredGigE0/0/0/23.101 ipv6 address 2401:d000:16::11/124
+interface HundredGigE0/0/0/23.101 ipv6 unreachables disable
+interface HundredGigE0/0/0/23.101 load-interval 30
+interface HundredGigE0/0/0/23.101 flow ipv4 monitor netflow-ipv4 sampler 1in1k ingress
+interface HundredGigE0/0/0/23.101 flow ipv6 monitor netflow-ipv6 sampler 1in1k ingress
+interface HundredGigE0/0/0/23.101 encapsulation dot1q 101
+interface HundredGigE0/0/0/23.101 ipv4 access-group FRAGMENTED-UDP-FLOOD egress
+
+
+
+interface HundredGigE0/0/0/23.102
+interface HundredGigE0/0/0/23.102 description Prov: DOSP: scr01-ipt-15pionee-sin.sg Clean Traffic {1344725}
+interface HundredGigE0/0/0/23.102 vrf AS38195-SLCAU-DOSP
+interface HundredGigE0/0/0/23.102 ipv4 mtu 1500
+interface HundredGigE0/0/0/23.102 ipv4 address 202.177.40.19 255.255.255.254
+interface HundredGigE0/0/0/23.102 ipv4 unreachables disable
+interface HundredGigE0/0/0/23.102 ipv6 nd suppress-ra
+interface HundredGigE0/0/0/23.102 ipv6 mtu 1500
+interface HundredGigE0/0/0/23.102 ipv6 address 2401:d000:16::22/124
+interface HundredGigE0/0/0/23.102 ipv6 unreachables disable
+interface HundredGigE0/0/0/23.102 load-interval 30
+interface HundredGigE0/0/0/23.102 flow ipv4 monitor netflow-ipv4 sampler 1in1k ingress
+interface HundredGigE0/0/0/23.102 flow ipv6 monitor netflow-ipv6 sampler 1in1k ingress
+interface HundredGigE0/0/0/23.102 encapsulation dot1q 102
+
+
+interface TenGigE0/0/0/2 description Prov: NNB-DOSP: Bundle-Ether20 (scr01-ipt-15pionee-sin.sg Ethernet 6)[10000Mbit]
+interface TenGigE0/0/0/2 bundle id 20 mode active
+interface TenGigE0/0/0/2 carrier-delay up 50 down 0
+
+
+interface TenGigE0/0/0/3 description Prov: NNB-DOSP: Bundle-Ether20 (scr01-ipt-15pionee-sin.sg Ethernet 7)[10000Mbit]
+interface TenGigE0/0/0/3 bundle id 20 mode active
+interface TenGigE0/0/0/3 carrier-delay up 50 down 0
+
+
+interface TenGigE0/0/0/4 description Prov: NNB-DOSP: Bundle-Ether20 (scr01-ipt-15pionee-sin.sg Ethernet 8)[10000Mbit]
+interface TenGigE0/0/0/4 bundle id 20 mode active
+interface TenGigE0/0/0/4 carrier-delay up 50 down 0
+
+
+
+interface TenGigE0/0/0/5 description Prov: NNB-DOSP: Bundle-Ether20 (scr01-ipt-15pionee-sin.sg Ethernet 9)[10000Mbit]
+interface TenGigE0/0/0/23 bundle id 20 mode active
+interface TenGigE0/0/0/23 carrier-delay up 50 down 0
+!
+interface BE20
+ load-interval 30
+ mtu 9216
+ !
+!
+interface BE20.101 l2transport
+ description DOSP: scr01-ipt-15pionee-sin.sg Dirty Traffic {1344722}
+ mtu 9216
+ encapsulation dot1q 101
+!
+!
+interface BE20.102 l2transport
+ description DOSP: scr01-ipt-15pionee-sin.sg Clean Traffic {1344725}
+ mtu 9216
+ encapsulation dot1q 102
+ !
+
+l2vpn xconnect group xc_1344722
+l2vpn xconnect group xc_1344722 p2p p2p_1344722
+l2vpn xconnect group xc_1344722 p2p p2p_1344722 interface BE20.101
+l2vpn xconnect group xc_1344722 p2p p2p_1344722 neighbor ipv4 202.177.40.4 pw-id 1344722
+l2vpn xconnect group xc_1344722 p2p p2p_1344722 neighbor ipv4 202.177.40.4 pw-id 1344722 pw-class CW-enabled
+!
+l2vpn xconnect group xc_1344725
+l2vpn xconnect group xc_1344725 p2p p2p_1344725
+l2vpn xconnect group xc_1344725 p2p p2p_1344725 interface BE20.102
+l2vpn xconnect group xc_1344725 p2p p2p_1344725 neighbor ipv4 202.177.40.4 pw-id 1344725
+l2vpn xconnect group xc_1344725 p2p p2p_1344725 neighbor ipv4 202.177.40.4 pw-id 1344725 pw-class CW-enabled
+
+route-policy AS64911-IPV4-IN
+  if destination in (192.0.2.2/32) then
+    set community (38195:9700, 38195:7350, 38195:7662, 38195:8010, 38195:6800)
+    done
+  endif
+end-policy
+!
+
+
+route-policy AS64911-IPV4-OUT
+  drop
+end-policy
+!
+
+
+route-policy AS64911-IPV6-OUT
+  drop
+end-policy
+!
+
+route-policy AS64911-IPV6-IN
+  if destination in (fc00::192:0:2:2/128) then
+    set community (38195:9700, 38195:7350, 38195:7662, 38195:8010, 38195:6800)
+    done
+  endif
+end-policy
+!
+
+
+
+
+
+
+l2vpn xconnect group xc_1344722
+l2vpn xconnect group xc_1344722 p2p p2p_1344722
+l2vpn xconnect group xc_1344722 p2p p2p_1344722 interface HundredGigE0/0/0/22.1344722
+l2vpn xconnect group xc_1344722 p2p p2p_1344722 neighbor ipv4 172.21.55.13 pw-id 1344722
+l2vpn xconnect group xc_1344722 p2p p2p_1344722 neighbor ipv4 172.21.55.13 pw-id 1344722 pw-class CW-enabled
+
+
+
+l2vpn xconnect group xc_1344725
+l2vpn xconnect group xc_1344725 p2p p2p_1344725
+l2vpn xconnect group xc_1344725 p2p p2p_1344725 interface HundredGigE0/0/0/22.1344725
+l2vpn xconnect group xc_1344725 p2p p2p_1344725 neighbor ipv4 172.21.55.13 pw-id 1344725
+l2vpn xconnect group xc_1344725 p2p p2p_1344725 neighbor ipv4 172.21.55.13 pw-id 1344725 pw-class CW-enabled
+
+
+interface HundredGigE0/0/0/22.1344722 l2transport
+interface HundredGigE0/0/0/22.1344722 l2transport description Loop-L2: scr01-ipt-15pionee-sin.sg Dirty Traffic {1344722}
+interface HundredGigE0/0/0/22.1344722 l2transport encapsulation dot1q 101
+interface HundredGigE0/0/0/22.1344722 l2transport mtu 9216
+
+
+interface HundredGigE0/0/0/22.1344725 l2transport
+interface HundredGigE0/0/0/22.1344725 l2transport description Loop-L2: scr01-ipt-15pionee-sin.sg Clean Traffic {1344725}
+interface HundredGigE0/0/0/22.1344725 l2transport encapsulation dot1q 102
+interface HundredGigE0/0/0/22.1344725 l2transport mtu 9216

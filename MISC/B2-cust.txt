@@ -1,0 +1,1403 @@
+102287
+
+
+                set interfaces ae2 unit 16377 description " Cust Tim Warnock (AS56178) - SLAUEB-01-11001 [1000Mbit]{102287}"
+                set interfaces ae2 unit 16377 encapsulation vlan-ccc
+                set interfaces ae2 unit 16377 vlan-tags outer 100
+                set interfaces ae2 unit 16377 statistics
+                set interfaces ae2 unit 16377 family ccc
+
+                set protocols l2circuit neighbor 103.200.12.47 interface ae2.16377 virtual-circuit-id 102287
+                set protocols l2circuit neighbor 103.200.12.47 interface ae2.16377 description " Cust Tim Warnock (AS56178) - SLAUEB-01-11001 [1000Mbit]{102287}"
+                set protocols l2circuit neighbor 103.200.12.47 interface ae2.16377 community evc-protected
+                set protocols l2circuit neighbor 103.200.12.47 interface ae2.16377 encapsulation-type ethernet
+                set protocols l2circuit neighbor 103.200.12.47 interface ae2.16377 ignore-mtu-mismatch
+                set protocols l2circuit neighbor 103.200.12.47 interface ae2.16377 pseudowire-status-tlv
+
+    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    ssh bdr02-etp-454stpau-bne.au:
+
+                !
+                interface BE2.102287 l2transport
+                description  Cust Tim Warnock (AS56178) - SLAUEB-01-11001 [1000Mbit]{102287}
+                mtu 9216
+                encapsulation dot1q 100
+                !
+                !
+                l2vpn
+                xconnect group xc_102287
+                p2p p2p_102287
+                interface BE2.102287
+                neighbor ipv4 103.200.12.47 pw-id 102287
+                    pw-class bdr03-met-20wharfs-bne-cp-01
+                !
+
+    ssh 103.200.12.47 (bdr03-met-20wharfs-bne.au.superloop.com)
+
+    delete protocols l2circuit neighbor 103.200.12.24 interface xe-0/0/39.16384
+
+    set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/39.16384 virtual-circuit-id 102287
+    set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/39.16384 description " Cust Tim Warnock (AS56178) - SLAUEB-01-11001 [1000Mbit]{102287}"
+    set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/39.16384 community evc-protected
+    set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/39.16384 encapsulation-type ethernet
+    set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/39.16384 ignore-mtu-mismatch
+    set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/39.16384 pseudowire-status-tlv
+===============================================================================================
+**pag may pop push - rewrite ingress langs yun :))
+1173542
+
+
+                set interfaces ae2 unit 102 description " Cust BigAir Community Broadband Pty Ltd - INT-DF (None)[10000Mbit]{1173542}"
+                set interfaces ae2 unit 102 encapsulation vlan-ccc
+                set interfaces ae2 unit 102 vlan-tags outer 0x8100.102
+                set interfaces ae2 unit 102 input-vlan-map pop
+                set interfaces ae2 unit 102 output-vlan-map push
+                set interfaces ae2 unit 102 statistics
+                set interfaces ae2 unit 102 family ccc
+
+                set protocols l2circuit neighbor 172.21.119.12 interface ae2.102 virtual-circuit-id 1173542
+                set protocols l2circuit neighbor 172.21.119.12 interface ae2.102 community evc-protected
+                set protocols l2circuit neighbor 172.21.119.12 interface ae2.102 encapsulation-type ethernet
+                set protocols l2circuit neighbor 172.21.119.12 interface ae2.102 ignore-mtu-mismatch
+                set protocols l2circuit neighbor 172.21.119.12 interface ae2.102 pseudowire-status-tlv
+
+
+    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    ssh bdr02-etp-454stpau-bne.au:
+                    !
+                interface BE2.1173542 l2transport
+                description  Cust BigAir Community Broadband Pty Ltd - INT-DF (None)[10000Mbit]{1173542}
+                rewrite ingress tag pop 1 symmetric
+                mtu 9216
+                encapsulation dot1q 102
+                !
+                !
+                l2vpn
+                xconnect group xc_1173542
+                p2p p2p_1173542
+                interface BE2.1173542
+                neighbor ipv4  172.21.119.12 pw-id 1173542
+                    pw-class CW-enabled
+                !
+    ssh 172.21.119.12 (bdr02-etp-20wharfs-bne.au)
+        l2vpn xconnect group xc_1173542 p2p p2p_1173542
+            no neighbor ipv4 103.200.12.24 pw-id 1173542
+            neighbor ipv4 172.21.119.11 pw-id 1173542 pw-class CW-enabled
+===================================================================================================================
+25225
+
+            set interfaces xe-0/0/25 unit 16384 apply-groups IFL-PARAMETERS-VLAN-BRIDGE
+            set interfaces xe-0/0/25 unit 16384 description " Cust Superloop (Australia) Pty Ltd - SLAUIN-IPTP [1000Mbit]{25225}"
+            set interfaces xe-0/0/25 unit 16384 vlan-tags outer 104
+            set interfaces xe-0/0/25 unit 16384 family ethernet-switching filter input rate-limit-es-1000mbps
+            set interfaces xe-0/0/25 unit 16384 family ethernet-switching filter output rate-limit-es-1000mbps
+
+
+            set interfaces ae2 unit 16383 apply-groups IFL-PARAMETERS-VLAN-BRIDGE
+            set interfaces ae2 unit 16383 description " Cust Superloop (Australia) Pty Ltd - SLAUIN-IPTP [1000Mbit]{25225}"
+            set interfaces ae2 unit 16383 vlan-tags outer 104
+
+            set vlans S25225 description  " Cust Superloop (Australia) Pty Ltd - SLAUIN-IPTP [1000Mbps]{25225} 
+            set vlans S25225 interface ae2.16383",
+            set vlans S25225 interface xe-0/0/25.16384",
+            set vlans S25225 switch-options no-mac-learning",
+
+
+            >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+             ssh bdr02-etp-454stpau-bne.au:
+
+              interface BE2.25225 l2transport
+                description " Cust Superloop (Australia) Pty Ltd - SLAUIN-IPTP [1000Mbit]{25225}"
+                mtu 9216
+                encapsulation dot1q 104
+                !
+                !
+                l2vpn
+                xconnect group xc_25225
+                p2p p2p_25225
+                interface BE2.25225
+                neighbor ipv4 103.200.12.24 pw-id 25225
+                    pw-class bdr01-met-454stpau-bne-cp-01
+
+
+            ssh 103.200.12.24 (bdr01-met-454stpau-bne.au)
+
+                delete interface ae2 unit 16383
+                delete interface xe-0/0/25.16384
+                delete vlans S25225
+
+                set interfaces xe-0/0/25 mtu 9216
+                set interfaces xe-0/0/25 flexible-vlan-tagging
+                set interfaces xe-0/0/25 encapsulation flexible-ethernet-services
+                set interfaces xe-0/0/25.16384 description " Cust Superloop (Corporate) Pty Ltd - SLAUIN-IPTP (None)[1000Mbit]{25225}"
+                set interfaces xe-0/0/25.16384 encapsulation vlan-ccc
+                set interfaces xe-0/0/25.16384 vlan-tags outer 0x8100.104
+                set interfaces xe-0/0/25.16384 statistics
+                set interfaces xe-0/0/25.16384 family ccc
+                #set interfaces xe-0/0/25 unit 16384 family ethernet-switching filter input rate-limit-es-1000mbps
+                #set interfaces xe-0/0/25 unit 16384 family ethernet-switching filter output rate-limit-es-1000mbps
+
+                set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/25.16384 virtual-circuit-id 25225
+                set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/25.16384 community evc-core-protected
+                set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/25.16384 encapsulation-type ethernet
+                set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/25.16384 ignore-mtu-mismatch
+                set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/25.16384 pseudowire-status-tlv
+================================================================================================================
+34164
+
+
+            set interfaces ae2 unit 16378 description " Cust Alt VFX Pty Ltd - SLAUIN-IPTP [800Mbit]{34164}"
+            set interfaces ae2 unit 16378 encapsulation vlan-ccc
+            set interfaces ae2 unit 16378 vlan-tags outer 106
+            set interfaces ae2 unit 16378 statistics
+            set interfaces ae2 unit 16378 family ccc
+
+            set protocols l2circuit neighbor 172.21.119.2 interface ae2.16378 virtual-circuit-id 34164
+            set protocols l2circuit neighbor 172.21.119.2 interface ae2.16378 description " Cust Alt VFX Pty Ltd - SLAUIN-IPTP [800Mbit]{34164}"
+            set protocols l2circuit neighbor 172.21.119.2 interface ae2.16378 community evc-protected
+            set protocols l2circuit neighbor 172.21.119.2 interface ae2.16378 encapsulation-type ethernet
+            set protocols l2circuit neighbor 172.21.119.2 interface ae2.16378 ignore-mtu-mismatch
+            set protocols l2circuit neighbor 172.21.119.2 interface ae2.16378 pseudowire-status-tlv
+
+
+            >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+            ssh bdr02-etp-454stpau-bne.au:
+
+                !
+                interface BE2.34164 l2transport
+                description  Cust Alt VFX Pty Ltd - SLAUIN-IPTP [800Mbit]{34164}
+                mtu 9216
+                encapsulation dot1q 106
+                statistics
+                !
+                !
+                l2vpn
+                xconnect group xc_34164
+                p2p p2p_34164
+                interface BE2.34164
+                neighbor ipv4 172.21.119.2 pw-id 34164
+                    pw-class bdr02-met-454stpau-bne-cp-01
+                !
+        
+
+            ssh 172.21.119.2 (bdr02-met-454stpau-bne.au)
+
+                delete protocols l2circuit neighbor 103.200.12.24 interface xe-0/0/5.16383
+
+
+                set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/5.16383 virtual-circuit-id 34164
+                set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/5.16383 description " Cust Alt VFX Pty Ltd - SLAUIN-IPTP [800Mbit]{34164}"
+                set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/5.16383 community evc-protected
+                set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/5.16383 encapsulation-type ethernet
+                set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/5.16383 ignore-mtu-mismatch
+                set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/5.16383 pseudowire-status-tlv
+===================================================================================================
+500458
+
+            set interfaces ae2 unit 107 description " Cust Bigair Community Broadband Pty Ltd - SLAUIN-IPTP (None)[10000Mbit]{500458}"
+            set interfaces ae2 unit 107 encapsulation vlan-ccc
+            set interfaces ae2 unit 107 vlan-tags outer 107
+            set interfaces ae2 unit 107 input-vlan-map pop
+            set interfaces ae2 unit 107 output-vlan-map push
+            set interfaces ae2 unit 107 statistics
+
+            set protocols l2circuit neighbor 172.21.119.4 interface ae2.107 virtual-circuit-id 500458
+            set protocols l2circuit neighbor 172.21.119.4 interface ae2.107 description " Cust Bigair Community Broadband Pty Ltd - SLAUIN-IPTP (None)[10000Mbit]{500458}"
+            set protocols l2circuit neighbor 172.21.119.4 interface ae2.107 community evc-core-protected
+            set protocols l2circuit neighbor 172.21.119.4 interface ae2.107 encapsulation-type ethernet
+            set protocols l2circuit neighbor 172.21.119.4 interface ae2.107 ignore-mtu-mismatch
+            set protocols l2circuit neighbor 172.21.119.4 interface ae2.107 pseudowire-status-tlv
+            >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+            ssh bdr02-etp-454stpau-bne.au:
+                    !
+                interface BE2.500458 l2transport
+                description  Cust Bigair Community Broadband Pty Ltd - SLAUIN-IPTP (None)[10000Mbit]{500458}
+                rewrite ingress tag pop 1 symmetric
+                mtu 9216
+                encapsulation dot1q 107
+                !
+                !
+                l2vpn
+                xconnect group xc_500458
+                p2p p2p_500458
+                interface BE2.500458
+                neighbor ipv4  172.21.119.4 pw-id 500458
+                    pw-class CW-enabled
+                !
+            ssh 172.21.119.4 (bdr01-etp-20wharfs)
+                l2vpn xconnect group xc_500458 p2p p2p_500458 
+                    no neighbor ipv4 103.200.12.24 pw-id 500458
+                    neighbor ipv4 172.21.119.11 pw-id 500458 pw-class CW-enabled
+===============================================================================================
+480157 - single tag 108 and VLAN-CCC 
+    reference: 260014 - single tag (single vlan translation (not qinq))
+
+
+            set interfaces ae2 unit 16271 description " Cust Bigair Community Broadband Pty Ltd - SLAU-NEIS-L (None)[1000Mbit]{480157}"
+            set interfaces ae2 unit 16271 encapsulation vlan-ccc
+            set interfaces ae2 unit 16271 vlan-tags outer 0x8100.108
+            set interfaces ae2 unit 16271 input-vlan-map swap
+            set interfaces ae2 unit 16271 input-vlan-map tag-protocol-id 0x8100
+            set interfaces ae2 unit 16271 input-vlan-map vlan-id 233
+            set interfaces ae2 unit 16271 output-vlan-map swap<<<<<(bidirectional VLAN translation, just like Junos’ "swap" behavior.) >>>rewrite ingress tag translate 1-to-1 dot1q 233 symmetric
+            set interfaces ae2 unit 16271 statistics
+            set interfaces ae2 unit 16271 family ccc filter input rate-limit-1000mbps
+
+            set protocols l2circuit neighbor 172.21.119.2 interface ae2.16271 virtual-circuit-id 480157
+            set protocols l2circuit neighbor 172.21.119.2 interface ae2.16271 description " Cust Bigair Community Broadband Pty Ltd - SLAU-NEIS-L (None)[1000Mbit]{480157}"
+            set protocols l2circuit neighbor 172.21.119.2 interface ae2.16271 community evc-protected
+            set protocols l2circuit neighbor 172.21.119.2 interface ae2.16271 encapsulation-type ethernet
+            set protocols l2circuit neighbor 172.21.119.2 interface ae2.16271 ignore-mtu-mismatch
+            set protocols l2circuit neighbor 172.21.119.2 interface ae2.16271 pseudowire-status-tlv
+
+
+    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    ssh bdr02-etp-454stpau
+        interface BE2.480157 l2transport
+        description  Cust BigAir Community Broadband Pty Ltd - INT-DF (None)[10000Mbit]{480157}
+        mtu 9216
+        encapsulation dot1q 108
+        rewrite ingress tag translate 1-to-1 dot1q 233 symmetric
+
+        !
+        !
+        l2vpn
+        xconnect group xc_480157
+        p2p p2p_480157
+        interface BE2.480157
+        neighbor ipv4 172.21.119.2 pw-id 480157
+            pw-class bdr02-met-454stpau-bne-cp-01
+
+    ssh 172.21.119.2 (bdr02-met-454stpau):
+
+        delete protocols l2circuit neighbor 103.200.12.24 interface xe-0/0/57.16271
+        
+        set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/57.16271 virtual-circuit-id 480157
+        set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/57.16271 description " Cust Bigair Community Broadband Pty Ltd - SLAU-NEIS-L (None)[1000Mbit]{480157}"
+        set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/57.16271 community evc-protected
+        set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/57.16271 encapsulation-type ethernet
+        set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/57.16271 ignore-mtu-mismatch
+        set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/57.16271 pseudowire-status-tlv
+====================================================================================================
+10277 
+
+
+
+
+            set interfaces ae2 unit 110 description " Cust AMAZE360 Pty Ltd - NW-IPT-95 (10277){10277}"
+            set interfaces ae2 unit 110 encapsulation vlan-ccc
+            set interfaces ae2 unit 110 vlan-id 110
+            set interfaces ae2 unit 110 family ccc
+
+            set protocols l2circuit neighbor 172.21.119.21 interface ae2.110 virtual-circuit-id 10277
+            set protocols l2circuit neighbor 172.21.119.21 interface ae2.110 description " Cust AMAZE360 Pty Ltd - NW-IPT-95 (10277){10277}"
+            set protocols l2circuit neighbor 172.21.119.21 interface ae2.110 encapsulation-type ethernet
+            set protocols l2circuit neighbor 172.21.119.21 interface ae2.110 ignore-mtu-mismatch
+
+    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    ssh bdr02-etp-454stpau
+    
+                interface BE2.10277 l2transport
+                description  Cust  Cust AMAZE360 Pty Ltd - NW-IPT-95 (10277){10277}
+                mtu 9216
+                encapsulation dot1q 110
+                !
+                !
+                l2vpn
+                xconnect group xc_10277
+                p2p p2p_10277
+                interface BE2.10277
+                neighbor ipv4 172.21.119.21 pw-id 10277
+                    pw-class CW-enabled
+                !
+    ssh 172.21.119.21 (bdr01-etp-19mckech-bne.au):
+        l2vpn xconnect group xc_10277 p2p p2p_10277
+            no neighbor ipv4 103.200.12.24 pw-id 10277 pw-class CW-enabled
+            neighbor ipv4 172.21.119.11 pw-id 10277 pw-class CW-enabled
+==================================================================================================
+21278 - migrate to ETP
+
+            set interfaces xe-0/0/52 unit 15999 apply-groups IFL-PARAMETERS-VLAN-BRIDGE
+            set interfaces xe-0/0/52 unit 15999 description " Cust Professional Data Kinetics Pty Ltd - SLAUIN-IPTP [10000Mbit]{21278}"
+            set interfaces xe-0/0/52 unit 15999 vlan-tags outer 112
+            set interfaces xe-0/0/52 unit 15999 family ethernet-switching
+
+            set interfaces ae2 unit 15999 apply-groups IFL-PARAMETERS-VLAN-BRIDGE
+            set interfaces ae2 unit 15999 description " Cust Professional Data Kinetics Pty Ltd - SLAUIN-IPTP [10000Mbit]{21278}"
+            set interfaces ae2 unit 15999 vlan-tags outer 112
+
+            set vlans S21278 description  " Cust Professionaint     l Data Kinetics Pty Ltd - SLAUIN-IPTP [1000Mbps]{21278} "
+            set vlans S21278 interface xe-0/0/52.15999
+            set vlans S21278 interface ae2.15999
+            set vlans S21278 switch-options no-mac-learning
+    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+      ssh bdr02-etp-454stpau-bne.au
+
+            interface Bundle-Ether2.21278 l2transport
+            interface Bundle-Ether2.21278 l2transport description  Cust Professional Data Kinetics Pty Ltd - SLAUIN-IPTP [10000Mbit]{21278}
+            interface Bundle-Ether2.21278 l2transport encapsulation dot1q 112
+            interface Bundle-Ether2.21278 l2transport mtu 9216
+
+            l2vpn xconnect group xc_21278
+            l2vpn xconnect group xc_21278 p2p p2p_21278
+            l2vpn xconnect group xc_21278 p2p p2p_21278 interface Bundle-Ether2.21278
+            l2vpn xconnect group xc_21278 p2p p2p_21278 neighbor ipv4 103.200.12.24 pw-id 21278 pw-class bdr01-met-454stpau-bne-cp-01
+
+     ssh 103.200.12.24 (bdr01-met-454stpau-bne.au)
+
+                delete interfaces xe-0/0/52
+                delete interfaces ae2 unit 15999
+                delete vlans S21278
+
+                set interfaces xe-0/0/52 mtu 9216
+                set interfaces xe-0/0/52 encapsulation ethernet-ccc
+                set interfaces xe-0/0/52 unit 0 description " Cust Professional Data Kinetics Pty Ltd - SLAUIN-IPTP [10000Mbit]{21278}"
+                set interfaces xe-0/0/52 unit 0 statistics
+                set interfaces xe-0/0/52 unit 0 family ccc
+
+
+              set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/52.0 virtual-circuit-id 21278
+              set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/52.0 community evc-core-protected
+              set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/52.0 encapsulation-type ethernet
+              set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/52.0 ignore-mtu-mismatch
+              set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/52.0 pseudowire-status-tlv
+=================================================================================================
+20685 - migrate to ETP
+
+            set interfaces xe-0/0/29 apply-groups INTERFACE-PARAMETERS-TAGGED
+            set interfaces xe-0/0/29 description " Cust 20667.mntu.au Te0/0/13 (L4208)[10000MBit]{20695}"
+            set interfaces xe-0/0/29 unit 116 apply-groups IFL-PARAMETERS-VLAN-BRIDGE
+            set interfaces xe-0/0/29 unit 116 description " Cust Capital B Pty Ltd - SLAUIN-IPTP (20684)[1000Mbit]{20685}"
+            set interfaces xe-0/0/29 unit 116 vlan-tags outer 116
+            set interfaces xe-0/0/29 unit 116 input-vlan-map swap
+            set interfaces xe-0/0/29 unit 116 input-vlan-map vlan-id 114
+            set interfaces xe-0/0/29 unit 116 output-vlan-map swap
+
+            set interfaces ae2 unit 114 apply-groups IFL-PARAMETERS-VLAN-BRIDGE
+            set interfaces ae2 unit 114 description " Cust Capital B Pty Ltd - SLAUIN-IPTP (20684)[1000Mbit]{20685}"
+            set interfaces ae2 unit 114 vlan-tags outer 114
+
+            set vlans S20685 interface ae2.114
+            set vlans S20685 interface xe-0/0/29.116
+            set vlans S20685 switch-options no-mac-learning
+   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+          ssh bdr02-etp-454stpau:
+          
+            interface Bundle-Ether2.20685 l2transport
+            description  Cust Capital B Pty Ltd - SLAUIN-IPTP (20684)[1000Mbit]{20685}
+            mtu 9216
+            encapsulation dot1q 114 >>>>>>>>>>>A frame with VLAN 116 → Translated back to VLAN 114.
+            rewrite ingress tag translate 1-to-1 dot1q 116 symmetric   >>>>>>>>>>A frame with VLAN 114 → Translated to VLAN 116.
+            !
+            !
+            l2vpn
+            xconnect group xc_20685
+              p2p p2p_20685
+              interface Bundle-Ether2.20685
+              neighbor ipv4 103.200.12.24 pw-id 20685
+                pw-class bdr01-met-454stpau-bne-cp-01
+                 
+
+          ssh bdr01-met-454stpau:
+
+            delete interfaces xe-0/0/29 unit 116
+            delete interfaces ae2 unit 114
+            delete vlans S20685
+
+                set interfaces xe-0/0/29 mtu 9216
+                set interfaces xe-0/0/29 flexible-vlan-tagging
+                set interfaces xe-0/0/29 encapsulation flexible-ethernet-services
+                set interfaces xe-0/0/29.116 description " Cust Capital B Pty Ltd - SLAUIN-IPTP (20684)[1000Mbit]{20685}"
+                set interfaces xe-0/0/29.116 encapsulation vlan-ccc
+                set interfaces xe-0/0/29.116 vlan-tags outer 0x8100.116 >>>>>>>>>>>eqivlent to cisco encapsulation dot1q 116
+                set interfaces xe-0/0/29.116 statistics
+                set interfaces xe-0/0/29.116 family ccc
+
+
+            set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/29.116 virtual-circuit-id 20685
+            set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/29.116 community evc-core-protected
+            set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/29.116 encapsulation-type ethernet
+            set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/29.116 ignore-mtu-mismatch
+            set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/29.116 pseudowire-status-tlv
+============================================================================================
+153426
+
+            set interfaces ae2 unit 115 description " Cust ANEXIA Internetdienstleistungs GmbH - SLAUIN-IPTP (None)[5000Mbit]{153426}"
+            set interfaces ae2 unit 115 encapsulation vlan-ccc
+            set interfaces ae2 unit 115 vlan-id 115
+            set interfaces ae2 unit 115 input-vlan-map pop
+            set interfaces ae2 unit 115 output-vlan-map push
+            set interfaces ae2 unit 115 statistics
+            set interfaces ae2 unit 115 family ccc filter input rate-limit-5000mbps
+	bdr01-etp-454stpau-bne.au
+            set protocols l2circuit neighbor 172.21.119.3 interface ae2.115 virtual-circuit-id 153426
+            set protocols l2circuit neighbor 172.21.119.3 interface ae2.115 description " Cust ANEXIA Internetdienstleistungs GmbH - SLAUIN-IPTP (None)[5000Mbit]{153426}"
+            set protocols l2circuit neighbor 172.21.119.3 interface ae2.115 community evc-protected
+            set protocols l2circuit neighbor 172.21.119.3 interface ae2.115 encapsulation-type ethernet
+            set protocols l2circuit neighbor 172.21.119.3 interface ae2.115 ignore-mtu-mismatch
+            set protocols l2circuit neighbor 172.21.119.3 interface ae2.115 pseudowire-status-tlv
+        >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        ssh bdr02-etp-454stpau  
+        
+                interface BE2.153426 l2transport
+                description  Cust ANEXIA Internetdienstleistungs GmbH - SLAUIN-IPTP (None)[5000Mbit]{153426}
+                rewrite ingress tag pop 1 symmetric
+                mtu 9216
+                encapsulation dot1q 115
+                !
+                !
+                l2vpn
+                xconnect group xc_153426
+                p2p p2p_153426
+                interface BE2.153426
+                neighbor ipv4  172.21.119.3 pw-id 153426
+                    pw-class CW-enabled
+            
+        ssh 172.21.119.3 (bdr01-etp-454stpau-bne.au):
+            l2vpn xconnect group xc_153426 p2p p2p_153426 
+            no neighbor ipv4 103.200.12.24 pw-id 153426 
+            neighbor ipv4 172.21.119.11 pw-id 153426 pw-class CW-enabled
+======================================================================
+40904 - migrate to ETP
+
+            set interfaces xe-0/0/55 unit 0 description " Cust Mammoth Media Pty Ltd - SLAUIN-IPTP [1000Mbit]{40904}"
+            set interfaces xe-0/0/55 unit 0 input-vlan-map push
+            set interfaces xe-0/0/55 unit 0 input-vlan-map vlan-id 120
+            set interfaces xe-0/0/55 unit 0 output-vlan-map pop
+            set interfaces xe-0/0/55 unit 0 statistics
+            set interfaces xe-0/0/55 unit 0 family ethernet-switching filter input rate-limit-es-2000mbps
+            set interfaces xe-0/0/55 unit 0 family ethernet-switching filter output rate-limit-es-2000mbps
+
+            set interfaces ae2 unit 16376 description " Cust Mammoth Media Pty Ltd - SLAUIN-IPTP [1000Mbit]{40904}"
+            set interfaces ae2 unit 16376 encapsulation vlan-bridge
+            set interfaces ae2 unit 16376 vlan-tags outer 120
+            set interfaces ae2 unit 16376 statistics
+            set interfaces ae2 unit 16376 family ethernet-switching
+
+            set vlans S40904 description  " Cust Mammoth Media Pty Ltd - SLAUIN-IPTP [1000Mbps]{40904} "
+            set vlans S40904 interface ae2.16376
+            set vlans S40904 interface xe-0/0/55.0
+            set vlans S40904 switch-options no-mac-learning
+        >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+          ssh bdr02-etp-454stpau:
+          
+            interface Bundle-Ether2.40904 l2transport
+            description Cust: Mammoth Media Pty Ltd - SLAUIN-IPTP (None)[1000Mbit]{40904}
+            mtu 9216
+            encapsulation dot1q 120
+            !
+            !
+            l2vpn
+            xconnect group xc_40904
+              p2p p2p_40904
+              interface Bundle-Ether2.40904
+              neighbor ipv4 103.200.12.24 pw-id 40904
+                pw-classs bdr01-met-454stpau-bne-cp-01
+                            
+
+          ssh bdr01-met-454stpau:
+
+            delete interfaces xe-0/0/55
+            delete interfaces ae2 unit 16376
+            delete vlans S40904
+
+            set interfaces xe-0/0/55 mtu 9216
+            set interfaces xe-0/0/55 flexible-vlan-tagging
+            set interfaces xe-0/0/55 encapsulation flexible-ethernet-services
+            set interfaces xe-0/0/55.0 description "Cust: Mammoth Media Pty Ltd - SLAUIN-IPTP (None)[1000Mbit]{40904}"
+            set interfaces xe-0/0/55.0 encapsulation vlan-ccc
+            set interfaces xe-0/0/55.0 vlan-tags outer 0x8100.120
+            set interfaces xe-0/0/55.0 statistics
+            set interfaces xe-0/0/55.0 family ccc
+
+
+          set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/55.0 virtual-circuit-id 40904
+          set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/55.0 community evc-core-protected
+          set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/55.0 encapsulation-type ethernet
+          set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/55.0 ignore-mtu-mismatch
+          set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/55.0 pseudowire-status-tlv
+===============================================================================
+573329
+            set interfaces ae2 unit 128 description " Cust Superloop (Australia) Pty Ltd - INT-NNI (None)[10000Mbit]{573329}"
+            set interfaces ae2 unit 128 encapsulation vlan-ccc
+            set interfaces ae2 unit 128 vlan-tags outer 0x8100.128
+            set interfaces ae2 unit 128 statistics
+            set interfaces ae2 unit 128 family ccc
+
+            set protocols l2circuit neighbor 172.21.119.3 interface ae2.128 virtual-circuit-id 573329
+            set protocols l2circuit neighbor 172.21.119.3 interface ae2.128 community evc-core-protected
+            set protocols l2circuit neighbor 172.21.119.3 interface ae2.128 encapsulation-type ethernet
+            set protocols l2circuit neighbor 172.21.119.3 interface ae2.128 ignore-mtu-mismatch
+            set protocols l2circuit neighbor 172.21.119.3 interface ae2.128 pseudowire-status-tlv
+
+    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ssh bdr02-etp-454stpau-bne.au:
+
+                
+                    interface BE2.573329 l2transport
+                    description  Cust Superloop (Australia) Pty Ltd - INT-NNI (None)[10000Mbit]{573329}
+                    mtu 9216
+                    encapsulation dot1q 128
+                    statistics
+                    !
+                    !
+                    l2vpn
+                    xconnect group xc_573329
+                    p2p p2p_573329
+                    interface BE2.573329
+                    neighbor ipv4 172.21.119.3 pw-id 573329
+                        pw-class CW-enabled
+                    !
+
+                ssh 172.21.119.3 (bdr01-etp-454stpau-bne.au)
+
+                  l2vpn xconnect group xc_573329 p2p p2p_573329
+                    no neighbor ipv4 103.200.12.24 pw-id 573329 
+                    neighbor ipv4 172.21.119.11 pw-id 573329 pw-class CW-enabled
+====================================================================================================
+32807
+
+            set interfaces ae2 unit 16379 description " Cust Aurizon Operations Limited - SLAUIN-IPTP [1000Mbit]{32807}"
+            set interfaces ae2 unit 16379 encapsulation vlan-ccc
+            set interfaces ae2 unit 16379 vlan-tags outer 129
+            set interfaces ae2 unit 16379 statistics
+            set interfaces ae2 unit 16379 family ccc filter input rate-limit-1000mbps
+
+            set protocols l2circuit neighbor 172.21.119.21 interface ae2.16379 virtual-circuit-id 32807
+            set protocols l2circuit neighbor 172.21.119.21 interface ae2.16379 description " Cust Aurizon Operations Limited - SLAUIN-IPTP [1000Mbit]{32807}"
+            set protocols l2circuit neighbor 172.21.119.21 interface ae2.16379 encapsulation-type ethernet
+            set protocols l2circuit neighbor 172.21.119.21 interface ae2.16379 ignore-mtu-mismatch
+            set protocols l2circuit neighbor 172.21.119.21 interface ae2.16379 pseudowire-status-tlv
+            >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ssh bdr02-etp-454stpau-bne.au:
+
+                    !
+                    interface BE2.32807 l2transport
+                    description  Cust Aurizon Operations Limited - SLAUIN-IPTP [1000Mbit]{32807}
+                    mtu 9216
+                    encapsulation dot1q 129
+                    statistics
+                    !
+                    !
+                    l2vpn
+                    xconnect group xc_32807
+                    p2p p2p_32807
+                    interface BE2.32807
+                    neighbor ipv4 172.21.119.21 pw-id 32807
+                        pw-class CW-enabled
+                    !
+
+                ssh 172.21.119.21 (bdr01-etp-19mckech-bne.au)
+
+                  l2vpn xconnect group xc_32807 p2p p2p_32807 
+                  no neighbor ipv4 103.200.12.24 pw-id 32807 
+                  neighbor ipv4 172.21.119.11 pw-id 32807 pw-class CW-enabled
+====================================================================================================
+14887
+            set interfaces xe-0/0/10 unit 130 encapsulation vlan-ccc
+            set interfaces xe-0/0/10 unit 130 vlan-id 130
+            set interfaces xe-0/0/10 unit 130 family ccc filter input rate-limit-1000mbps
+            set interfaces xe-0/0/10 unit 130 family ccc filter output rate-limit-1000mbps
+
+            set interfaces ae2 unit 130 description " Cust All Hallows - SLAUEA-1000 [1000Mbit]{14887}"
+            set interfaces ae2 unit 130 encapsulation vlan-ccc
+            set interfaces ae2 unit 130 vlan-id 130
+            set interfaces ae2 unit 130 family ccc
+
+            set protocols l2circuit local-switching interface xe-0/0/10.130 end-interface interface ae2.130
+            >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+            ssh bdr02-etp-454stpau-bne.au:
+
+                !
+                interface BE2.14887 l2transport
+                description  Cust All Hallows - SLAUEA-1000 [1000Mbit]{14887}
+                mtu 9216
+                encapsulation dot1q 130
+                statistics
+                !
+                !
+                l2vpn
+                xconnect group xc_14887
+                p2p p2p_14887
+                interface BE2.14887
+                neighbor ipv4 103.200.12.24 pw-id 14887
+                    pw-class bdr01-met-454stpau-bne-cp-01
+
+            ssh 103.200.12.24 (bdr01-met-454stpau-bne.au)
+
+                delete interface ae2 unit 130
+                delete interface xe-0/0/10.130
+                delete protocols l2circuit local-switching interface xe-0/0/10.130 end-interface interface ae2.130
+
+   
+                set interfaces xe-0/0/10.130 description " Cust All Hallows - SLAUEA-1000 [1000Mbit]{14887}"
+                set interfaces xe-0/0/10.130 encapsulation vlan-ccc
+                set interfaces xe-0/0/10.130 vlan-tags outer 0x8100.130
+                set interfaces xe-0/0/10.130 statistics     
+                set interfaces xe-0/0/10.130 family ccc
+
+                set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/10.130 virtual-circuit-id 14887
+                set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/10.130 community evc-core-protected
+                set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/10.130 encapsulation-type ethernet
+                set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/10.130 ignore-mtu-mismatch
+                set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/10.130 pseudowire-status-tlv
+==============================================================================================================
+496168         
+            set interfaces ae2 unit 200 encapsulation vlan-ccc
+            set interfaces ae2 unit 200 vlan-tags outer 0x8100.200
+            set interfaces ae2 unit 200 input-vlan-map pop
+            set interfaces ae2 unit 200 output-vlan-map push
+            set interfaces ae2 unit 200 statistics
+            set interfaces ae2 unit 200 family ccc
+	bdr01-etp-454stpau-bne.au
+            set protocols l2circuit neighbor 172.21.119.3 interface ae2.200 virtual-circuit-id 496168
+            set protocols l2circuit neighbor 172.21.119.3 interface ae2.200 community evc-protected
+            set protocols l2circuit neighbor 172.21.119.3 interface ae2.200 encapsulation-type ethernet
+            set protocols l2circuit neighbor 172.21.119.3 interface ae2.200 ignore-mtu-mismatch
+            set protocols l2circuit neighbor 172.21.119.3 interface ae2.200 pseudowire-status-tlv
+        >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        ssh bdr02-etp-454stpau-bne.au:
+                !
+                interface BE2.496168 l2transport
+                description  Cust Queensland Urban Utilities - SLAUIN-IPTP (None)[10000Mbit]{496168}
+                rewrite ingress tag pop 1 symmetric
+                mtu 9216
+                encapsulation dot1q 200
+                !
+                !
+                l2vpn
+                xconnect group xc_496168
+                p2p p2p_496168
+                interface BE2.496168
+                neighbor ipv4  172.21.119.3 pw-id 496168
+                    pw-class CW-enabled
+                !
+        ssh 172.21.119.3 (bdr01-etp-454stpau-bne.au)
+                l2vpn xconnect group xc_496168 p2p p2p_496168 
+                    no neighbor ipv4 103.200.12.24 pw-id 496168
+                    neighbor ipv4 172.21.119.11 pw-id 496168 pw-class CW-enabled
+===================================================================================
+11631
+            set interfaces ae2 unit 201 apply-groups IFL-PARAMETERS-VLAN-CCC
+            set interfaces ae2 unit 201 description " Cust Sentrian Pty Ltd - SLAUIN-IPTP {11631}"
+            set interfaces ae2 unit 201 vlan-id 201
+
+            set protocols l2circuit neighbor 103.200.12.47 interface ae2.201 apply-groups L2CIRCUIT-TAGGED
+            set protocols l2circuit neighbor 103.200.12.47 interface ae2.201 virtual-circuit-id 11631
+            set protocols l2circuit neighbor 103.200.12.47 interface ae2.201 description " Cust Sentrian Pty Ltd - SLAUIN-IPTP {11631}"
+            set protocols l2circuit neighbor 103.200.12.47 interface ae2.201 community evc-protected
+    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+            ssh bdr02-etp-454stpau-bne.au:
+
+                !
+                interface BE2.11631 l2transport
+                description  Cust Sentrian Pty Ltd - SLAUIN-IPTP {11631}
+                mtu 9216
+                encapsulation dot1q 201
+                statistics
+                !
+                !
+                l2vpn
+                xconnect group xc_11631
+                p2p p2p_11631
+                interface BE2.11631
+                neighbor ipv4 103.200.12.47 pw-id 11631
+                    pw-class bdr03-met-20wharfs-bne-cp-01
+                !
+        
+
+            ssh 103.200.12.47 (bdr03-met-20wharfs-bne.au)
+
+                delete protocols l2circuit neighbor 103.200.12.24 interface xe-0/0/14.201
+
+                set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/14.201 apply-groups L2CIRCUIT-TAGGED
+                set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/14.201 virtual-circuit-id 11631
+                set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/14.201 description " Cust Sentrian Pty Ltd - SLAUIN-IPTP {11631}"
+                set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/14.201 community evc-protected
+                set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/14.201 ignore-mtu-mismatch
+                set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/14.201 pseudowire-status-tlv
+                set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/14.201 encapsulation-type ethernet
+===================================================================================================
+499627
+            set interfaces ae2 unit 202 description " Cust DataWave Internet Pty Ltd - SLAUIN-IPTP (None)[2000Mbit]{499627}"
+            set interfaces ae2 unit 202 encapsulation vlan-ccc
+            set interfaces ae2 unit 202 vlan-tags outer 202
+            set interfaces ae2 unit 202 statistics
+            set interfaces ae2 unit 202 family ccc filter input rate-limit-2000mbps
+
+            set protocols l2circuit neighbor 172.21.119.3 interface ae2.202 virtual-circuit-id 499627
+            set protocols l2circuit neighbor 172.21.119.3 interface ae2.202 description " Cust DataWave Internet Pty Ltd - SLAUIN-IPTP (None)[2000Mbit]{499627}"
+            set protocols l2circuit neighbor 172.21.119.3 interface ae2.202 community evc-core-protected
+            set protocols l2circuit neighbor 172.21.119.3 interface ae2.202 encapsulation-type ethernet
+            set protocols l2circuit neighbor 172.21.119.3 interface ae2.202 ignore-mtu-mismatch
+            set protocols l2circuit neighbor 172.21.119.3 interface ae2.202 pseudowire-status-tlv
+        >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+            ssh bdr02-etp-454stpau-bne.au:
+
+                !
+                interface BE2.499627 l2transport
+                description  Cust DataWave Internet Pty Ltd - SLAUIN-IPTP (None)[2000Mbit]{499627}
+                mtu 9216
+                encapsulation dot1q 202
+                statistics
+                service-policy input rate-limit-es-2000mbps 
+                !
+                !
+                l2vpn
+                xconnect group xc_499627
+                p2p p2p_499627
+                interface BE2.499627
+                neighbor ipv4 172.21.119.3 pw-id 499627
+                    pw-class CW-enabled
+                !
+        
+
+            ssh 172.21.119.3 (bdr01-etp-454stpau-bne.au)
+                l2vpn xconnect group xc_499627 p2p p2p_499627
+                    no neighbor ipv4 103.200.12.24 pw-id 499627
+                    neighbor ipv4 172.21.119.11 pw-id 499627 pw-class CW-enabled
+=====================================================================
+18621 - existing configuration in met
+
+            set interfaces ae2 unit 241 apply-groups IFL-PARAMETERS-VLAN-CCC
+            set interfaces ae2 unit 241 description " Cust OPENetworks Pty Ltd - SLAUIN-IPTP [200Mbit]{18621}"
+            set interfaces ae2 unit 241 vlan-tags outer 241
+
+
+            set protocols l2circuit neighbor 103.200.12.25 interface ae2.241 apply-groups L2CIRCUIT-TAGGED
+            set protocols l2circuit neighbor 103.200.12.25 interface ae2.241 virtual-circuit-id 18621
+            set protocols l2circuit neighbor 103.200.12.25 interface ae2.241 description SLC-IPT-18621
+            set protocols l2circuit neighbor 103.200.12.25 interface ae2.241 community evc-protected
+    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+            ssh bdr02-etp-454stpau-bne.au:
+
+                !
+                interface BE2.18621 l2transport
+                description  Cust OPENetworks Pty Ltd - SLAUIN-IPTP [200Mbit]{18621}
+                mtu 9216
+                encapsulation dot1q 241
+                statistics
+                !
+                !
+                l2vpn
+                xconnect group xc_18621
+                p2p p2p_18621
+                interface BE2.18621
+                neighbor ipv4 103.200.12.25 pw-id 18621
+                    pw-class bdr01-met-54alfred-bne-cp-01
+                !
+        
+
+            ssh 103.200.12.25 (bdr01-met-54alfred-bne.au)
+                set interfaces ge-0/0/12.1 description "Cust: OPENetworks Pty Ltd - SLAUIN-IPTP [200Mbit]{18621}"
+                set interfaces ge-0/0/12.1 encapsulation vlan-ccc
+                set interfaces ge-0/0/12.1 vlan-tags outer 0x8100.241
+                set interfaces ge-0/0/12.1 statistics     
+                set interfaces ge-0/0/12.1 family ccc
+
+                delete protocols l2circuit neighbor 103.200.12.24 interface ge-0/0/12.1
+
+                set protocols l2circuit neighbor 172.21.119.11 interface ge-0/0/12.1 apply-groups L2CIRCUIT-TAGGED
+                set protocols l2circuit neighbor 172.21.119.11 interface ge-0/0/12.1 virtual-circuit-id 18621
+                set protocols l2circuit neighbor 172.21.119.11 interface ge-0/0/12.1 description SLC-IPT-18621
+                set protocols l2circuit neighbor 172.21.119.11 interface ge-0/0/12.1 community evc-protected
+                set protocols l2circuit neighbor 172.21.119.11 interface ge-0/0/12.1 ignore-mtu-mismatch
+                set protocols l2circuit neighbor 172.21.119.11 interface ge-0/0/12.1 pseudowire-status-tlv
+                set protocols l2circuit neighbor 172.21.119.11 interface ge-0/0/12.1 encapsulation-type ethernet
+============================================================================
+487702
+
+
+            set interfaces ae2 unit 302 description " Cust SLC SAT LAB 20 Wharf St {487702}"
+            set interfaces ae2 unit 302 encapsulation vlan-ccc
+            set interfaces ae2 unit 302 vlan-tags outer 302
+            set interfaces ae2 unit 302 statistics
+            set interfaces ae2 unit 302 family ccc
+
+            set protocols l2circuit neighbor 172.21.119.4 interface ae2.302 virtual-circuit-id 487702
+            set protocols l2circuit neighbor 172.21.119.4 interface ae2.302 description " Cust SLC SAT LAB 20 Wharf St {487702}"
+            set protocols l2circuit neighbor 172.21.119.4 interface ae2.302 community evc-core-protected
+            set protocols l2circuit neighbor 172.21.119.4 interface ae2.302 encapsulation-type ethernet
+            set protocols l2circuit neighbor 172.21.119.4 interface ae2.302 ignore-mtu-mismatch
+            set protocols l2circuit neighbor 172.21.119.4 interface ae2.302 pseudowire-status-tlv
+    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        ssh bdr02-etp-454stpau-bne.au:
+
+                !
+                interface BE2.487702 l2transport
+                description  Cust SLC SAT LAB 20 Wharf St {487702}
+                mtu 9216
+                encapsulation dot1q 302
+                statistics
+                !
+                !
+                l2vpn
+                xconnect group xc_487702
+                p2p p2p_487702
+                interface BE2.487702
+                neighbor ipv4 103.200.12.47 pw-id 487702
+                    pw-class CW-enabled
+                !
+        
+
+            ssh 172.21.119.4 (bdr01-etp-20wharfs-bne.au)
+                l2vpn xconnect group xc_487702 p2p p2p_487702 
+                    no neighbor ipv4 103.200.12.24 pw-id 487702
+                    neighbor ipv4 172.21.119.11 pw-id 487702 pw-class CW-enabled
+====================================================================================
+39985 - Maquarie Telecom:
+
+    via bdr01-met-54alfred		
+        repoint to bdr02-etp-454stpau
+
+        ssh 103.200.12.25 (bdr01-met-54alfred)
+
+
+        delete  protocols l2circuit neighbor 172.21.119.2 interface xe-0/0/5.0
+
+        set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/5.0 virtual-circuit-id 39985
+        set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/5.0 description " Cust Macquarie Telecom Pty Ltd - SLAUIN-IPTP [8000Mbit]{39985}"
+        set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/5.0 community evc-protected
+        set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/5.0 encapsulation-type ethernet
+        set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/5.0 ignore-mtu-mismatch
+        set protocols l2circuit neighbor 172.21.119.11 interface xe-0/0/5.0 pseudowire-status-tlv
+
+
+        ssh bdr02-etp-454stpau-bne.au:
+
+                !
+                interface BE2.39985 l2transport
+                description  Cust Macquarie Telecom Pty Ltd - SLAUIN-IPTP [8000Mbit]{39985}
+                mtu 9216
+                encapsulation dot1q 303
+                rewrite ingress tag pop 1 symmetric
+                statistics
+                !
+                !
+                l2vpn
+                xconnect group xc_39985
+                p2p p2p_39985
+                interface BE2.39985
+                neighbor ipv4 103.200.12.25  pw-id 39985
+                    pw-class bdr01-met-54alfred-cp-01
+==================================================================
+225134 - Nexus
+            interface Bundle-Ether2.225134 l2transport
+            interface Bundle-Ether2.225134 l2transport description  Cust Nexus One Pty Ltd - SLAUIN-IPTP (AS64006)[500Mbit]{225134}
+            interface Bundle-Ether2.225134 l2transport encapsulation dot1q 304
+            interface Bundle-Ether2.225134 l2transport rewrite ingress tag pop 1 symmetric
+            interface Bundle-Ether2.225134 l2transport mtu 9216
+
+            interface Te0/0/0/12 description  Cust Nexus One Pty Ltd - SLAUIN-IPTP (AS64006)[500Mbit]{225134}
+            interface Te0/0/0/12 mtu 9216
+            interface Te0/0/0/12 load-interval 30
+            interface Te0/0/0/12 l2transport 
+
+            l2vpn xconnect group xc_225134
+            l2vpn xconnect group xc_225134 p2p p2p_225134
+            l2vpn xconnect group xc_225134 p2p p2p_225134 interface Te0/0/0/12
+            l2vpn xconnect group xc_225134 p2p p2p_225134 interface Bundle-Ether2.225134
+
+
+        ]
+    ]
+
+
+interface Bundle-Ether2.100 encapsulation dot1q 100
+interface Bundle-Ether2.101 encapsulation dot1q 101
+interface Bundle-Ether2.102 encapsulation dot1q 102
+interface Bundle-Ether2.104 encapsulation dot1q 104
+interface Bundle-Ether2.106 encapsulation dot1q 106
+interface Bundle-Ether2.107 encapsulation dot1q 107
+interface Bundle-Ether2.108 encapsulation dot1q 108
+interface Bundle-Ether2.110 encapsulation dot1q 110
+interface Bundle-Ether2.112 encapsulation dot1q 112
+interface Bundle-Ether2.114 encapsulation dot1q 114
+interface Bundle-Ether2.115 encapsulation dot1q 115
+interface Bundle-Ether2.120 encapsulation dot1q 120
+interface Bundle-Ether2.128 encapsulation dot1q 128
+interface Bundle-Ether2.129 encapsulation dot1q 129
+interface Bundle-Ether2.130 encapsulation dot1q 130
+interface Bundle-Ether2.200 encapsulation dot1q 200
+interface Bundle-Ether2.201 encapsulation dot1q 201
+interface Bundle-Ether2.202 encapsulation dot1q 202
+interface Bundle-Ether2.241 encapsulation dot1q 241
+interface Bundle-Ether2.302 encapsulation dot1q 302
+
+
+
+show ethernet tag BE2.XXX
+show interface <interface> details]]
+
+
+repoint circuit first   
+then delete ip address in bdr01
+then paste ip address in bdr03
+then unshut bgp neighbors in bdr03
+then shut bgp neighbors in bdr01 --check who is recently idle at the same time, then shut it, compare it to what is up on bdr03
+then remove prov tag in bdr03
+add decom tag in bdr01
+
+
+
+
+
+
+
+bdr01-ipt-454stpau:
+
+
+
+show bgp all all summ wide
+
+no interface Bundle-Ether2.101 ipv4 address 203.153.16.222 255.255.255.254
+no interface Bundle-Ether2.102 ipv4 address 116.255.8.253 255.255.255.252
+no interface Bundle-Ether2.104 ipv4 address 27.122.113.16 255.255.255.254
+no interface Bundle-Ether2.104 ipv6 address 2401:d000:7201::41/124
+no interface Bundle-Ether2.105 ipv4 address 27.122.114.200 255.255.255.254
+no interface Bundle-Ether2.105 ipv6 address 2401:d000:7201::301/124
+no interface Bundle-Ether2.106 ipv4 address 203.153.16.94 255.255.255.252
+no interface Bundle-Ether2.106 ipv6 address 2401:d000:7201::91/124
+no interface Bundle-Ether2.107 ipv4 address 203.153.19.73 255.255.255.252
+no interface Bundle-Ether2.107 ipv6 address 2401:d000:7101::291/124
+no interface Bundle-Ether2.108 ipv4 address 27.122.113.88 255.255.255.254
+no interface Bundle-Ether2.108 ipv6 address 2401:d000:7201::221/124
+no interface Bundle-Ether2.110 ipv4 address 27.122.114.149 255.255.255.248
+no interface Bundle-Ether2.112 ipv4 address 27.122.113.165 255.255.255.254
+no interface Bundle-Ether2.112 ipv6 address 2401:d000:7201::31/124
+no interface Bundle-Ether2.114 ipv4 address 203.153.16.14 255.255.255.252
+no interface Bundle-Ether2.114 ipv6 address 2401:d000:7201::11/124
+no interface Bundle-Ether2.115 ipv4 address 27.122.116.177 255.255.255.240
+no interface Bundle-Ether2.115 ipv6 address 2401:d000:7201::141/124
+no interface Bundle-Ether2.120 ipv4 address 27.122.114.216 255.255.255.254
+no interface Bundle-Ether2.120 ipv6 address 2401:d000:7201::71/124
+no interface Bundle-Ether2.128 ipv4 address 27.122.120.50 255.255.255.254
+no interface Bundle-Ether2.128 ipv6 address 2401:d000:b201::1b1/124
+no interface Bundle-Ether2.129 ipv4 address 27.122.113.77 255.255.255.252
+no interface Bundle-Ether2.129 ipv6 address 2401:d000:7801::1/124
+no interface Bundle-Ether2.130 ipv4 address 203.153.16.134 255.255.255.252
+no interface Bundle-Ether2.200 ipv4 address 27.122.114.218 255.255.255.254
+no interface Bundle-Ether2.200 ipv6 address 2401:d000:7201::161/124
+no interface Bundle-Ether2.201 ipv4 address 27.122.114.181 255.255.255.254
+no interface Bundle-Ether2.201 ipv6 address 2401:d000:7101::a1/124
+no interface Bundle-Ether2.202 ipv4 address 203.153.16.156 255.255.255.254
+no interface Bundle-Ether2.202 ipv6 address 2401:d000:7201::171/124
+no interface Bundle-Ether2.241 ipv4 address 27.122.114.154 255.255.255.252
+no interface Bundle-Ether2.302 ipv4 address 203.153.16.38 255.255.255.254
+no interface Bundle-Ether2.302 ipv6 address 2401:d000:7201::151/124
+
+no interface TenGigE0/0/0/10 ipv4 address 27.122.114.229 255.255.255.252
+no interface TenGigE0/0/0/10 ipv6 address 2401:d000:7201::c1/124
+
+no interface TenGigE0/0/0/21 ipv4 address 203.153.16.201 255.255.255.248
+no interface TenGigE0/0/0/21 ipv6 address 2401:d000:7201::21/124
+
+Do this next week when the whole box decommissions
+        no router  static address-family ipv4 unicast 27.122.112.0/20 Null0 description BGP_NAILDOWN_SUMMARY_AS38195
+        no router  static address-family ipv4 unicast 27.122.112.0/24 Null0 description BGP_NAILDOWN_AS38195
+        no router  static address-family ipv4 unicast 27.122.113.0/24 Null0 description BGP_NAILDOWN_AS38195
+        no router  static address-family ipv4 unicast 27.122.114.0/24 Null0 description BGP_NAILDOWN_AS38195
+        no router  static address-family ipv4 unicast 27.122.116.0/24 Null0 description BGP_NAILDOWN_AS38195
+        no router  static address-family ipv4 unicast 103.200.12.0/24 Null0 description BGP_NAILDOWN_AS38195
+        no router  static address-family ipv4 unicast 125.253.111.0/24 Null0 description BGP_NAILDOWN_SUMMARY_PEX
+        no router  static address-family ipv4 unicast 192.0.2.1/32 Null0
+        no router  static address-family ipv4 unicast 202.130.197.0/24 Null0 description BGP_NAILDOWN_SUMMARY_PEX
+        no router  static address-family ipv4 unicast 202.137.162.0/24 Null0 description BGP_NAILDOWN_SUMMARY_PEX
+        no router  static address-family ipv4 unicast 202.171.174.0/24 Null0 description BGP_NAILDOWN_SUMMARY_PEX
+        no router  static address-family ipv4 unicast 203.153.16.0/24 Null0 description BGP_NAILDOWN_AS38195
+
+
+
+
+bdr03-ipt-454stpau:
+do this next week
+        router static address-family ipv4 unicast 27.122.112.0/20 Null0 description BGP_NAILDOWN_SUMMARY_AS38195
+        router static address-family ipv4 unicast 27.122.112.0/24 Null0 description BGP_NAILDOWN_AS38195
+        router static address-family ipv4 unicast 27.122.113.0/24 Null0 description BGP_NAILDOWN_AS38195
+        router static address-family ipv4 unicast 27.122.114.0/24 Null0 description BGP_NAILDOWN_AS38195
+        router static address-family ipv4 unicast 27.122.116.0/24 Null0 description BGP_NAILDOWN_AS38195
+        router static address-family ipv4 unicast 103.200.12.0/24 Null0 description BGP_NAILDOWN_AS38195
+        router static address-family ipv4 unicast 125.253.111.0/24 Null0 description BGP_NAILDOWN_SUMMARY_PEX
+        router static address-family ipv4 unicast 192.0.2.1/32 Null0
+        router static address-family ipv4 unicast 202.130.197.0/24 Null0 description BGP_NAILDOWN_SUMMARY_PEX
+        router static address-family ipv4 unicast 202.137.162.0/24 Null0 description BGP_NAILDOWN_SUMMARY_PEX
+        router static address-family ipv4 unicast 202.171.174.0/24 Null0 description BGP_NAILDOWN_SUMMARY_PEX
+        router static address-family ipv4 unicast 203.153.16.0/24 Null0 description BGP_NAILDOWN_AS38195
+
+
+interface Bundle-Ether2.101 ipv4 address 203.153.16.222 255.255.255.254
+interface Bundle-Ether2.102 ipv4 address 116.255.8.253 255.255.255.252
+interface Bundle-Ether2.104 ipv4 address 27.122.113.16 255.255.255.254
+interface Bundle-Ether2.104 ipv6 address 2401:d000:7201::41/124
+interface Bundle-Ether2.105 ipv4 address 27.122.114.200 255.255.255.254
+interface Bundle-Ether2.105 ipv6 address 2401:d000:7201::301/124
+interface Bundle-Ether2.106 ipv4 address 203.153.16.94 255.255.255.252
+interface Bundle-Ether2.106 ipv6 address 2401:d000:7201::91/124
+interface Bundle-Ether2.107 ipv4 address 203.153.19.73 255.255.255.252
+interface Bundle-Ether2.107 ipv6 address 2401:d000:7101::291/124
+interface Bundle-Ether2.108 ipv4 address 27.122.113.88 255.255.255.254
+interface Bundle-Ether2.108 ipv6 address 2401:d000:7201::221/124
+interface Bundle-Ether2.110 ipv4 address 27.122.114.149 255.255.255.248
+interface Bundle-Ether2.112 ipv4 address 27.122.113.165 255.255.255.254
+interface Bundle-Ether2.112 ipv6 address 2401:d000:7201::31/124
+interface Bundle-Ether2.114 ipv4 address 203.153.16.14 255.255.255.252
+interface Bundle-Ether2.114 ipv6 address 2401:d000:7201::11/124
+interface Bundle-Ether2.115 ipv4 address 27.122.116.177 255.255.255.240
+interface Bundle-Ether2.115 ipv6 address 2401:d000:7201::141/124
+interface Bundle-Ether2.120 ipv4 address 27.122.114.216 255.255.255.254
+interface Bundle-Ether2.120 ipv6 address 2401:d000:7201::71/124
+interface Bundle-Ether2.128 ipv4 address 27.122.120.50 255.255.255.254
+interface Bundle-Ether2.128 ipv6 address 2401:d000:b201::1b1/124
+interface Bundle-Ether2.129 ipv4 address 27.122.113.77 255.255.255.252
+interface Bundle-Ether2.129 ipv6 address 2401:d000:7801::1/124
+interface Bundle-Ether2.130 ipv4 address 203.153.16.134 255.255.255.252
+interface Bundle-Ether2.200 ipv4 address 27.122.114.218 255.255.255.254
+interface Bundle-Ether2.200 ipv6 address 2401:d000:7201::161/124
+interface Bundle-Ether2.201 ipv4 address 27.122.114.181 255.255.255.254
+interface Bundle-Ether2.201 ipv6 address 2401:d000:7101::a1/124
+interface Bundle-Ether2.202 ipv4 address 203.153.16.156 255.255.255.254
+interface Bundle-Ether2.202 ipv6 address 2401:d000:7201::171/124
+interface Bundle-Ether2.241 ipv4 address 27.122.114.154 255.255.255.252
+interface Bundle-Ether2.302 ipv4 address 203.153.16.38 255.255.255.254
+interface Bundle-Ether2.302 ipv6 address 2401:d000:7201::151/124
+interface BE2.303 ipv4 address 27.122.114.229 255.255.255.252
+interface BE2.303 ipv6 address 2401:d000:7201::c1/124
+
+interface Bundle-Ether40.100 ipv4 address 27.122.113.122 255.255.255.254
+interface Bundle-Ether40.101 ipv4 address 27.122.113.226 255.255.255.254
+
+
+================================================================================================================
+
+
+    interface Bundle-Ether2.100
+    interface Bundle-Ether2.100 description  Cust Tim Warnock - SLAUIN-IPTP (AS56178)[1000Mbit]{19022}
+    interface Bundle-Ether2.100 service-policy input AS38195-DSCP-REWRITE-IN
+    interface Bundle-Ether2.100 ipv4 mtu 1500
+    interface Bundle-Ether2.100 ipv4 address 203.153.16.185 255.255.255.248
+    interface Bundle-Ether2.100 ipv4 unreachables disable
+    interface Bundle-Ether2.100 ipv6 nd suppress-ra
+    interface Bundle-Ether2.100 ipv6 mtu 1500
+    interface Bundle-Ether2.100 ipv6 address 2401:d000:7201::101/124
+    interface Bundle-Ether2.100 ipv6 unreachables disable
+    interface Bundle-Ether2.100 load-interval 30
+    interface Bundle-Ether2.100 flow ipv4 monitor netflow-ipv4 sampler 1in1k ingress
+    interface Bundle-Ether2.100 flow ipv6 monitor netflow-ipv6 sampler 1in1k ingress
+    interface Bundle-Ether2.100 encapsulation dot1q 100
+    interface Bundle-Ether2.101
+    interface Bundle-Ether2.101 description  Cust RDO Equipment Pty Ltd - INT-AS (AS138483)[1000Mbps]{527379}
+    interface Bundle-Ether2.101 service-policy input AS38195-DSCP-REWRITE-IN
+    no interface Bundle-Ether2.101 service-policy output SHAPE-1000MBPS
+    interface Bundle-Ether2.101 ipv4 mtu 1500
+    interface Bundle-Ether2.101 ipv4 address 203.153.16.222 255.255.255.254
+    interface Bundle-Ether2.101 ipv4 unreachables disable
+    interface Bundle-Ether2.101 load-interval 30
+    interface Bundle-Ether2.101 flow ipv4 monitor netflow-ipv4 sampler 1in1k ingress
+    interface Bundle-Ether2.101 encapsulation dot1q 101
+    interface Bundle-Ether2.102
+    interface Bundle-Ether2.102 description  Cust BigAir Community Broadband Pty Ltd - INT-DF (AS63920)[10000Mbps]{1173542}
+    interface Bundle-Ether2.102 service-policy input AS38195-DSCP-REWRITE-IN
+    no interface Bundle-Ether2.102 service-policy output SHAPE-10000MBPS
+    interface Bundle-Ether2.102 ipv4 mtu 1500
+    interface Bundle-Ether2.102 ipv4 address 116.255.8.253 255.255.255.252
+    interface Bundle-Ether2.102 ipv4 unreachables disable
+    interface Bundle-Ether2.102 load-interval 30
+    interface Bundle-Ether2.102 flow ipv4 monitor netflow-ipv4 sampler 1in1k ingress
+    interface Bundle-Ether2.102 encapsulation dot1q 102
+    interface Bundle-Ether2.104
+    interface Bundle-Ether2.104 description  Cust Superloop (Australia) Pty Ltd - SLAUIN-IPTP (AS65535)[1000Mbit]{25225}
+    interface Bundle-Ether2.104 service-policy input AS38195-DSCP-REWRITE-IN
+    interface Bundle-Ether2.104 ipv4 mtu 1500
+    interface Bundle-Ether2.104 ipv4 address 27.122.113.16 255.255.255.254
+    interface Bundle-Ether2.104 ipv4 unreachables disable
+    interface Bundle-Ether2.104 ipv6 nd suppress-ra
+    interface Bundle-Ether2.104 ipv6 mtu 1500
+    interface Bundle-Ether2.104 ipv6 address 2401:d000:7201::41/124
+    interface Bundle-Ether2.104 ipv6 unreachables disable
+    interface Bundle-Ether2.104 load-interval 30
+    interface Bundle-Ether2.104 flow ipv4 monitor netflow-ipv4 sampler 1in1k ingress
+    interface Bundle-Ether2.104 flow ipv6 monitor netflow-ipv6 sampler 1in1k ingress
+    interface Bundle-Ether2.104 encapsulation dot1q 104
+    interface Bundle-Ether2.106
+    interface Bundle-Ether2.106 description  Cust Alt VFX Pty Ltd - SLAUIN-IPTP (AS65153)[400Mbit]{34164}
+    interface Bundle-Ether2.106 service-policy input AS38195-DSCP-REWRITE-IN
+    no interface Bundle-Ether2.106 service-policy output SHAPE-800MBPS
+    interface Bundle-Ether2.106 ipv4 mtu 1500
+    interface Bundle-Ether2.106 ipv4 address 203.153.16.94 255.255.255.252
+    interface Bundle-Ether2.106 ipv4 unreachables disable
+    interface Bundle-Ether2.106 ipv6 nd suppress-ra
+    interface Bundle-Ether2.106 ipv6 mtu 1500
+    interface Bundle-Ether2.106 ipv6 address 2401:d000:7201::91/124
+    interface Bundle-Ether2.106 ipv6 unreachables disable
+    interface Bundle-Ether2.106 load-interval 30
+    interface Bundle-Ether2.106 flow ipv4 monitor netflow-ipv4 sampler 1in1k ingress
+    interface Bundle-Ether2.106 flow ipv6 monitor netflow-ipv6 sampler 1in1k ingress
+    interface Bundle-Ether2.106 encapsulation dot1q 106
+    interface Bundle-Ether2.107
+    interface Bundle-Ether2.107 description  Cust Bigair Community Broadband Pty Ltd - SLAUIN-IPTP (AS63920)[10000Mbps]{500458}
+    interface Bundle-Ether2.107 service-policy input AS38195-DSCP-REWRITE-IN
+    interface Bundle-Ether2.107 ipv4 mtu 1500
+    interface Bundle-Ether2.107 ipv4 address 203.153.19.73 255.255.255.252
+    interface Bundle-Ether2.107 ipv4 unreachables disable
+    interface Bundle-Ether2.107 ipv6 nd suppress-ra
+    interface Bundle-Ether2.107 ipv6 mtu 1500
+    interface Bundle-Ether2.107 ipv6 address 2401:d000:7101::291/124
+    interface Bundle-Ether2.107 ipv6 unreachables disable
+    interface Bundle-Ether2.107 load-interval 30
+    interface Bundle-Ether2.107 flow ipv4 monitor netflow-ipv4 sampler 1in1k ingress
+    interface Bundle-Ether2.107 flow ipv6 monitor netflow-ipv6 sampler 1in1k ingress
+    interface Bundle-Ether2.107 encapsulation dot1q 107
+    interface Bundle-Ether2.108
+    interface Bundle-Ether2.108 description  Cust Bigair Community Broadband Pty Ltd - SLAU-NEIS-L (AS131268)[1000Mbps]{480157}
+   interface Bundle-Ether2.108 service-policy input AS38195-DSCP-REWRITE-IN
+   no interface Bundle-Ether2.108 service-policy output SHAPE-1000MBPS
+    interface Bundle-Ether2.108 ipv4 mtu 1500
+    interface Bundle-Ether2.108 ipv4 address 27.122.113.88 255.255.255.254
+    interface Bundle-Ether2.108 ipv4 unreachables disable
+    interface Bundle-Ether2.108 ipv6 nd suppress-ra
+    interface Bundle-Ether2.108 ipv6 mtu 1500
+    interface Bundle-Ether2.108 ipv6 address 2401:d000:7201::221/124
+    interface Bundle-Ether2.108 ipv6 unreachables disable
+    interface Bundle-Ether2.108 load-interval 30
+    interface Bundle-Ether2.108 flow ipv4 monitor netflow-ipv4 sampler 1in1k ingress
+    interface Bundle-Ether2.108 flow ipv6 monitor netflow-ipv6 sampler 1in1k ingress
+    interface Bundle-Ether2.108 encapsulation dot1q 108
+    interface Bundle-Ether2.110
+    interface Bundle-Ether2.110 description  Cust Amaze360 - (DC1 IPTransit) [100MBit] {10277}
+    interface Bundle-Ether2.110 service-policy input AS38195-DSCP-REWRITE-IN
+    interface Bundle-Ether2.110 ipv4 mtu 1500
+    interface Bundle-Ether2.110 ipv4 address 27.122.114.149 255.255.255.248
+    interface Bundle-Ether2.110 ipv4 unreachables disable
+    interface Bundle-Ether2.110 load-interval 30
+    interface Bundle-Ether2.110 flow ipv4 monitor netflow-ipv4 sampler 1in1k ingress
+    interface Bundle-Ether2.110 encapsulation dot1q 110
+    interface Bundle-Ether2.112
+    interface Bundle-Ether2.112 description  Cust Professional Data Kinetics - SLAUIN-IPTP (AS134143)[10000Mbps]{21278}
+    interface Bundle-Ether2.112 service-policy input AS38195-DSCP-REWRITE-IN
+    interface Bundle-Ether2.112 ipv4 mtu 1500
+    interface Bundle-Ether2.112 ipv4 address 27.122.113.165 255.255.255.254
+    interface Bundle-Ether2.112 ipv4 unreachables disable
+    interface Bundle-Ether2.112 ipv6 mtu 1500
+    interface Bundle-Ether2.112 ipv6 address 2401:d000:7201::31/124
+    interface Bundle-Ether2.112 ipv6 unreachables disable
+    interface Bundle-Ether2.112 load-interval 30
+    interface Bundle-Ether2.112 flow ipv4 monitor netflow-ipv4 sampler 1in1k ingress
+    interface Bundle-Ether2.112 flow ipv6 monitor netflow-ipv6 sampler 1in1k ingress
+    interface Bundle-Ether2.112 encapsulation dot1q 112
+    interface Bundle-Ether2.114
+    interface Bundle-Ether2.114 description  Cust Capital B - SLAUIN-IPTP (AS133129)[1000MBit]{20685}
+    interface Bundle-Ether2.114 service-policy input AS38195-DSCP-REWRITE-IN
+    interface Bundle-Ether2.114 ipv4 mtu 1500
+    interface Bundle-Ether2.114 ipv4 address 203.153.16.14 255.255.255.252
+    interface Bundle-Ether2.114 ipv4 unreachables disable
+    interface Bundle-Ether2.114 ipv6 nd suppress-ra
+    interface Bundle-Ether2.114 ipv6 mtu 1500
+    interface Bundle-Ether2.114 ipv6 address 2401:d000:7201::11/124
+    interface Bundle-Ether2.114 ipv6 unreachables disable
+    interface Bundle-Ether2.114 load-interval 30
+    interface Bundle-Ether2.114 flow ipv4 monitor netflow-ipv4 sampler 1in1k ingress
+    interface Bundle-Ether2.114 flow ipv6 monitor netflow-ipv6 sampler 1in1k ingress
+    interface Bundle-Ether2.114 encapsulation dot1q 114
+    interface Bundle-Ether2.115
+    interface Bundle-Ether2.115 description  Cust ANEXIA Internetdienstleistungs GmbH - SLAUIN-IPTP (AS42473)[5000Mbit]{153426}
+    interface Bundle-Ether2.115 service-policy input AS38195-DSCP-REWRITE-IN
+    interface Bundle-Ether2.115 ipv4 mtu 1500
+    interface Bundle-Ether2.115 ipv4 address 27.122.116.177 255.255.255.240
+    interface Bundle-Ether2.115 ipv4 unreachables disable
+    interface Bundle-Ether2.115 ipv6 nd suppress-ra
+    interface Bundle-Ether2.115 ipv6 mtu 1500
+    interface Bundle-Ether2.115 ipv6 address 2401:d000:7201::141/124
+    interface Bundle-Ether2.115 ipv6 unreachables disable
+    interface Bundle-Ether2.115 load-interval 30
+    interface Bundle-Ether2.115 flow ipv4 monitor netflow-ipv4 sampler 1in1k ingress
+    interface Bundle-Ether2.115 flow ipv6 monitor netflow-ipv6 sampler 1in1k ingress
+    interface Bundle-Ether2.115 encapsulation dot1q 115
+    interface Bundle-Ether2.120
+    interface Bundle-Ether2.120 description  Cust Mammoth Media Pty Ltd - SLAUIN-IPTP (AS133159)[1000Mbit]{40904}
+    interface Bundle-Ether2.120 service-policy input AS38195-DSCP-REWRITE-IN
+    interface Bundle-Ether2.120 ipv4 mtu 1500
+    interface Bundle-Ether2.120 ipv4 address 27.122.114.216 255.255.255.254
+    interface Bundle-Ether2.120 ipv4 unreachables disable
+    interface Bundle-Ether2.120 ipv6 nd suppress-ra
+    interface Bundle-Ether2.120 ipv6 mtu 1500
+    interface Bundle-Ether2.120 ipv6 address 2401:d000:7201::71/124
+    interface Bundle-Ether2.120 ipv6 unreachables disable
+    interface Bundle-Ether2.120 load-interval 30
+    interface Bundle-Ether2.120 flow ipv4 monitor netflow-ipv4 sampler 1in1k ingress
+    interface Bundle-Ether2.120 flow ipv6 monitor netflow-ipv6 sampler 1in1k ingress
+    interface Bundle-Ether2.120 encapsulation dot1q 120
+    interface Bundle-Ether2.128
+    interface Bundle-Ether2.128 description  Cust bdr01-pex-454stpau-bne.au Port-Channel28.573329 (via vll)[1000Mbit]{573329}
+    interface Bundle-Ether2.128 service-policy input AS38195-DSCP-REWRITE-IN
+    interface Bundle-Ether2.128 ipv4 mtu 1500
+    interface Bundle-Ether2.128 ipv4 address 27.122.120.50 255.255.255.254
+    interface Bundle-Ether2.128 ipv4 unreachables disable
+    interface Bundle-Ether2.128 ipv6 nd suppress-ra
+    interface Bundle-Ether2.128 ipv6 mtu 1500
+    interface Bundle-Ether2.128 ipv6 address 2401:d000:b201::1b1/124
+    interface Bundle-Ether2.128 ipv6 unreachables disable
+    interface Bundle-Ether2.128 load-interval 30
+    interface Bundle-Ether2.128 flow ipv4 monitor netflow-ipv4 sampler 1in1k ingress
+    interface Bundle-Ether2.128 flow ipv6 monitor netflow-ipv6 sampler 1in1k ingress
+    interface Bundle-Ether2.128 encapsulation dot1q 128
+    interface Bundle-Ether2.129
+    interface Bundle-Ether2.129 description  Cust Aurizon Operations Limited - SLAUIN-IPTP (AS136612)[1000Mbit]{32807}
+    interface Bundle-Ether2.129 service-policy input AS38195-DSCP-REWRITE-IN
+    interface Bundle-Ether2.129 ipv4 mtu 1500
+    interface Bundle-Ether2.129 ipv4 address 27.122.113.77 255.255.255.252
+    interface Bundle-Ether2.129 ipv4 unreachables disable
+    interface Bundle-Ether2.129 ipv6 nd suppress-ra
+    interface Bundle-Ether2.129 ipv6 mtu 1500
+    interface Bundle-Ether2.129 ipv6 address 2401:d000:7801::1/124
+    interface Bundle-Ether2.129 ipv6 unreachables disable
+    interface Bundle-Ether2.129 load-interval 30
+    interface Bundle-Ether2.129 flow ipv4 monitor netflow-ipv4 sampler 1in1k ingress
+    interface Bundle-Ether2.129 flow ipv6 monitor netflow-ipv6 sampler 1in1k ingress
+    interface Bundle-Ether2.129 encapsulation dot1q 129
+    interface Bundle-Ether2.130
+    interface Bundle-Ether2.130 description  Cust AIT-ME-14887 (EA ME 14887)[1000Mbit]{14887}
+    interface Bundle-Ether2.130 service-policy input AS38195-DSCP-REWRITE-IN
+    interface Bundle-Ether2.130 ipv4 mtu 1500
+    interface Bundle-Ether2.130 ipv4 address 203.153.16.134 255.255.255.252
+    interface Bundle-Ether2.130 ipv4 unreachables disable
+    interface Bundle-Ether2.130 load-interval 30
+    interface Bundle-Ether2.130 flow ipv4 monitor netflow-ipv4 sampler 1in1k ingress
+    interface Bundle-Ether2.130 encapsulation dot1q 130
+    interface Bundle-Ether2.200
+    interface Bundle-Ether2.200 description  Cust Queensland Urban Utilities - SLAUIN-IPTP (AS151047)[1000Mbit]{496168}
+    interface Bundle-Ether2.200 service-policy input AS38195-DSCP-REWRITE-IN
+    interface Bundle-Ether2.200 ipv4 mtu 1500
+    interface Bundle-Ether2.200 ipv4 address 27.122.114.218 255.255.255.254
+    interface Bundle-Ether2.200 ipv4 unreachables disable
+    interface Bundle-Ether2.200 ipv6 nd suppress-ra
+    interface Bundle-Ether2.200 ipv6 mtu 1500
+    interface Bundle-Ether2.200 ipv6 address 2401:d000:7201::161/124
+    interface Bundle-Ether2.200 ipv6 unreachables disable
+    interface Bundle-Ether2.200 load-interval 30
+    interface Bundle-Ether2.200 flow ipv4 monitor netflow-ipv4 sampler 1in1k ingress
+    interface Bundle-Ether2.200 flow ipv6 monitor netflow-ipv6 sampler 1in1k ingress
+    interface Bundle-Ether2.200 encapsulation dot1q 200
+    interface Bundle-Ether2.201
+    interface Bundle-Ether2.201 description  Cust Sentrian AS133189 - NW-IPT (B1)[100MBit]{11631}
+    interface Bundle-Ether2.201 service-policy input AS38195-DSCP-REWRITE-IN
+    interface Bundle-Ether2.201 ipv4 mtu 1500
+    interface Bundle-Ether2.201 ipv4 address 27.122.114.181 255.255.255.254
+    interface Bundle-Ether2.201 ipv4 unreachables disable
+    interface Bundle-Ether2.201 ipv6 nd suppress-ra
+    interface Bundle-Ether2.201 ipv6 mtu 1500
+    interface Bundle-Ether2.201 ipv6 address 2401:d000:7101::a1/124
+    interface Bundle-Ether2.201 ipv6 unreachables disable
+    interface Bundle-Ether2.201 load-interval 30
+    interface Bundle-Ether2.201 flow ipv4 monitor netflow-ipv4 sampler 1in1k ingress
+    interface Bundle-Ether2.201 flow ipv6 monitor netflow-ipv6 sampler 1in1k ingress
+    interface Bundle-Ether2.201 encapsulation dot1q 201
+    interface Bundle-Ether2.202
+    interface Bundle-Ether2.202 description  Cust DataWave Internet Pty Ltd - SLAUIN-IPTP (AS132007)[2000Mbps]{499627}
+    interface Bundle-Ether2.202 service-policy input AS38195-DSCP-REWRITE-IN
+    interface Bundle-Ether2.202 ipv4 mtu 1500
+    interface Bundle-Ether2.202 ipv4 address 203.153.16.156 255.255.255.254
+    interface Bundle-Ether2.202 ipv4 unreachables disable
+    interface Bundle-Ether2.202 ipv6 nd suppress-ra
+    interface Bundle-Ether2.202 ipv6 mtu 1500
+    interface Bundle-Ether2.202 ipv6 address 2401:d000:7201::171/124
+    interface Bundle-Ether2.202 ipv6 unreachables disable
+    interface Bundle-Ether2.202 load-interval 30
+    interface Bundle-Ether2.202 flow ipv4 monitor netflow-ipv4 sampler 1in1k ingress
+    interface Bundle-Ether2.202 flow ipv6 monitor netflow-ipv6 sampler 1in1k ingress
+    interface Bundle-Ether2.202 encapsulation dot1q 202
+    interface Bundle-Ether2.241
+    interface Bundle-Ether2.241 description  Cust OPENetworks Pty Ltd SLC-IPT (No BGP)[200Mbit]{18621}
+    interface Bundle-Ether2.241 service-policy input AS38195-DSCP-REWRITE-IN
+    interface Bundle-Ether2.241 ipv4 mtu 1500
+    interface Bundle-Ether2.241 ipv4 address 27.122.114.154 255.255.255.252
+    interface Bundle-Ether2.241 ipv4 unreachables disable
+    interface Bundle-Ether2.241 load-interval 30
+    interface Bundle-Ether2.241 flow ipv4 monitor netflow-ipv4 sampler 1in1k ingress
+    interface Bundle-Ether2.241 encapsulation dot1q 241
+    interface Bundle-Ether2.302
+    interface Bundle-Ether2.302 description  Cust SLC SAT LAB 20 Wharf St {487702}
+    interface Bundle-Ether2.302 service-policy input AS38195-DSCP-REWRITE-IN
+    interface Bundle-Ether2.302 ipv4 mtu 1500
+    interface Bundle-Ether2.302 ipv4 address 203.153.16.38 255.255.255.254
+    interface Bundle-Ether2.302 ipv4 unreachables disable
+    interface Bundle-Ether2.302 ipv6 nd suppress-ra
+    interface Bundle-Ether2.302 ipv6 mtu 1500
+    interface Bundle-Ether2.302 ipv6 address 2401:d000:7201::151/124
+    interface Bundle-Ether2.302 ipv6 unreachables disable
+    interface Bundle-Ether2.302 load-interval 30
+    interface Bundle-Ether2.302 flow ipv4 monitor netflow-ipv4 sampler 1in1k ingress
+    interface Bundle-Ether2.302 flow ipv6 monitor netflow-ipv6 sampler 1in1k ingress
+    interface Bundle-Ether2.302 encapsulation dot1q 302
+
+    interface BE2.303 description  Cust Macquarie Telecom Pty Ltd - SLAUIN-IPTP (AS17477)[10000Mbit]{39985}
+    interface BE2.303 mtu 9212
+    interface BE2.303 service-policy input AS38195-DSCP-REWRITE-IN
+    interface BE2.303 ipv4 mtu 1500
+    interface BE2.303 ipv4 address 27.122.114.229 255.255.255.252
+    interface BE2.303 ipv4 unreachables disable
+    interface BE2.303 ipv6 nd suppress-ra
+    interface BE2.303 ipv6 mtu 1500
+    interface BE2.303 ipv6 address 2401:d000:7201::c1/124
+    interface BE2.303 ipv6 unreachables disable
+    interface BE2.303 load-interval 30
+    interface BE2.303 flow ipv4 monitor netflow-ipv4 sampler 1in1k ingress
+    interface BE2.303 encapsulation dot1q 303
+    interface BE2.303 flow ipv6 monitor netflow-ipv6 sampler 1in1k ingress
+
+    interface BE2.304 description  Cust: Nexus One Pty Ltd - SLAUIN-IPTP (AS64006)[500Mbit]{225134}
+    interface BE2.304 service-policy input AS38195-DSCP-REWRITE-IN
+    interface BE2.304 ipv4 mtu 1500
+    interface BE2.304 ipv4 address 203.153.16.201 255.255.255.248
+    interface BE2.304 ipv4 unreachables disable
+    interface BE2.304 ipv6 nd suppress-ra
+    interface BE2.304 ipv6 mtu 1500
+    interface BE2.304 ipv6 address 2401:d000:7201::21/124
+    interface BE2.304 ipv6 unreachables disable
+    interface BE2.304 load-interval 30
+    interface BE2.304 flow ipv4 monitor netflow-ipv4 sampler 1in1k ingress
+    interface BE2.304 encapsulation dot1q 304
+    interface BE2.304 flow ipv6 monitor netflow-ipv6 sampler 1in1k ingress
+
+
+
+
+
+
+
+
+
+
+    interface Bundle-Ether40.100
+    interface Bundle-Ether40.100 description  Cust PEX INTERNET (AS7585)[10000Mbit]{14552}
+    interface Bundle-Ether40.100 service-policy input AS38195-DSCP-REWRITE-IN
+    interface Bundle-Ether40.100 ipv4 mtu 1500
+    interface Bundle-Ether40.100 ipv4 address 27.122.113.122 255.255.255.254
+    interface Bundle-Ether40.100 ipv4 unreachables disable
+    interface Bundle-Ether40.100 load-interval 30
+    interface Bundle-Ether40.100 flow ipv4 monitor netflow-ipv4 sampler 1in1k ingress
+    interface Bundle-Ether40.100 encapsulation dot1q 100
+    interface Bundle-Ether40.101
+    interface Bundle-Ether40.101 description  Cust PEX CGNAT (AS7585)[10000Mbit]{14553}
+    interface Bundle-Ether40.101 service-policy input AS38195-DSCP-REWRITE-IN
+    interface Bundle-Ether40.101 ipv4 mtu 1500
+    interface Bundle-Ether40.101 ipv4 address 27.122.113.226 255.255.255.254
+    interface Bundle-Ether40.101 ipv4 unreachables disable
+    interface Bundle-Ether40.101 load-interval 30
+    interface Bundle-Ether40.101 flow ipv4 monitor netflow-ipv4 sampler 1in1k ingress
+    interface Bundle-Ether40.101 encapsulation dot1q 101
+
+
+Tunnel Name	                                                    In use?	       can Decom	    can shift?
+cor01-tpt-3821higa-hnd-jp-to-cor01-tpt-47bourke-syd-au-p6-01	no	             yes	
+cor01-tpt-20wharfs-bne-cor01-tpt-47bourke-syd-ip-03	            no	             yes	
+cor01-tpt-47bourke-syd-cor01-tpt-20wharfs-bne-ip-03	            no	             yes	
+bdr01-met-470north-cbr-cor02-etp-47bourke-syd-ip-01	            yes             no	                yes
+bdr01-met-47bourke-syd-au-to-bdr02-met-639garde-syd-au-p6-01	no	             yes	
+bdr01-met-4edenpar-syd-au-to-bdr02-met-639garde-syd-au-p6-01	no	              yes	
+			
+
+
+interface TenGigE0/0/0/5 description NNB-DOSP: Bundle-Ether20 (scr01-ipt-15pionee-sin.sg Ethernet 9)[10000Mbit]
+interface TenGigE0/0/0/5 bundle id 20 mode active
+interface TenGigE0/0/0/5 carrier-delay up 50 down 0

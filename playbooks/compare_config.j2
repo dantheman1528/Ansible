@@ -1,0 +1,21 @@
+- name: Show proposed changes
+  debug:
+    msg: >-
+      {% set running = running_config.ansible_facts.ansible_net_config.splitlines() %}
+      {% set intended = intended_config.splitlines() %}
+      {% set ignored_lines = [
+        'Building configuration', '!! IOS XR Configuration', 'Last configuration change',
+        'hostname', 'logging', 'snmp-server', 'aaa ', 'username', 'secret', 'grpc', 'telemetry model-driven',
+        'ssh server'
+      ] %}
+      
+      Proposed Changes:
+      {% for line in intended if line not in running and not ignored_lines | select('search', line) | list %}
+        + {{ line }}
+      {% endfor %}
+      
+      Lines to be removed:
+      {% for line in running if line not in intended and not ignored_lines | select('search', line) | list %}
+        - {{ line }}
+      {% endfor %}
+  when: (ansible_network_os == 'iosxr')

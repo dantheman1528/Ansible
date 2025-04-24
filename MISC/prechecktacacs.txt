@@ -1,0 +1,316 @@
+TASK [send command to Junos] *****************************************************************************************************************************************************************************************************
+[WARNING]: arguments wait_for, match, rpcs are not supported when using transport=cli
+ok: [mse01-pex-20wharfs-bne.au.superloop.net.co]
+ok: [mse01-pex-220queen-akl.nz.superloop.net.co]
+ok: [mse01-pex-274hindl-adl.au.superloop.net.co]
+ok: [mse01-pex-1william-per.au.superloop.net.co]
+ok: [mse01-pex-132frank-adl.au.superloop.net.co]
+ok: [mse01-pex-27harvey-drw.au.superloop.network]
+ok: [mse01-pex-454stpau-bne.au.superloop.net.co]
+ok: [mse01-pex-47bourke-syd.au.superloop.net.co]
+ok: [mse01-pex-4edenpar-syd.au.superloop.net.co]
+ok: [mse01-pex-4millros-per.au.superloop.net.co]
+ok: [mse01-pex-826lorim-mel.au.superloop.net.co]
+ok: [mse01-pex-530colli-mel.au.superloop.net.co]
+
+TASK [print Junos debug info] ****************************************************************************************************************************************************************************************************
+ok: [mse01-pex-132frank-adl.au.superloop.net.co] => {
+    "result_junos.stdout_lines": [
+        [
+            "100.127.254.44 {",
+            "    secret \"$9$QR5dnCpREyW87hclM8Xbwjik.Tz1IclK8tp\"; ## SECRET-DATA",
+            "    source-address 10.200.195.17;",
+            "}",
+            "100.127.254.108 {",
+            "    secret \"$9$QR5dnCpREyW87hclM8Xbwjik.Tz1IclK8tp\"; ## SECRET-DATA",
+            "    source-address 10.200.195.17;",
+            "}"
+        ],
+        [
+            "\u0007show configuration system authentication-order ",
+            "authentication-order tacplus;"
+        ],
+        [
+            "\u0007show configuration system accounting ",
+            "events [ login change-log interactive-commands ];",
+            "destination {",
+            "    tacplus;",
+            "}"
+        ]
+    ]
+}
+ok: [mse01-pex-20wharfs-bne.au.superloop.net.co] => {
+    "result_junos.stdout_lines": [
+        [
+            "100.127.254.44 {",
+            "    secret \"$9$QR5dnCpREyW87hclM8Xbwjik.Tz1IclK8tp\"; ## SECRET-DATA",
+            "    source-address 10.200.194.25;",
+            "}",
+            "100.127.254.108 {",
+            "    secret \"$9$QR5dnCpREyW87hclM8Xbwjik.Tz1IclK8tp\"; ## SECRET-DATA",
+            "    source-address 10.200.194.25;",
+            "}"
+        ],
+        [
+            "\u0007show configuration system authentication-order ",
+            "authentication-order tacplus;"
+        ],
+        [
+            "\u0007show configuration system accounting ",
+            "events [ login change-log interactive-commands ];",
+            "destination {",
+            "    tacplus;",
+            "}"
+        ]
+    ]
+}
+ok: [mse01-pex-1william-per.au.superloop.net.co] => {
+    "result_junos.stdout_lines": [
+        [
+            "100.127.254.44 {",
+            "    secret \"$9$QR5dnCpREyW87hclM8Xbwjik.Tz1IclK8tp\"; ## SECRET-DATA",
+            "    source-address 10.200.196.17;",
+            "}",
+            "100.127.254.108 {",
+            "    secret \"$9$QR5dnCpREyW87hclM8Xbwjik.Tz1IclK8tp\"; ## SECRET-DATA",
+            "    source-address 10.200.196.17;",
+            "}"
+        ],
+        [
+            "\u0007show configuration system authentication-order ",
+            "authentication-order tacplus;"
+        ],
+        [
+            "\u0007show configuration system accounting ",
+            "events [ login change-log interactive-commands ];",
+            "destination {",
+            "    tacplus;",
+            "}"
+        ]
+    ]
+}
+ok: [mse01-pex-274hindl-adl.au.superloop.net.co] => {
+    "result_junos.stdout_lines": [
+        [
+            "100.127.254.44 {",
+            "    secret \"$9$QR5dnCpREyW87hclM8Xbwjik.Tz1IclK8tp\"; ## SECRET-DATA",
+            "    source-address 10.200.195.25;",
+            "}",
+            "100.127.254.108 {",
+            "    secret \"$9$QR5dnCpREyW87hclM8Xbwjik.Tz1IclK8tp\"; ## SECRET-DATA",
+            "    source-address 10.200.195.25;",
+            "}"
+        ],
+        [
+            "\u0007show configuration system authentication-order ",
+            "authentication-order tacplus;"
+        ],
+        [
+            "\u0007show configuration system accounting ",
+            "events [ login change-log interactive-commands ];",
+            "destination {",
+            "    tacplus;",
+            "}"
+        ]
+    ]
+}
+ok: [mse01-pex-220queen-akl.nz.superloop.net.co] => {
+    "result_junos.stdout_lines": [
+        [
+            "100.127.254.44 {",
+            "    secret \"$9$QR5dnCpREyW87hclM8Xbwjik.Tz1IclK8tp\"; ## SECRET-DATA",
+            "    source-address 10.200.199.17;",
+            "}",
+            "100.127.254.108 {",
+            "    secret \"$9$QR5dnCpREyW87hclM8Xbwjik.Tz1IclK8tp\"; ## SECRET-DATA",
+            "    source-address 10.200.199.17;",
+            "}"
+        ],
+        [
+            "\u0007show configuration system authentication-order ",
+            "authentication-order tacplus;"
+        ],
+        [
+            "\u0007show configuration system accounting ",
+            "events [ login change-log interactive-commands ];",
+            "destination {",
+            "    tacplus;",
+            "}"
+        ]
+    ]
+}
+ok: [mse01-pex-454stpau-bne.au.superloop.net.co] => {
+    "result_junos.stdout_lines": [
+        [
+            "100.127.254.44 {",
+            "    secret \"$9$QR5dnCpREyW87hclM8Xbwjik.Tz1IclK8tp\"; ## SECRET-DATA",
+            "    source-address 10.200.194.17;",
+            "}",
+            "100.127.254.108 {",
+            "    secret \"$9$QR5dnCpREyW87hclM8Xbwjik.Tz1IclK8tp\"; ## SECRET-DATA",
+            "    source-address 10.200.194.17;",
+            "}"
+        ],
+        [
+            "\u0007show configuration system authentication-order ",
+            "authentication-order tacplus;"
+        ],
+        [
+            "\u0007show configuration system accounting ",
+            "events [ login change-log interactive-commands ];",
+            "destination {",
+            "    tacplus;",
+            "}"
+        ]
+    ]
+}
+ok: [mse01-pex-27harvey-drw.au.superloop.network] => {
+    "result_junos.stdout_lines": [
+        [
+            "100.127.254.44 {",
+            "    secret \"$9$QR5dnCpREyW87hclM8Xbwjik.Tz1IclK8tp\"; ## SECRET-DATA",
+            "    source-address 10.200.198.17;",
+            "}",
+            "100.127.254.108 {",
+            "    secret \"$9$QR5dnCpREyW87hclM8Xbwjik.Tz1IclK8tp\"; ## SECRET-DATA",
+            "    source-address 10.200.198.17;",
+            "}"
+        ],
+        [
+            "\u0007show configuration system authentication-order ",
+            "authentication-order tacplus;"
+        ],
+        [
+            "\u0007show configuration system accounting ",
+            "events [ login change-log interactive-commands ];",
+            "destination {",
+            "    tacplus;",
+            "}"
+        ]
+    ]
+}
+ok: [mse01-pex-47bourke-syd.au.superloop.net.co] => {
+    "result_junos.stdout_lines": [
+        [
+            "100.127.254.44 {",
+            "    secret \"$9$QR5dnCpREyW87hclM8Xbwjik.Tz1IclK8tp\"; ## SECRET-DATA",
+            "    source-address 10.200.192.25;",
+            "}",
+            "100.127.254.108 {",
+            "    secret \"$9$QR5dnCpREyW87hclM8Xbwjik.Tz1IclK8tp\"; ## SECRET-DATA",
+            "    source-address 10.200.192.25;",
+            "}"
+        ],
+        [
+            "\u0007show configuration system authentication-order ",
+            "authentication-order tacplus;"
+        ],
+        [
+            "\u0007show configuration system accounting ",
+            "events [ login change-log interactive-commands ];",
+            "destination {",
+            "    tacplus;",
+            "}"
+        ]
+    ]
+}
+ok: [mse01-pex-4millros-per.au.superloop.net.co] => {
+    "result_junos.stdout_lines": [
+        [
+            "100.127.254.44 {",
+            "    secret \"$9$QR5dnCpREyW87hclM8Xbwjik.Tz1IclK8tp\"; ## SECRET-DATA",
+            "    source-address 10.200.196.25;",
+            "}",
+            "100.127.254.108 {",
+            "    secret \"$9$QR5dnCpREyW87hclM8Xbwjik.Tz1IclK8tp\"; ## SECRET-DATA",
+            "    source-address 10.200.196.25;",
+            "}"
+        ],
+        [
+            "\u0007show configuration system authentication-order ",
+            "authentication-order tacplus;"
+        ],
+        [
+            "\u0007show configuration system accounting ",
+            "events [ login change-log interactive-commands ];",
+            "destination {",
+            "    tacplus;",
+            "}"
+        ]
+    ]
+}
+ok: [mse01-pex-4edenpar-syd.au.superloop.net.co] => {
+    "result_junos.stdout_lines": [
+        [
+            "100.127.254.44 {",
+            "    secret \"$9$QR5dnCpREyW87hclM8Xbwjik.Tz1IclK8tp\"; ## SECRET-DATA",
+            "    source-address 10.200.192.17;",
+            "}",
+            "100.127.254.108 {",
+            "    secret \"$9$QR5dnCpREyW87hclM8Xbwjik.Tz1IclK8tp\"; ## SECRET-DATA",
+            "    source-address 10.200.192.17;",
+            "}"
+        ],
+        [
+            "\u0007show configuration system authentication-order ",
+            "authentication-order tacplus;"
+        ],
+        [
+            "\u0007show configuration system accounting ",
+            "events [ login change-log interactive-commands ];",
+            "destination {",
+            "    tacplus;",
+            "}"
+        ]
+    ]
+}
+ok: [mse01-pex-530colli-mel.au.superloop.net.co] => {
+    "result_junos.stdout_lines": [
+        [
+            "100.127.254.44 {",
+            "    secret \"$9$QR5dnCpREyW87hclM8Xbwjik.Tz1IclK8tp\"; ## SECRET-DATA",
+            "    source-address 10.200.193.25;",
+            "}",
+            "100.127.254.108 {",
+            "    secret \"$9$QR5dnCpREyW87hclM8Xbwjik.Tz1IclK8tp\"; ## SECRET-DATA",
+            "    source-address 10.200.193.25;",
+            "}"
+        ],
+        [
+            "\u0007show configuration system authentication-order ",
+            "authentication-order tacplus;"
+        ],
+        [
+            "\u0007show configuration system accounting ",
+            "events [ login change-log interactive-commands ];",
+            "destination {",
+            "    tacplus;",
+            "}"
+        ]
+    ]
+}
+ok: [mse01-pex-826lorim-mel.au.superloop.net.co] => {
+    "result_junos.stdout_lines": [
+        [
+            "100.127.254.44 {",
+            "    secret \"$9$QR5dnCpREyW87hclM8Xbwjik.Tz1IclK8tp\"; ## SECRET-DATA",
+            "    source-address 10.200.193.17;",
+            "}",
+            "100.127.254.108 {",
+            "    secret \"$9$QR5dnCpREyW87hclM8Xbwjik.Tz1IclK8tp\"; ## SECRET-DATA",
+            "    source-address 10.200.193.17;",
+            "}"
+        ],
+        [
+            "\u0007show configuration system authentication-order ",
+            "authentication-order tacplus;"
+        ],
+        [
+            "\u0007show configuration system accounting ",
+            "events [ login change-log interactive-commands ];",
+            "destination {",
+            "    tacplus;",
+            "}"
+        ]
+    ]
+}

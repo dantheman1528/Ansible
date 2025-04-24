@@ -1,0 +1,55 @@
+---
+- name: Send user mode command to device
+  hosts: "{{ variable_host }}"
+  gather_facts: no
+
+  vars_prompt:
+    - name: "variable_host"
+      prompt: "Host or Host Group"
+      private: no
+
+    - name: "config_file"
+      prompt: "Config file full path"
+      private: no
+
+    - name: "ansible_user"
+      prompt: "Username"
+      private: no
+
+    - name: "ansible_ssh_pass"
+      prompt: "Password"
+      private: yes
+
+  vars:
+    ansible_connection: network_cli
+    ansible_network_os: iosxr
+    ansible_command_timeout: 120  # Global command timeout
+    ansible_persistent_command_timeout: 120  
+
+  tasks:
+    - name: Preview changes before applying (Check Mode)
+      iosxr_config:
+        src: "{{ config_file }}"
+      check_mode: yes
+      diff: yes
+      when: ansible_network_os == 'iosxr'
+
+    - name: Confirm before applying changes
+      pause:
+        prompt: "Do you want to apply the changes? Type 'yes' to proceed, or press Enter to skip."
+      register: user_confirmation
+
+    - name: Apply configuration to IOSXR (only if confirmed)
+      iosxr_config:
+        src: "{{ config_file }}"
+      when:
+        - ansible_network_os == 'iosxr'
+        - user_confirmation.user_input | lower == 'yes'
+      register: result_iosxr    
+
+    - name: Print IOSXR debug info
+      debug:
+        var: result_iosxr
+      when:
+        - ansible_network_os == 'iosxr'
+        - user_confirmation.user_input | lower == 'yes'

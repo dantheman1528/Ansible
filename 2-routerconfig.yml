@@ -1,0 +1,146 @@
+---
+- name: Transfer IP addresses between routers with different interfaces
+  hosts: localhost
+  gather_facts: no
+  vars_prompt:
+    - name: router_a_host
+      prompt: "Enter Router A hostname/IP"
+      private: no
+    - name: router_b_host
+      prompt: "Enter Router B hostname/IP"
+      private: no
+    - name: ansible_user
+      prompt: "Username for both routers"
+      private: no
+    - name: ansible_ssh_pass
+      prompt: "Password for both routers"
+      private: yes
+    - name: router_a_interface
+      prompt: "Interface name on Router A (e.g., GigabitEthernet0/0/0/0)"
+      private: no
+    - name: router_b_interface
+      prompt: "Interface name on Router B (e.g., TenGigE0/0/0/0)"
+      private: no
+    - name: ipv4_address
+      prompt: "IPv4 address to transfer (e.g., 192.168.1.1/24 or 'none')"
+      private: no
+    - name: ipv6_address
+      prompt: "IPv6 address to transfer (e.g., 2001:db8::1/64 or 'none')"
+      private: no
+
+  vars:
+    ansible_connection: network_cli
+    ansible_network_os: iosxr
+    ansible_command_timeout: 120
+    ansible_persistent_command_timeout: 120
+
+  tasks:
+    # Verify IPs exist on Router A
+    - name: Get current interface config from Router A
+      iosxr_command:
+        commands:
+          - show running-config interface {{ router_a_interface }}
+      register: router_a_config
+      delegate_to: "{{ router_a_host }}"
+
+    - name: Verify IPv4 exists on Router A
+      when: ipv4_address != 'none'
+      assert:
+        that: 
+          - ipv4_address in router_a_config.stdout[0]
+        fail_msg: "IPv4 address {{ ipv4_address }} not found on Router A interface {{ router_a_interface }}!"
+        success_msg: "IPv4 address {{ ipv4_address }} found on Router A interface {{ router_a_interface }}"
+
+    - name: Verify IPv6 exists on Router A
+      when: ipv6_address != 'none'
+      assert:
+        that: 
+          - ipv6_address in router_a_config.stdout[0]
+        fail_msg: "IPv6 address {{ ipv6_address }} not found on Router A interface {{ router_a_interface }}!"
+        success_msg: "IPv6 address {{ ipv6_address }} found on Router A interface {{ router_a_interface }}"
+
+    # Remove IPs from Router A
+    - name: Create removal config for Router A
+      block:
+        - name: Generate removal config
+          set_fact:
+            remove_config: |
+              {% if ipv4_address != 'none' %}interface {{ router_a_interface }}
+               no ipv4 address {{ ipv4_address }}
+              {% endif %}
+              {% if ipv6_address != 'none' %}interface {{ router_a_interface }}
+               no ipv6 address {{ ipv6_address }}
+              {% endif %}
+
+        - name: Preview removal changes
+          iosxr_config:
+            lines: "{{ remove_config.split('\n') }}"
+          check_mode: yes
+          diff: yes
+          delegate_to: "{{ router_a_host }}"
+
+        - name: Confirm removal from Router A
+          pause:
+            prompt: "Ready to remove addresses from {{ router_a_host }} ({{ router_a_interface }})? Type 'yes' to proceed\nIPv4: {{ ipv4_address }}\nIPv6: {{ ipv6_address }}"
+          register: confirm_a
+
+        - name: Remove IPs from Router A
+          iosxr_config:
+            lines: "{{ remove_config.split('\n') }}"
+          when: confirm_a.user_input | lower == 'yes'
+          delegate_to: "{{ router_a_host }}"
+          register: result_a
+
+      rescue:
+        - name: Cleanup on failure
+          debug:
+            msg: "Failed to remove IPs from Router A. Aborting operation."
+          failed_when: true
+
+    # Add IPs to Router B (only if Router A change succeeded)
+    - name: Create addition config for Router B
+      block:
+        - name: Generate addition config
+          set_fact:
+            add_config: |
+              {% if ipv4_address != 'none' %}interface {{ router_b_interface }}
+               ipv4 address {{ ipv4_address }}
+              {% endif %}
+              {% if ipv6_address != 'none' %}interface {{ router_b_interface }}
+               ipv6 address {{ ipv6_address }}
+              {% endif %}
+
+        - name: Preview addition changes
+          iosxr_config:
+            lines: "{{ add_config.split('\n') }}"
+          check_mode: yes
+          diff: yes
+          delegate_to: "{{ router_b_host }}"
+
+        - name: Confirm addition to Router B
+          pause:
+            prompt: "Ready to add addresses to {{ router_b_host }} ({{ router_b_interface }})? Type 'yes' to proceed\nIPv4: {{ ipv4_address }}\nIPv6: {{ ipv6_address }}"
+          register: confirm_b
+
+        - name: Add IPs to Router B
+          iosxr_config:
+            lines: "{{ add_config.split('\n') }}"
+          when: confirm_b.user_input | lower == 'yes'
+          delegate_to: "{{ router_b_host }}"
+          register: result_b
+
+      when: confirm_a.user_input | lower == 'yes' and result_a is defined and result_a.changed
+
+    # Show final results
+    - name: Show operation summary
+      debug:
+        msg:
+          - "Router A ({{ router_a_interface }}):"
+          - "  IPv4: {{ 'Removed' if (ipv4_address != 'none' and confirm_a.user_input | lower == 'yes' and result_a.changed) else 'No change' }}"
+          - "  IPv6: {{ 'Removed' if (ipv6_address != 'none' and confirm_a.user_input | lower == 'yes' and result_a.changed) else 'No change' }}"
+          - "Router B ({{ router_b_interface }}):"
+          - "  IPv4: {{ 'Added' if (ipv4_address != 'none' and confirm_b.user_input | lower == 'yes' and result_b.changed) else 'No change' }}"
+          - "  IPv6: {{ 'Added' if (ipv6_address != 'none' and confirm_b.user_input | lower == 'yes' and result_b.changed) else 'No change' }}"
+      when:
+        - confirm_a.user_input | lower == 'yes'
+        - confirm_b is defined

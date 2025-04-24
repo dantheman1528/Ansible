@@ -1,0 +1,42 @@
+---
+- name: Run Jinja2 Template to Generate Junos Commands
+  hosts: "{{ variable_host }}"
+  gather_facts: no
+
+  vars_prompt:
+    - name: "variable_host"
+      prompt: "Host or Host Group"
+      private: no
+
+    - name: "ansible_user"
+      prompt: "Username"
+      private: no
+
+    - name: "ansible_ssh_pass"
+      prompt: "Password"
+      private: yes
+
+  tasks:
+    - name: Render Jinja2 template for commands
+      template:
+        src: match_commands.j2
+        dest: /tmp/match_commands.txt
+
+    - name: Read commands from the rendered template
+      slurp:
+        src: /tmp/match_commands.txt
+      register: command_file
+
+    - name: Decode commands from base64
+      set_fact:
+        command_list: "{{ command_file.content | b64decode | split('\n') }}"
+
+    - name: Send commands to JUNOS device
+      junipernetworks.junos.junos_command:
+        commands: "{{ command_list }}"
+      register: result_junos
+
+    - name: print Junos debug info
+      debug:
+        var: result_junos.stdout_lines
+      when: (ansible_network_os == 'junos')

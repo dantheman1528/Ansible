@@ -1,0 +1,142 @@
+Pre/Post Check
+show configuration system tacplus-server
+show configuration system authentication-order
+show configuration system accounting
+show system processes extensive | match tacplus
+ping <tacacs-server-ip>
+relogin to the device - run Ansible
+
+MOP:
+
+    mse01-pex-1william-per.au.superloop.net.co
+        conf e
+        delete system tacplus-server 100.127.254.44
+        delete system tacplus-server 100.127.254.108
+        set firewall filter CONTROL-PLANE-FILTER-lo0.0 term MANAGEMENT from port 1128
+        set system tacplus-server 100.127.254.44 secret QB937qup7ah15gaSf0812
+        set system tacplus-server 100.127.254.44 source-address 10.200.196.17 port 1128
+
+        set system tacplus-server 100.127.254.108 secret QB937qup7ah15gaSf0812
+        set system tacplus-server 100.127.254.108 source-address 10.200.196.17 port 1128
+        commit confirmed 3
+    mse01-pex-530colli-mel.au.superloop.net.co:
+        conf e
+        delete system tacplus-server 100.127.254.44
+        delete system tacplus-server 100.127.254.108
+        set firewall filter CONTROL-PLANE-FILTER-lo0.0 term MANAGEMENT from port 1128
+        set system tacplus-server 100.127.254.44 secret QB937qup7ah15gaSf0812
+        set system tacplus-server 100.127.254.44 source-address 10.200.193.25 port 1128
+
+        set system tacplus-server 100.127.254.108 secret QB937qup7ah15gaSf0812
+        set system tacplus-server 100.127.254.108 source-address 10.200.193.25 port 1128
+        commit confirmed 3
+    mse01-pex-47bourke-syd.au.superloop.net.co:
+        conf e
+        delete system tacplus-server 100.127.254.44
+        delete system tacplus-server 100.127.254.108
+        set firewall filter CONTROL-PLANE-FILTER-lo0.0 term MANAGEMENT from port 1128
+        set system tacplus-server 100.127.254.44 secret QB937qup7ah15gaSf0812
+        set system tacplus-server 100.127.254.44 source-address 10.200.192.25 port 1128
+
+        set system tacplus-server 100.127.254.108 secret QB937qup7ah15gaSf0812
+        set system tacplus-server 100.127.254.108 source-address 10.200.192.25 port 1128
+        commit confirmed 3
+    mse01-pex-826lorim-mel.au.superloop.net.co:
+        conf e
+        delete system tacplus-server 100.127.254.44
+        delete system tacplus-server 100.127.254.108
+        set firewall filter CONTROL-PLANE-FILTER-lo0.0 term MANAGEMENT from port 1128
+        set system tacplus-server 100.127.254.44 secret QB937qup7ah15gaSf0812
+        set system tacplus-server 100.127.254.44 source-address 10.200.193.17 port 1128
+
+        set system tacplus-server 100.127.254.108 secret QB937qup7ah15gaSf0812
+        set system tacplus-server 100.127.254.108 source-address 10.200.193.17 port 1128
+        commit confirmed 3
+    mse01-pex-132frank-adl.au.superloop.net.co:
+        conf e
+        delete system tacplus-server 100.127.254.44
+        delete system tacplus-server 100.127.254.108
+        set firewall filter CONTROL-PLANE-FILTER-lo0.0 term MANAGEMENT from port 1128
+        set system tacplus-server 100.127.254.44 secret QB937qup7ah15gaSf0812
+        set system tacplus-server 100.127.254.44 source-address 10.200.195.17 port 1128
+
+        set system tacplus-server 100.127.254.108 secret QB937qup7ah15gaSf0812
+        set system tacplus-server 100.127.254.108 source-address 10.200.195.17 port 1128
+        commit confirmed 3
+    mse01-pex-4edenpar-syd.au.superloop.net.co:
+        conf e
+        delete system tacplus-server 100.127.254.44
+        delete system tacplus-server 100.127.254.108
+        set firewall filter CONTROL-PLANE-FILTER-lo0.0 term MANAGEMENT from port 1128
+        set system tacplus-server 100.127.254.44 secret QB937qup7ah15gaSf0812
+        set system tacplus-server 100.127.254.44 source-address 10.200.192.17 port 1128
+
+        set system tacplus-server 100.127.254.108 secret QB937qup7ah15gaSf0812
+        set system tacplus-server 100.127.254.108 source-address 10.200.192.17 port 1128
+        commit confirmed 3
+    mse01-pex-20wharfs-bne.au.superloop.net.co:
+        conf e
+        delete system tacplus-server 100.127.254.44
+        delete system tacplus-server 100.127.254.108
+        set firewall filter CONTROL-PLANE-FILTER-lo0.0 term MANAGEMENT from port 1128
+        set system tacplus-server 100.127.254.44 secret QB937qup7ah15gaSf0812
+        set system tacplus-server 100.127.254.44 source-address 10.200.194.25 port 1128
+
+        set system tacplus-server 100.127.254.108 secret QB937qup7ah15gaSf0812
+        set system tacplus-server 100.127.254.108 source-address 10.200.194.25 port 1128
+        commit confirmed 3
+    mse01-pex-220queen-akl.nz.superloop.net.co:
+        conf e
+        delete system tacplus-server 100.127.254.44
+        delete system tacplus-server 100.127.254.108
+        set firewall filter CONTROL-PLANE-FILTER-lo0.0 term MANAGEMENT from port 1128
+        set system tacplus-server 100.127.254.44 secret QB937qup7ah15gaSf0812
+        set system tacplus-server 100.127.254.44 source-address 10.200.199.17 port 1128
+
+        set system tacplus-server 100.127.254.108 secret QB937qup7ah15gaSf0812
+        set system tacplus-server 100.127.254.108 source-address 10.200.199.17 port 1128
+        commit confirmed 3
+    mse01-pex-274hindl-adl.au.superloop.net.co:
+        conf e
+        delete system tacplus-server 100.127.254.44
+        delete system tacplus-server 100.127.254.108
+        set firewall filter CONTROL-PLANE-FILTER-lo0.0 term MANAGEMENT from port 1128
+        set system tacplus-server 100.127.254.44 secret QB937qup7ah15gaSf0812
+        set system tacplus-server 100.127.254.44 source-address 10.200.195.25 port 1128
+
+        set system tacplus-server 100.127.254.108 secret QB937qup7ah15gaSf0812
+        set system tacplus-server 100.127.254.108 source-address 10.200.195.25 port 1128
+        commit confirmed 3
+    mse01-pex-27harvey-drw.au.superloop.network:
+        conf e
+        delete system tacplus-server 100.127.254.44
+        delete system tacplus-server 100.127.254.108
+        set firewall filter CONTROL-PLANE-FILTER-lo0.0 term MANAGEMENT from port 1128
+        set system tacplus-server 100.127.254.44 secret QB937qup7ah15gaSf0812
+        set system tacplus-server 100.127.254.44 source-address 10.200.198.17 port 1128
+
+        set system tacplus-server 100.127.254.108 secret QB937qup7ah15gaSf0812 
+        set system tacplus-server 100.127.254.108 source-address 10.200.198.17 port 1128
+        commit confirmed 3
+    mse01-pex-454stpau-bne.au.superloop.net.co:
+        conf e
+        delete system tacplus-server 100.127.254.44
+        delete system tacplus-server 100.127.254.108
+        set firewall filter CONTROL-PLANE-FILTER-lo0.0 term MANAGEMENT from port 1128
+        set system tacplus-server 100.127.254.44 secret QB937qup7ah15gaSf0812
+        set system tacplus-server 100.127.254.44 source-address 10.200.194.17 port 1128
+
+        set system tacplus-server 100.127.254.108 secret QB937qup7ah15gaSf0812
+        set system tacplus-server 100.127.254.108 source-address 10.200.194.17 port 1128
+        commit confirmed 3
+    mse01-pex-4millros-per.au.superloop.net.co: 
+        conf e
+        delete system tacplus-server 100.127.254.44
+        delete system tacplus-server 100.127.254.108
+        set firewall filter CONTROL-PLANE-FILTER-lo0.0 term MANAGEMENT from port 1128
+        set system tacplus-server 100.127.254.44 secret QB937qup7ah15gaSf0812
+        set system tacplus-server 100.127.254.44 source-address 10.200.196.25 port 1128
+
+        set system tacplus-server 100.127.254.108 secret QB937qup7ah15gaSf0812
+        set system tacplus-server 100.127.254.108 source-address 10.200.196.25 port 1128
+        commit confirmed 3

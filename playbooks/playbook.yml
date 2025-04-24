@@ -1,0 +1,60 @@
+---
+- name: send user mode command to device
+  hosts: "{{ variable_host }}"
+  gather_facts: no
+
+  vars_prompt:
+    - name: "variable_host"
+      prompt: "Host or Host Group"
+      private: no
+
+    - name: "command"
+      prompt: "Command"
+      private: no
+
+    - name: "ansible_user"
+      prompt: "Username"
+      private: no
+
+    - name: "ansible_ssh_pass"
+      prompt: "Password"
+      private: yes
+
+  tasks:
+    - name: stop further execution when command is not 'show|ping' command
+      fail:
+        msg: "must be 'show|ping' or command"
+      when: command is not match("((^|,)?(sho?w?|ping)\s[^,]+)+")
+
+    - name: send command to IOS/IOSXE
+      ios_command:
+        commands: "{{ command }}"
+      when: (ansible_network_os == 'ios')
+      register: result_ios
+
+    - name: send command to IOSXR
+      iosxr_command:
+        commands: "{{ command }}"
+      when: (ansible_network_os == 'iosxr')
+      register: result_iosxr
+
+    - name: send command to NXOS
+      nxos_command:
+        commands: "{{ command }}"
+      when: (ansible_network_os == 'nxos')
+      register: result_nxos
+
+    - name: print IOS/IOSXE debug info
+      debug:
+        var: result_ios.stdout_lines
+      when: (ansible_network_os == 'ios')
+
+    - name: print IOSXR debug info
+      debug:
+        var: result_iosxr.stdout_lines
+      when: (ansible_network_os == 'iosxr')
+
+    - name: print NXOS debug info
+      debug:
+        var: result_nxos.stdout_lines
+      when: (ansible_network_os == 'nxos')

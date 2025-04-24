@@ -1,0 +1,706 @@
+router bgp 38195 neighbor 2401:d000:7101::a2 
+no shutdown
+router bgp 38195 neighbor 2401:d000:7101::a2 remote-as 133189
+router bgp 38195 neighbor 2401:d000:7101::a2 timers 10 30
+router bgp 38195 neighbor 2401:d000:7101::a2 description Cust:Sentrian-11631
+router bgp 38195 neighbor 2401:d000:7101::a2 address-family ipv6 unicast
+router bgp 38195 neighbor 2401:d000:7101::a2 address-family ipv6 unicast maximum-prefix 50 75
+router bgp 38195 neighbor 2401:d000:7101::a2 address-family ipv6 unicast send-community-ebgp
+router bgp 38195 neighbor 2401:d000:7101::a2 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-IN(AS133189-11631-IPV6-IN) in
+router bgp 38195 neighbor 2401:d000:7101::a2 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-DEFAULTONLY-OUT out
+router bgp 38195 neighbor 2401:d000:7101::a2 address-family ipv6 unicast default-originate
+router bgp 38195 neighbor 2401:d000:7101::a2 address-family ipv6 unicast remove-private-AS
+router bgp 38195 neighbor 2401:d000:7201::12 
+no shutdown
+router bgp 38195 neighbor 2401:d000:7201::12 remote-as 133129
+router bgp 38195 neighbor 2401:d000:7201::12 timers 10 30
+router bgp 38195 neighbor 2401:d000:7201::12 description Cust:CapitalB-20684
+router bgp 38195 neighbor 2401:d000:7201::12 address-family ipv6 unicast
+router bgp 38195 neighbor 2401:d000:7201::12 address-family ipv6 unicast maximum-prefix 50 75
+router bgp 38195 neighbor 2401:d000:7201::12 address-family ipv6 unicast send-community-ebgp
+router bgp 38195 neighbor 2401:d000:7201::12 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-IN(AS133129-20684-IPV6-IN) in
+router bgp 38195 neighbor 2401:d000:7201::12 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-DEFAULTONLY-OUT out
+router bgp 38195 neighbor 2401:d000:7201::12 address-family ipv6 unicast default-originate
+router bgp 38195 neighbor 2401:d000:7201::12 address-family ipv6 unicast remove-private-AS
+
+router bgp 38195 neighbor 2401:d000:7201::32 
+no shutdown
+router bgp 38195 neighbor 2401:d000:7201::32 remote-as 134143
+router bgp 38195 neighbor 2401:d000:7201::32 timers 10 30
+router bgp 38195 neighbor 2401:d000:7201::32 description Cust:PDK-21278
+router bgp 38195 neighbor 2401:d000:7201::32 address-family ipv6 unicast
+router bgp 38195 neighbor 2401:d000:7201::32 address-family ipv6 unicast maximum-prefix 50 75
+router bgp 38195 neighbor 2401:d000:7201::32 address-family ipv6 unicast send-community-ebgp
+router bgp 38195 neighbor 2401:d000:7201::32 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-IN(AS134143-21278-IPV6-IN) in
+router bgp 38195 neighbor 2401:d000:7201::32 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-FULLPLUSDEFAULT-OUT out
+router bgp 38195 neighbor 2401:d000:7201::32 address-family ipv6 unicast default-originate
+router bgp 38195 neighbor 2401:d000:7201::32 address-family ipv6 unicast remove-private-AS
+router bgp 38195 neighbor 2401:d000:7201::42 
+no shutdown
+router bgp 38195 neighbor 2401:d000:7201::42 remote-as 65535
+router bgp 38195 neighbor 2401:d000:7201::42 timers 10 30
+router bgp 38195 neighbor 2401:d000:7201::42 description Cust:SUPERLOOP-25225
+router bgp 38195 neighbor 2401:d000:7201::42 address-family ipv6 unicast
+router bgp 38195 neighbor 2401:d000:7201::42 address-family ipv6 unicast maximum-prefix 50 75
+router bgp 38195 neighbor 2401:d000:7201::42 address-family ipv6 unicast send-community-ebgp
+router bgp 38195 neighbor 2401:d000:7201::42 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-IN(AS65535-25225-IPV6-IN) in
+router bgp 38195 neighbor 2401:d000:7201::42 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-DEFAULTONLY-OUT out
+router bgp 38195 neighbor 2401:d000:7201::42 address-family ipv6 unicast default-originate
+router bgp 38195 neighbor 2401:d000:7201::72 
+no shutdown
+router bgp 38195 neighbor 2401:d000:7201::72 remote-as 133159
+router bgp 38195 neighbor 2401:d000:7201::72 timers 60 180
+router bgp 38195 neighbor 2401:d000:7201::72 description Cust:Mammoth Media-40904
+router bgp 38195 neighbor 2401:d000:7201::72 address-family ipv6 unicast
+router bgp 38195 neighbor 2401:d000:7201::72 address-family ipv6 unicast maximum-prefix 500 90 restart 15
+router bgp 38195 neighbor 2401:d000:7201::72 address-family ipv6 unicast send-community-ebgp
+router bgp 38195 neighbor 2401:d000:7201::72 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-IN(AS133159-40904-IPV6-IN) in
+router bgp 38195 neighbor 2401:d000:7201::72 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-FULLPLUSDEFAULT-OUT out
+router bgp 38195 neighbor 2401:d000:7201::72 address-family ipv6 unicast default-originate
+router bgp 38195 neighbor 2401:d000:7201::72 address-family ipv6 unicast remove-private-AS
+router bgp 38195 neighbor 2401:d000:7201::72 address-family ipv6 unicast soft-reconfiguration inbound always
+router bgp 38195 neighbor 2401:d000:7201::82 
+no shutdown
+router bgp 38195 neighbor 2401:d000:7201::82 remote-as 65451
+router bgp 38195 neighbor 2401:d000:7201::82 bestpath origin-as allow invalid
+router bgp 38195 neighbor 2401:d000:7201::82 local-as 65450 no-prepend replace-as
+router bgp 38195 neighbor 2401:d000:7201::82 timers 10 30
+router bgp 38195 neighbor 2401:d000:7201::82 description SLCAU bdr01-pex-454stpau-bne.au
+router bgp 38195 neighbor 2401:d000:7201::82 address-family ipv6 unicast
+router bgp 38195 neighbor 2401:d000:7201::82 address-family ipv6 unicast maximum-prefix 400 80
+router bgp 38195 neighbor 2401:d000:7201::82 address-family ipv6 unicast send-community-ebgp
+router bgp 38195 neighbor 2401:d000:7201::82 address-family ipv6 unicast route-policy TEST-IN in
+router bgp 38195 neighbor 2401:d000:7201::82 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-DEFAULTONLY-OUT out
+router bgp 38195 neighbor 2401:d000:7201::82 address-family ipv6 unicast default-originate
+router bgp 38195 neighbor 2401:d000:7201::82 address-family ipv6 unicast next-hop-self
+router bgp 38195 neighbor 2401:d000:7201::82 address-family ipv6 unicast soft-reconfiguration inbound always
+router bgp 38195 neighbor 2401:d000:7201::92 
+no shutdown
+router bgp 38195 neighbor 2401:d000:7201::92 remote-as 65153
+router bgp 38195 neighbor 2401:d000:7201::92 timers 10 30
+router bgp 38195 neighbor 2401:d000:7201::92 description Cust:ALTVFX-34164
+router bgp 38195 neighbor 2401:d000:7201::92 address-family ipv6 unicast
+router bgp 38195 neighbor 2401:d000:7201::92 address-family ipv6 unicast maximum-prefix 50 90 restart 15
+router bgp 38195 neighbor 2401:d000:7201::92 address-family ipv6 unicast send-community-ebgp
+router bgp 38195 neighbor 2401:d000:7201::92 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-IN(AS65153-34164-IPV6-IN) in
+router bgp 38195 neighbor 2401:d000:7201::92 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-DEFAULTONLY-OUT out
+router bgp 38195 neighbor 2401:d000:7201::92 address-family ipv6 unicast default-originate
+router bgp 38195 neighbor 2401:d000:7201::92 address-family ipv6 unicast remove-private-AS
+router bgp 38195 neighbor 2401:d000:7201::92 address-family ipv6 unicast soft-reconfiguration inbound always
+
+router bgp 38195 neighbor 2401:d000:7201::b3 
+no shutdown
+router bgp 38195 neighbor 2401:d000:7201::b3 remote-as 141036
+router bgp 38195 neighbor 2401:d000:7201::b3 timers 10 30
+router bgp 38195 neighbor 2401:d000:7201::b3 description Cust:CLOUDBAND-38765
+router bgp 38195 neighbor 2401:d000:7201::b3 address-family ipv6 unicast
+router bgp 38195 neighbor 2401:d000:7201::b3 address-family ipv6 unicast maximum-prefix 100 90 restart 15
+router bgp 38195 neighbor 2401:d000:7201::b3 address-family ipv6 unicast send-community-ebgp
+router bgp 38195 neighbor 2401:d000:7201::b3 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-IN(AS141036-38765-IPV6-IN) in
+router bgp 38195 neighbor 2401:d000:7201::b3 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-DEFAULTONLY-OUT out
+router bgp 38195 neighbor 2401:d000:7201::b3 address-family ipv6 unicast default-originate
+router bgp 38195 neighbor 2401:d000:7201::b3 address-family ipv6 unicast remove-private-AS
+router bgp 38195 neighbor 2401:d000:7201::b3 address-family ipv6 unicast soft-reconfiguration inbound always
+router bgp 38195 neighbor 2401:d000:7201::c2 
+no shutdown
+router bgp 38195 neighbor 2401:d000:7201::c2 remote-as 17477
+router bgp 38195 neighbor 2401:d000:7201::c2 timers 10 30
+router bgp 38195 neighbor 2401:d000:7201::c2 description Cust:MACTEL-39985
+router bgp 38195 neighbor 2401:d000:7201::c2 address-family ipv6 unicast
+router bgp 38195 neighbor 2401:d000:7201::c2 address-family ipv6 unicast maximum-prefix 200 90 restart 15
+router bgp 38195 neighbor 2401:d000:7201::c2 address-family ipv6 unicast send-community-ebgp
+router bgp 38195 neighbor 2401:d000:7201::c2 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-IN(AS17477-39985-IPV6-IN) in
+router bgp 38195 neighbor 2401:d000:7201::c2 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-FULL-OUT out
+router bgp 38195 neighbor 2401:d000:7201::c2 address-family ipv6 unicast remove-private-AS
+router bgp 38195 neighbor 2401:d000:7201::c2 address-family ipv6 unicast soft-reconfiguration inbound always
+router bgp 38195 neighbor 2401:d000:7301::22 
+no shutdown
+router bgp 38195 neighbor 2401:d000:7301::22 remote-as 10143
+router bgp 38195 neighbor 2401:d000:7301::22 timers 10 30
+router bgp 38195 neighbor 2401:d000:7301::22 description Cust: Exetel-20327
+router bgp 38195 neighbor 2401:d000:7301::22 ignore-connected-check
+router bgp 38195 neighbor 2401:d000:7301::22 address-family ipv6 unicast
+router bgp 38195 neighbor 2401:d000:7301::22 address-family ipv6 unicast maximum-prefix 1000 90
+router bgp 38195 neighbor 2401:d000:7301::22 address-family ipv6 unicast send-community-ebgp
+router bgp 38195 neighbor 2401:d000:7301::22 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-IN(AS10143-20327-IPV6-IN) in
+router bgp 38195 neighbor 2401:d000:7301::22 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-FULLPLUSDEFAULT-OUT out
+router bgp 38195 neighbor 2401:d000:7301::22 address-family ipv6 unicast default-originate
+router bgp 38195 neighbor 2401:d000:7301::22 address-family ipv6 unicast soft-reconfiguration inbound always
+router bgp 38195 neighbor 2401:d000:7101::1e2
+router bgp 38195 neighbor 2401:d000:7101::1e2 remote-as 9280
+router bgp 38195 neighbor 2401:d000:7101::1e2 timers 10 30
+router bgp 38195 neighbor 2401:d000:7101::1e2 
+no shutdown
+router bgp 38195 neighbor 2401:d000:7101::1e2 description Cust:Servers Australia-53848
+router bgp 38195 neighbor 2401:d000:7101::1e2 address-family ipv6 unicast
+router bgp 38195 neighbor 2401:d000:7101::1e2 address-family ipv6 unicast maximum-prefix 1000 90 restart 15
+router bgp 38195 neighbor 2401:d000:7101::1e2 address-family ipv6 unicast send-community-ebgp
+router bgp 38195 neighbor 2401:d000:7101::1e2 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-IN(AS9280-53848-IPV6-IN) in
+router bgp 38195 neighbor 2401:d000:7101::1e2 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-FULLPLUSDEFAULT-OUT out
+router bgp 38195 neighbor 2401:d000:7101::1e2 address-family ipv6 unicast default-originate
+router bgp 38195 neighbor 2401:d000:7101::1e2 address-family ipv6 unicast remove-private-AS
+router bgp 38195 neighbor 2401:d000:7101::1e2 address-family ipv6 unicast soft-reconfiguration inbound always
+router bgp 38195 neighbor 2401:d000:7101::292 
+no shutdown
+router bgp 38195 neighbor 2401:d000:7101::292 remote-as 63920
+router bgp 38195 neighbor 2401:d000:7101::292 timers 10 30
+router bgp 38195 neighbor 2401:d000:7101::292 description Cust:Bigair Community Broadband-500458
+router bgp 38195 neighbor 2401:d000:7101::292 address-family ipv6 unicast
+router bgp 38195 neighbor 2401:d000:7101::292 address-family ipv6 unicast maximum-prefix 500 90 restart 15
+router bgp 38195 neighbor 2401:d000:7101::292 address-family ipv6 unicast send-community-ebgp
+router bgp 38195 neighbor 2401:d000:7101::292 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-IN(AS63920-500458-IPV6-IN) in
+router bgp 38195 neighbor 2401:d000:7101::292 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-FULLPLUSDEFAULT-OUT out
+router bgp 38195 neighbor 2401:d000:7101::292 address-family ipv6 unicast default-originate
+router bgp 38195 neighbor 2401:d000:7101::292 address-family ipv6 unicast remove-private-AS
+router bgp 38195 neighbor 2401:d000:7101::292 address-family ipv6 unicast soft-reconfiguration inbound always
+router bgp 38195 neighbor 2401:d000:7201::102 
+no shutdown
+router bgp 38195 neighbor 2401:d000:7201::102 remote-as 56178
+router bgp 38195 neighbor 2401:d000:7201::102 timers 10 30
+router bgp 38195 neighbor 2401:d000:7201::102 description Cust:TIMOID-19022
+router bgp 38195 neighbor 2401:d000:7201::102 address-family ipv6 unicast
+router bgp 38195 neighbor 2401:d000:7201::102 address-family ipv6 unicast maximum-prefix 32 90 restart 15
+router bgp 38195 neighbor 2401:d000:7201::102 address-family ipv6 unicast send-community-ebgp
+router bgp 38195 neighbor 2401:d000:7201::102 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-IN(AS56178-19022-IPV6-IN) in
+router bgp 38195 neighbor 2401:d000:7201::102 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-DEFAULTONLY-OUT out
+router bgp 38195 neighbor 2401:d000:7201::102 address-family ipv6 unicast default-originate
+router bgp 38195 neighbor 2401:d000:7201::102 address-family ipv6 unicast remove-private-AS
+router bgp 38195 neighbor 2401:d000:7201::102 address-family ipv6 unicast soft-reconfiguration inbound always
+router bgp 38195 neighbor 2401:d000:7201::103 
+no shutdown
+router bgp 38195 neighbor 2401:d000:7201::103 remote-as 56178
+router bgp 38195 neighbor 2401:d000:7201::103 timers 10 30
+router bgp 38195 neighbor 2401:d000:7201::103 description Cust:TIMOID-19022
+router bgp 38195 neighbor 2401:d000:7201::103 address-family ipv6 unicast
+router bgp 38195 neighbor 2401:d000:7201::103 address-family ipv6 unicast maximum-prefix 32 90 restart 15
+router bgp 38195 neighbor 2401:d000:7201::103 address-family ipv6 unicast send-community-ebgp
+router bgp 38195 neighbor 2401:d000:7201::103 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-IN(AS56178-19022-IPV6-IN) in
+router bgp 38195 neighbor 2401:d000:7201::103 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-DEFAULTONLY-OUT out
+router bgp 38195 neighbor 2401:d000:7201::103 address-family ipv6 unicast default-originate
+router bgp 38195 neighbor 2401:d000:7201::103 address-family ipv6 unicast remove-private-AS
+router bgp 38195 neighbor 2401:d000:7201::103 address-family ipv6 unicast soft-reconfiguration inbound always
+router bgp 38195 neighbor 2401:d000:7201::142 
+no shutdown
+router bgp 38195 neighbor 2401:d000:7201::142 remote-as 42473
+router bgp 38195 neighbor 2401:d000:7201::142 bfd fast-detect
+router bgp 38195 neighbor 2401:d000:7201::142 bfd multiplier 3
+router bgp 38195 neighbor 2401:d000:7201::142 bfd minimum-interval 300
+router bgp 38195 neighbor 2401:d000:7201::142 timers 10 30
+router bgp 38195 neighbor 2401:d000:7201::142 description Cust:ANEXIA Internetdienstleistungs GmbH-153426
+router bgp 38195 neighbor 2401:d000:7201::142 address-family ipv6 unicast
+router bgp 38195 neighbor 2401:d000:7201::142 address-family ipv6 unicast maximum-prefix 500 90 restart 15
+router bgp 38195 neighbor 2401:d000:7201::142 address-family ipv6 unicast send-community-ebgp
+router bgp 38195 neighbor 2401:d000:7201::142 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-IN(AS42473-153426-IPV6-IN) in
+router bgp 38195 neighbor 2401:d000:7201::142 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-FULLPLUSDEFAULT-OUT out
+router bgp 38195 neighbor 2401:d000:7201::142 address-family ipv6 unicast default-originate
+router bgp 38195 neighbor 2401:d000:7201::142 address-family ipv6 unicast remove-private-AS
+router bgp 38195 neighbor 2401:d000:7201::142 address-family ipv6 unicast soft-reconfiguration inbound always
+router bgp 38195 neighbor 2401:d000:7201::152 
+no shutdown
+router bgp 38195 neighbor 2401:d000:7201::152 remote-as 64590
+router bgp 38195 neighbor 2401:d000:7201::152 timers 10 30
+router bgp 38195 neighbor 2401:d000:7201::152 description Cust:SLC-LAB-487702
+router bgp 38195 neighbor 2401:d000:7201::152 ignore-connected-check
+router bgp 38195 neighbor 2401:d000:7201::152 session-open-mode passive-only
+router bgp 38195 neighbor 2401:d000:7201::152 address-family ipv6 unicast
+router bgp 38195 neighbor 2401:d000:7201::152 address-family ipv6 unicast maximum-prefix 100 90 restart 15
+router bgp 38195 neighbor 2401:d000:7201::152 address-family ipv6 unicast send-community-ebgp
+router bgp 38195 neighbor 2401:d000:7201::152 address-family ipv6 unicast route-policy SLCAU-DOSP-IPV6-IN(AS64590-487702-IPV6-IN) in
+router bgp 38195 neighbor 2401:d000:7201::152 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-DEFAULTONLY-OUT out
+router bgp 38195 neighbor 2401:d000:7201::152 address-family ipv6 unicast default-originate
+router bgp 38195 neighbor 2401:d000:7201::152 address-family ipv6 unicast remove-private-AS
+router bgp 38195 neighbor 2401:d000:7201::162 
+no shutdown
+router bgp 38195 neighbor 2401:d000:7201::162 remote-as 151047
+router bgp 38195 neighbor 2401:d000:7201::162 timers 10 30
+router bgp 38195 neighbor 2401:d000:7201::162 description Cust:Queensland Urban Utilities-496168
+router bgp 38195 neighbor 2401:d000:7201::162 address-family ipv6 unicast
+router bgp 38195 neighbor 2401:d000:7201::162 address-family ipv6 unicast maximum-prefix 100 90 restart 15
+router bgp 38195 neighbor 2401:d000:7201::162 address-family ipv6 unicast send-community-ebgp
+router bgp 38195 neighbor 2401:d000:7201::162 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-IN(AS151047-496168-IPV6-IN) in
+router bgp 38195 neighbor 2401:d000:7201::162 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-FULLPLUSDEFAULT-OUT out
+router bgp 38195 neighbor 2401:d000:7201::162 address-family ipv6 unicast default-originate
+router bgp 38195 neighbor 2401:d000:7201::162 address-family ipv6 unicast remove-private-AS
+router bgp 38195 neighbor 2401:d000:7201::162 address-family ipv6 unicast soft-reconfiguration inbound always
+router bgp 38195 neighbor 2401:d000:7201::172 
+no shutdown
+router bgp 38195 neighbor 2401:d000:7201::172 remote-as 132007
+router bgp 38195 neighbor 2401:d000:7201::172 timers 10 30
+router bgp 38195 neighbor 2401:d000:7201::172 description Cust:DataWave-499627
+router bgp 38195 neighbor 2401:d000:7201::172 address-family ipv6 unicast
+router bgp 38195 neighbor 2401:d000:7201::172 address-family ipv6 unicast maximum-prefix 100 90 restart 15
+router bgp 38195 neighbor 2401:d000:7201::172 address-family ipv6 unicast send-community-ebgp
+router bgp 38195 neighbor 2401:d000:7201::172 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-IN(AS132007-499627-IPV6-IN) in
+router bgp 38195 neighbor 2401:d000:7201::172 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-DEFAULTONLY-OUT out
+router bgp 38195 neighbor 2401:d000:7201::172 address-family ipv6 unicast default-originate
+router bgp 38195 neighbor 2401:d000:7201::172 address-family ipv6 unicast remove-private-AS
+router bgp 38195 neighbor 2401:d000:7201::172 address-family ipv6 unicast soft-reconfiguration inbound always
+router bgp 38195 neighbor 2401:d000:7201::212 
+no shutdown
+router bgp 38195 neighbor 2401:d000:7201::212 remote-as 135060
+router bgp 38195 neighbor 2401:d000:7201::212 timers 10 30
+router bgp 38195 neighbor 2401:d000:7201::212 description Cust:Telair-534672
+router bgp 38195 neighbor 2401:d000:7201::212 address-family ipv6 unicast
+router bgp 38195 neighbor 2401:d000:7201::212 address-family ipv6 unicast maximum-prefix 500 90 restart 15
+router bgp 38195 neighbor 2401:d000:7201::212 address-family ipv6 unicast send-community-ebgp
+router bgp 38195 neighbor 2401:d000:7201::212 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-IN(AS135060-534672-IPV6-IN) in
+router bgp 38195 neighbor 2401:d000:7201::212 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-FULL-OUT out
+router bgp 38195 neighbor 2401:d000:7201::212 address-family ipv6 unicast remove-private-AS
+router bgp 38195 neighbor 2401:d000:7201::212 address-family ipv6 unicast soft-reconfiguration inbound always
+router bgp 38195 neighbor 2401:d000:7201::222 
+no shutdown
+router bgp 38195 neighbor 2401:d000:7201::222 remote-as 131268
+router bgp 38195 neighbor 2401:d000:7201::222 timers 10 30
+router bgp 38195 neighbor 2401:d000:7201::222 description Cust:Bigair Community Broadband Pty Ltd-480157
+router bgp 38195 neighbor 2401:d000:7201::222 address-family ipv6 unicast
+router bgp 38195 neighbor 2401:d000:7201::222 address-family ipv6 unicast maximum-prefix 500 90 restart 15
+router bgp 38195 neighbor 2401:d000:7201::222 address-family ipv6 unicast send-community-ebgp
+router bgp 38195 neighbor 2401:d000:7201::222 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-IN(AS131268-480157-IPV6-IN) in
+router bgp 38195 neighbor 2401:d000:7201::222 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-DEFAULTONLY-OUT out
+router bgp 38195 neighbor 2401:d000:7201::222 address-family ipv6 unicast default-originate
+router bgp 38195 neighbor 2401:d000:7201::222 address-family ipv6 unicast remove-private-AS
+router bgp 38195 neighbor 2401:d000:7201::222 address-family ipv6 unicast soft-reconfiguration inbound always
+router bgp 38195 neighbor 2401:d000:b201::1b2 
+no shutdown
+router bgp 38195 neighbor 2401:d000:b201::1b2 remote-as 65451
+router bgp 38195 neighbor 2401:d000:b201::1b2 local-as 65450 no-prepend replace-as
+router bgp 38195 neighbor 2401:d000:b201::1b2 timers 10 30
+router bgp 38195 neighbor 2401:d000:b201::1b2 description SLCAU:bdr01-pex-454stpau-bne.au
+router bgp 38195 neighbor 2401:d000:b201::1b2 address-family ipv6 unicast
+router bgp 38195 neighbor 2401:d000:b201::1b2 address-family ipv6 unicast maximum-prefix 400 80
+router bgp 38195 neighbor 2401:d000:b201::1b2 address-family ipv6 unicast send-community-ebgp
+router bgp 38195 neighbor 2401:d000:b201::1b2 address-family ipv6 unicast route-policy TEST-IN-10G in
+router bgp 38195 neighbor 2401:d000:b201::1b2 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-DEFAULTONLY-OUT out
+router bgp 38195 neighbor 2401:d000:b201::1b2 address-family ipv6 unicast default-originate
+router bgp 38195 neighbor 2401:d000:b201::1b2 address-family ipv6 unicast next-hop-self
+router bgp 38195 neighbor 2401:d000:b201::1b2 address-family ipv6 unicast soft-reconfiguration inbound always
+router bgp 38195 neighbor 2401:d000:7501::2 
+no shutdown
+router bgp 38195 neighbor 2401:d000:7501::2 remote-as 65451
+router bgp 38195 neighbor 2401:d000:7501::2 bestpath origin-as allow invalid
+router bgp 38195 neighbor 2401:d000:7501::2 local-as 65450 no-prepend replace-as
+router bgp 38195 neighbor 2401:d000:7501::2 timers 10 30
+router bgp 38195 neighbor 2401:d000:7501::2 description SLCAU:pe01.dc1.bne.au
+router bgp 38195 neighbor 2401:d000:7501::2 address-family ipv6 unicast
+router bgp 38195 neighbor 2401:d000:7501::2 address-family ipv6 unicast maximum-prefix 400 80
+router bgp 38195 neighbor 2401:d000:7501::2 address-family ipv6 unicast send-community-ebgp
+router bgp 38195 neighbor 2401:d000:7501::2 address-family ipv6 unicast route-policy TEST-IN in
+router bgp 38195 neighbor 2401:d000:7501::2 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-DEFAULTONLY-OUT out
+router bgp 38195 neighbor 2401:d000:7501::2 address-family ipv6 unicast default-originate
+router bgp 38195 neighbor 2401:d000:7501::2 address-family ipv6 unicast next-hop-self
+router bgp 38195 neighbor 2401:d000:7501::2 address-family ipv6 unicast soft-reconfiguration inbound always
+router bgp 38195 neighbor 2401:d000:7801::2 
+no shutdown
+router bgp 38195 neighbor 2401:d000:7801::2 remote-as 136612
+router bgp 38195 neighbor 2401:d000:7801::2 timers 10 30
+router bgp 38195 neighbor 2401:d000:7801::2 description Cust:Aurizon-EMP-32807
+router bgp 38195 neighbor 2401:d000:7801::2 address-family ipv6 unicast
+router bgp 38195 neighbor 2401:d000:7801::2 address-family ipv6 unicast maximum-prefix 50 75
+router bgp 38195 neighbor 2401:d000:7801::2 address-family ipv6 unicast send-community-ebgp
+router bgp 38195 neighbor 2401:d000:7801::2 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-IN(AS136612-32807-IPV6-IN) in
+router bgp 38195 neighbor 2401:d000:7801::2 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-FULLPLUSDEFAULT-OUT out
+router bgp 38195 neighbor 2401:d000:7801::2 address-family ipv6 unicast default-originate
+router bgp 38195 neighbor 2401:d000:7801::2 address-family ipv6 unicast remove-private-AS
+
+router bgp 38195 neighbor 203.153.16.133 
+no shutdown
+router bgp 38195 neighbor 203.153.16.133 remote-as 64555
+router bgp 38195 neighbor 203.153.16.133 timers 10 30
+router bgp 38195 neighbor 203.153.16.133 description Cust:AllHallows-14887
+router bgp 38195 neighbor 203.153.16.133 update-source Bundle-Ether2.130
+router bgp 38195 neighbor 203.153.16.133 address-family ipv4 unicast
+router bgp 38195 neighbor 203.153.16.133 address-family ipv4 unicast maximum-prefix 50 75
+router bgp 38195 neighbor 203.153.16.133 address-family ipv4 unicast send-community-ebgp
+router bgp 38195 neighbor 203.153.16.133 address-family ipv4 unicast route-policy SLCAU-CUST-IPV4-IN(AS64555-14887-IPV4-IN) in
+router bgp 38195 neighbor 203.153.16.133 address-family ipv4 unicast route-policy SLCAU-CUST-IPV4-DEFAULTONLY-OUT out
+router bgp 38195 neighbor 203.153.16.133 address-family ipv4 unicast default-originate
+router bgp 38195 neighbor 203.153.16.133 address-family ipv4 unicast remove-private-AS
+router bgp 38195 neighbor 203.153.16.133 address-family ipv4 unicast soft-reconfiguration inbound always
+router bgp 38195 neighbor 203.153.16.157 
+no shutdown
+router bgp 38195 neighbor 203.153.16.157 remote-as 132007
+router bgp 38195 neighbor 203.153.16.157 timers 10 30
+router bgp 38195 neighbor 203.153.16.157 description Cust:DataWave-499627
+router bgp 38195 neighbor 203.153.16.157 ignore-connected-check
+router bgp 38195 neighbor 203.153.16.157 address-family ipv4 unicast
+router bgp 38195 neighbor 203.153.16.157 address-family ipv4 unicast maximum-prefix 100 90 restart 15
+router bgp 38195 neighbor 203.153.16.157 address-family ipv4 unicast send-community-ebgp
+router bgp 38195 neighbor 203.153.16.157 address-family ipv4 unicast route-policy SLCAU-DOSP-IPV4-IN(AS132007-499627-IPV4-IN) in
+router bgp 38195 neighbor 203.153.16.157 address-family ipv4 unicast route-policy SLCAU-CUST-IPV4-DEFAULTONLY-OUT out
+router bgp 38195 neighbor 203.153.16.157 address-family ipv4 unicast default-originate
+router bgp 38195 neighbor 203.153.16.157 address-family ipv4 unicast remove-private-AS
+router bgp 38195 neighbor 203.153.16.157 address-family ipv4 unicast soft-reconfiguration inbound always
+router bgp 38195 neighbor 203.153.16.163 
+no shutdown
+router bgp 38195 neighbor 203.153.16.163 remote-as 10143
+router bgp 38195 neighbor 203.153.16.163 timers 10 30
+router bgp 38195 neighbor 203.153.16.163 description Cust: Exetel IPT - SLAUIN-10000
+router bgp 38195 neighbor 203.153.16.163 ignore-connected-check
+router bgp 38195 neighbor 203.153.16.163 address-family ipv4 unicast
+router bgp 38195 neighbor 203.153.16.163 address-family ipv4 unicast maximum-prefix 1000 90
+router bgp 38195 neighbor 203.153.16.163 address-family ipv4 unicast send-community-ebgp
+router bgp 38195 neighbor 203.153.16.163 address-family ipv4 unicast route-policy SLCAU-ENTERPRISE-IPV4-IN(AS10143-20327-IPV4-IN) in
+router bgp 38195 neighbor 203.153.16.163 address-family ipv4 unicast route-policy SLCAU-CUST-IPV4-FULLPLUSDEFAULT-OUT out
+router bgp 38195 neighbor 203.153.16.163 address-family ipv4 unicast default-originate
+router bgp 38195 neighbor 203.153.16.163 address-family ipv4 unicast soft-reconfiguration inbound always
+router bgp 38195 neighbor 203.153.16.186 
+no shutdown
+router bgp 38195 neighbor 203.153.16.186 remote-as 56178
+router bgp 38195 neighbor 203.153.16.186 timers 10 30
+router bgp 38195 neighbor 203.153.16.186 description Cust:TIMOID-19022
+router bgp 38195 neighbor 203.153.16.186 ignore-connected-check
+router bgp 38195 neighbor 203.153.16.186 address-family ipv4 unicast
+router bgp 38195 neighbor 203.153.16.186 address-family ipv4 unicast maximum-prefix 32 90 restart 15
+router bgp 38195 neighbor 203.153.16.186 address-family ipv4 unicast send-community-ebgp
+router bgp 38195 neighbor 203.153.16.186 address-family ipv4 unicast route-policy SLCAU-DOSP-IPV4-IN(AS56178-19022-IPV4-IN) in
+router bgp 38195 neighbor 203.153.16.186 address-family ipv4 unicast route-policy SLCAU-CUST-IPV4-DEFAULTONLY-OUT out
+router bgp 38195 neighbor 203.153.16.186 address-family ipv4 unicast default-originate
+router bgp 38195 neighbor 203.153.16.186 address-family ipv4 unicast remove-private-AS
+router bgp 38195 neighbor 203.153.16.186 address-family ipv4 unicast soft-reconfiguration inbound always
+router bgp 38195 neighbor 203.153.16.187 
+no shutdown
+router bgp 38195 neighbor 203.153.16.187 remote-as 56178
+router bgp 38195 neighbor 203.153.16.187 timers 10 30
+router bgp 38195 neighbor 203.153.16.187 description Cust:TIMOID-19022
+router bgp 38195 neighbor 203.153.16.187 ignore-connected-check
+router bgp 38195 neighbor 203.153.16.187 address-family ipv4 unicast
+router bgp 38195 neighbor 203.153.16.187 address-family ipv4 unicast maximum-prefix 32 90 restart 15
+router bgp 38195 neighbor 203.153.16.187 address-family ipv4 unicast send-community-ebgp
+router bgp 38195 neighbor 203.153.16.187 address-family ipv4 unicast route-policy SLCAU-DOSP-IPV4-IN(AS56178-19022-IPV4-IN) in
+router bgp 38195 neighbor 203.153.16.187 address-family ipv4 unicast route-policy SLCAU-CUST-IPV4-DEFAULTONLY-OUT out
+router bgp 38195 neighbor 203.153.16.187 address-family ipv4 unicast default-originate
+router bgp 38195 neighbor 203.153.16.187 address-family ipv4 unicast remove-private-AS
+router bgp 38195 neighbor 203.153.16.187 address-family ipv4 unicast soft-reconfigurouter bgp 38195 neighbor 2401:d000:7501::2 
+no shutdown
+router bgp 38195 neighbor 2401:d000:7501::2 remote-as 65451
+router bgp 38195 neighbor 2401:d000:7501::2 bestpath origin-as allow invalid
+router bgp 38195 neighbor 2401:d000:7501::2 local-as 65450 no-prepend replace-as
+router bgp 38195 neighbor 2401:d000:7501::2 timers 10 30
+router bgp 38195 neighbor 2401:d000:7501::2 description SLCAU:pe01.dc1.bne.au
+router bgp 38195 neighbor 2401:d000:7501::2 address-family ipv6 unicast
+router bgp 38195 neighbor 2401:d000:7501::2 address-family ipv6 unicast maximum-prefix 400 80
+router bgp 38195 neighbor 2401:d000:7501::2 address-family ipv6 unicast send-community-ebgp
+router bgp 38195 neighbor 2401:d000:7501::2 address-family ipv6 unicast route-policy TEST-IN in
+router bgp 38195 neighbor 2401:d000:7501::2 address-family ipv6 unicast route-policy SLCAU-CUST-IPV6-DEFAULTONLY-OUT out
+router bgp 38195 neighbor 2401:d000:7501::2 address-family ipv6 unicast default-originate
+router bgp 38195 neighbor 2401:d000:7501::2 address-family ipv6 unicast next-hop-self
+router bgp 38195 neighbor 2401:d000:7501::2 address-family ipv6 unicast soft-reconfiguration inbound always
+ration inbound always
+
+router bgp 38195 neighbor 203.153.16.210 
+no shutdown
+router bgp 38195 neighbor 203.153.16.210 remote-as 141036
+router bgp 38195 neighbor 203.153.16.210 timers 10 30
+router bgp 38195 neighbor 203.153.16.210 description Cust:CLOUDBAND-38765
+router bgp 38195 neighbor 203.153.16.210 ignore-connected-check
+router bgp 38195 neighbor 203.153.16.210 address-family ipv4 unicast
+router bgp 38195 neighbor 203.153.16.210 address-family ipv4 unicast maximum-prefix 100 90 restart 15
+router bgp 38195 neighbor 203.153.16.210 address-family ipv4 unicast send-community-ebgp
+router bgp 38195 neighbor 203.153.16.210 address-family ipv4 unicast route-policy SLCAU-DOSP-IPV4-IN(AS141036-38765-IPV4-IN) in
+router bgp 38195 neighbor 203.153.16.210 address-family ipv4 unicast route-policy SLCAU-CUST-IPV4-DEFAULTONLY-OUT out
+router bgp 38195 neighbor 203.153.16.210 address-family ipv4 unicast default-originate
+router bgp 38195 neighbor 203.153.16.210 address-family ipv4 unicast remove-private-AS
+router bgp 38195 neighbor 203.153.16.210 address-family ipv4 unicast soft-reconfiguration inbound always
+router bgp 38195 neighbor 203.153.16.211 
+no shutdown
+router bgp 38195 neighbor 203.153.16.211 remote-as 141036
+router bgp 38195 neighbor 203.153.16.211 timers 10 30
+router bgp 38195 neighbor 203.153.16.211 description Cust:CLOUDBAND-38765
+router bgp 38195 neighbor 203.153.16.211 ignore-connected-check
+router bgp 38195 neighbor 203.153.16.211 address-family ipv4 unicast
+router bgp 38195 neighbor 203.153.16.211 address-family ipv4 unicast maximum-prefix 100 90 restart 15
+router bgp 38195 neighbor 203.153.16.211 address-family ipv4 unicast send-community-ebgp
+router bgp 38195 neighbor 203.153.16.211 address-family ipv4 unicast route-policy SLCAU-DOSP-IPV4-IN(AS141036-38765-IPV4-IN) in
+router bgp 38195 neighbor 203.153.16.211 address-family ipv4 unicast route-policy SLCAU-CUST-IPV4-DEFAULTONLY-OUT out
+router bgp 38195 neighbor 203.153.16.211 address-family ipv4 unicast default-originate
+router bgp 38195 neighbor 203.153.16.211 address-family ipv4 unicast remove-private-AS
+router bgp 38195 neighbor 203.153.16.211 address-family ipv4 unicast soft-reconfiguration inbound always
+router bgp 38195 neighbor 203.153.19.102 
+no shutdown
+router bgp 38195 neighbor 203.153.19.102 remote-as 135060
+router bgp 38195 neighbor 203.153.19.102 timers 10 30
+router bgp 38195 neighbor 203.153.19.102 description Cust:Telair-534672
+router bgp 38195 neighbor 203.153.19.102 ignore-connected-check
+router bgp 38195 neighbor 203.153.19.102 address-family ipv4 unicast
+router bgp 38195 neighbor 203.153.19.102 address-family ipv4 unicast maximum-prefix 500 90 restart 15
+router bgp 38195 neighbor 203.153.19.102 address-family ipv4 unicast send-community-ebgp
+router bgp 38195 neighbor 203.153.19.102 address-family ipv4 unicast route-policy SLCAU-DOSP-IPV4-IN(AS135060-534672-IPV4-IN) in
+router bgp 38195 neighbor 203.153.19.102 address-family ipv4 unicast route-policy SLCAU-CUST-IPV4-FULL-OUT out
+router bgp 38195 neighbor 203.153.19.102 address-family ipv4 unicast remove-private-AS
+router bgp 38195 neighbor 203.153.19.102 address-family ipv4 unicast soft-reconfiguration inbound always
+
+router bgp 38195 neighbor 27.122.113.164 
+no shutdown
+router bgp 38195 neighbor 27.122.113.164 remote-as 134143
+router bgp 38195 neighbor 27.122.113.164 timers 10 30
+router bgp 38195 neighbor 27.122.113.164 description Cust: Professional Data Kinetics Pty Ltd AS134143
+router bgp 38195 neighbor 27.122.113.164 address-family ipv4 unicast
+router bgp 38195 neighbor 27.122.113.164 address-family ipv4 unicast maximum-prefix 110 75
+router bgp 38195 neighbor 27.122.113.164 address-family ipv4 unicast send-community-ebgp
+router bgp 38195 neighbor 27.122.113.164 address-family ipv4 unicast route-policy SLCAU-CUST-IPV4-IN(AS134143-21278-IPV4-IN) in
+router bgp 38195 neighbor 27.122.113.164 address-family ipv4 unicast route-policy SLCAU-CUST-IPV4-FULLPLUSDEFAULT-OUT out
+router bgp 38195 neighbor 27.122.113.164 address-family ipv4 unicast default-originate
+router bgp 38195 neighbor 27.122.113.164 address-family ipv4 unicast remove-private-AS
+router bgp 38195 neighbor 27.122.113.201 
+no shutdown
+router bgp 38195 neighbor 27.122.113.201 remote-as 4647
+router bgp 38195 neighbor 27.122.113.201 timers 10 30
+router bgp 38195 neighbor 27.122.113.201 description Cust:CentraNetworks-9363
+router bgp 38195 neighbor 27.122.113.201 address-family ipv4 unicast
+router bgp 38195 neighbor 27.122.113.201 address-family ipv4 unicast maximum-prefix 50 75
+router bgp 38195 neighbor 27.122.113.201 address-family ipv4 unicast send-community-ebgp
+router bgp 38195 neighbor 27.122.113.201 address-family ipv4 unicast route-policy SLCAU-CUST-IPV4-IN(AS4647-9363-IPV4-IN) in
+router bgp 38195 neighbor 27.122.113.201 address-family ipv4 unicast route-policy SLCAU-CUST-IPV4-PEERINGPLUSDEFAULT-OUT out
+router bgp 38195 neighbor 27.122.113.201 address-family ipv4 unicast default-originate
+router bgp 38195 neighbor 27.122.113.201 address-family ipv4 unicast soft-reconfiguration inbound always
+
+router bgp 38195 neighbor 27.122.114.145 
+no shutdown
+router bgp 38195 neighbor 27.122.114.145 remote-as 133553
+router bgp 38195 neighbor 27.122.114.145 timers 10 30
+router bgp 38195 neighbor 27.122.114.145 description Cust:Amaze360-10277
+router bgp 38195 neighbor 27.122.114.145 address-family ipv4 unicast
+router bgp 38195 neighbor 27.122.114.145 address-family ipv4 unicast maximum-prefix 50 75
+router bgp 38195 neighbor 27.122.114.145 address-family ipv4 unicast send-community-ebgp
+router bgp 38195 neighbor 27.122.114.145 address-family ipv4 unicast route-policy SLCAU-CUST-IPV4-IN(AS133553-10277-IPV4-IN) in
+router bgp 38195 neighbor 27.122.114.145 address-family ipv4 unicast route-policy SLCAU-CUST-IPV4-DEFAULTONLY-OUT out
+router bgp 38195 neighbor 27.122.114.145 address-family ipv4 unicast default-originate
+router bgp 38195 neighbor 27.122.114.145 address-family ipv4 unicast soft-reconfiguration inbound always
+router bgp 38195 neighbor 27.122.114.180 
+no shutdown
+router bgp 38195 neighbor 27.122.114.180 remote-as 133189
+router bgp 38195 neighbor 27.122.114.180 timers 10 30
+router bgp 38195 neighbor 27.122.114.180 description Cust:Sentrian-11631
+router bgp 38195 neighbor 27.122.114.180 address-family ipv4 unicast
+router bgp 38195 neighbor 27.122.114.180 address-family ipv4 unicast maximum-prefix 50 75
+router bgp 38195 neighbor 27.122.114.180 address-family ipv4 unicast send-community-ebgp
+router bgp 38195 neighbor 27.122.114.180 address-family ipv4 unicast route-policy SLCAU-CUST-IPV4-IN(AS133189-11631-IPV4-IN) in
+router bgp 38195 neighbor 27.122.114.180 address-family ipv4 unicast route-policy SLCAU-CUST-IPV4-DEFAULTONLY-OUT out
+router bgp 38195 neighbor 27.122.114.180 address-family ipv4 unicast default-originate
+router bgp 38195 neighbor 27.122.114.180 address-family ipv4 unicast soft-reconfiguration inbound always
+router bgp 38195 neighbor 27.122.114.217 
+no shutdown
+router bgp 38195 neighbor 27.122.114.217 remote-as 133159
+router bgp 38195 neighbor 27.122.114.217 timers 60 180
+router bgp 38195 neighbor 27.122.114.217 description Cust:Mammoth Media-40904
+router bgp 38195 neighbor 27.122.114.217 ignore-connected-check
+router bgp 38195 neighbor 27.122.114.217 address-family ipv4 unicast
+router bgp 38195 neighbor 27.122.114.217 address-family ipv4 unicast maximum-prefix 500 90 restart 15
+router bgp 38195 neighbor 27.122.114.217 address-family ipv4 unicast send-community-ebgp
+router bgp 38195 neighbor 27.122.114.217 address-family ipv4 unicast route-policy SLCAU-DOSP-IPV4-IN(AS133159-40904-IPV4-IN) in
+router bgp 38195 neighbor 27.122.114.217 address-family ipv4 unicast route-policy SLCAU-CUST-IPV4-FULLPLUSDEFAULT-OUT out
+router bgp 38195 neighbor 27.122.114.217 address-family ipv4 unicast default-originate
+router bgp 38195 neighbor 27.122.114.217 address-family ipv4 unicast remove-private-AS
+router bgp 38195 neighbor 27.122.114.217 address-family ipv4 unicast soft-reconfiguration inbound always
+router bgp 38195 neighbor 27.122.114.219 
+no shutdown
+router bgp 38195 neighbor 27.122.114.219 remote-as 151047
+router bgp 38195 neighbor 27.122.114.219 timers 10 30
+router bgp 38195 neighbor 27.122.114.219 description Cust:Queensland Urban Utilities-496168
+router bgp 38195 neighbor 27.122.114.219 ignore-connected-check
+router bgp 38195 neighbor 27.122.114.219 address-family ipv4 unicast
+router bgp 38195 neighbor 27.122.114.219 address-family ipv4 unicast maximum-prefix 100 90 restart 15
+router bgp 38195 neighbor 27.122.114.219 address-family ipv4 unicast send-community-ebgp
+router bgp 38195 neighbor 27.122.114.219 address-family ipv4 unicast route-policy SLCAU-DOSP-IPV4-IN(AS151047-496168-IPV4-IN) in
+router bgp 38195 neighbor 27.122.114.219 address-family ipv4 unicast route-policy SLCAU-CUST-IPV4-FULLPLUSDEFAULT-OUT out
+router bgp 38195 neighbor 27.122.114.219 address-family ipv4 unicast default-originate
+router bgp 38195 neighbor 27.122.114.219 address-family ipv4 unicast remove-private-AS
+router bgp 38195 neighbor 27.122.114.219 address-family ipv4 unicast soft-reconfiguration inbound always
+router bgp 38195 neighbor 27.122.114.230 
+no shutdown
+router bgp 38195 neighbor 27.122.114.230 remote-as 17477
+router bgp 38195 neighbor 27.122.114.230 timers 10 30
+router bgp 38195 neighbor 27.122.114.230 description Cust:MACTEL-39985
+router bgp 38195 neighbor 27.122.114.230 ignore-connected-check
+router bgp 38195 neighbor 27.122.114.230 address-family ipv4 unicast
+router bgp 38195 neighbor 27.122.114.230 address-family ipv4 unicast maximum-prefix 200 90 restart 15
+router bgp 38195 neighbor 27.122.114.230 address-family ipv4 unicast send-community-ebgp
+router bgp 38195 neighbor 27.122.114.230 address-family ipv4 unicast route-policy SLCAU-DOSP-IPV4-IN(AS17477-39985-IPV4-IN) in
+router bgp 38195 neighbor 27.122.114.230 address-family ipv4 unicast route-policy SLCAU-CUST-IPV4-FULL-OUT out
+router bgp 38195 neighbor 27.122.114.230 address-family ipv4 unicast remove-private-AS
+router bgp 38195 neighbor 27.122.114.230 address-family ipv4 unicast soft-reconfiguration inbound always
+router bgp 38195 neighbor 27.122.116.178 
+no shutdown
+router bgp 38195 neighbor 27.122.116.178 remote-as 42473
+router bgp 38195 neighbor 27.122.116.178 bfd fast-detect
+router bgp 38195 neighbor 27.122.116.178 bfd multiplier 3
+router bgp 38195 neighbor 27.122.116.178 bfd minimum-interval 300
+router bgp 38195 neighbor 27.122.116.178 timers 10 30
+router bgp 38195 neighbor 27.122.116.178 description Cust:ANEXIA Internetdienstleistungs GmbH-153426
+router bgp 38195 neighbor 27.122.116.178 ignore-connected-check
+router bgp 38195 neighbor 27.122.116.178 address-family ipv4 unicast
+router bgp 38195 neighbor 27.122.116.178 address-family ipv4 unicast maximum-prefix 500 90 restart 15
+router bgp 38195 neighbor 27.122.116.178 address-family ipv4 unicast send-community-ebgp
+router bgp 38195 neighbor 27.122.116.178 address-family ipv4 unicast route-policy SLCAU-DOSP-IPV4-IN(AS42473-153426-IPV4-IN) in
+router bgp 38195 neighbor 27.122.116.178 address-family ipv4 unicast route-policy SLCAU-CUST-IPV4-FULLPLUSDEFAULT-OUT out
+router bgp 38195 neighbor 27.122.116.178 address-family ipv4 unicast default-originate
+router bgp 38195 neighbor 27.122.116.178 address-family ipv4 unicast remove-private-AS
+router bgp 38195 neighbor 27.122.116.178 address-family ipv4 unicast soft-reconfiguration inbound always
+router bgp 38195 neighbor 116.255.8.145 
+no shutdown
+router bgp 38195 neighbor 116.255.8.145 remote-as 138483
+router bgp 38195 neighbor 116.255.8.145 timers 10 30
+router bgp 38195 neighbor 116.255.8.145 description Cust:RDO-527379
+router bgp 38195 neighbor 116.255.8.145 ignore-connected-check
+router bgp 38195 neighbor 116.255.8.145 address-family ipv4 unicast
+router bgp 38195 neighbor 116.255.8.145 address-family ipv4 unicast maximum-prefix 100 90 restart 15
+router bgp 38195 neighbor 116.255.8.145 address-family ipv4 unicast send-community-ebgp
+router bgp 38195 neighbor 116.255.8.145 address-family ipv4 unicast route-policy SLCAU-DOSP-IPV4-IN(AS138483-527379-IPV4-IN) in
+router bgp 38195 neighbor 116.255.8.145 address-family ipv4 unicast route-policy SLCAU-CUST-IPV4-DEFAULTONLY-OUT out
+router bgp 38195 neighbor 116.255.8.145 address-family ipv4 unicast default-originate
+router bgp 38195 neighbor 116.255.8.145 address-family ipv4 unicast remove-private-AS
+router bgp 38195 neighbor 116.255.8.145 address-family ipv4 unicast soft-reconfiguration inbound always
+router bgp 38195 neighbor 116.255.8.254 
+no shutdown
+router bgp 38195 neighbor 116.255.8.254 remote-as 63920
+router bgp 38195 neighbor 116.255.8.254 timers 10 30
+router bgp 38195 neighbor 116.255.8.254 description Cust:BigAir Community Broadband Pty Ltd-1173542
+router bgp 38195 neighbor 116.255.8.254 address-family ipv4 unicast
+router bgp 38195 neighbor 116.255.8.254 address-family ipv4 unicast maximum-prefix 100 90 restart 15
+router bgp 38195 neighbor 116.255.8.254 address-family ipv4 unicast send-community-ebgp
+router bgp 38195 neighbor 116.255.8.254 address-family ipv4 unicast route-policy SLCAU-CUST-IPV4-IN(AS63920-1173542-IPV4-IN) in
+router bgp 38195 neighbor 116.255.8.254 address-family ipv4 unicast route-policy SLCAU-CUST-IPV4-DEFAULTONLY-OUT out
+router bgp 38195 neighbor 116.255.8.254 address-family ipv4 unicast default-originate
+router bgp 38195 neighbor 116.255.8.254 address-family ipv4 unicast remove-private-AS
+router bgp 38195 neighbor 116.255.8.254 address-family ipv4 unicast soft-reconfiguration inbound always
+router bgp 38195 neighbor 202.60.93.191 
+router bgp 38195 neighbor 202.60.93.191 remote-as 9280
+router bgp 38195 neighbor 202.60.93.191 timers 10 30
+router bgp 38195 neighbor 202.60.93.191 
+no shutdown
+router bgp 38195 neighbor 202.60.93.191 description Cust:Servers Australia-53848
+router bgp 38195 neighbor 202.60.93.191 ignore-connected-check
+router bgp 38195 neighbor 202.60.93.191 address-family ipv4 unicast
+router bgp 38195 neighbor 202.60.93.191 address-family ipv4 unicast maximum-prefix 1000 90 restart 15
+router bgp 38195 neighbor 202.60.93.191 address-family ipv4 unicast send-community-ebgp
+router bgp 38195 neighbor 202.60.93.191 address-family ipv4 unicast route-policy SLCAU-DOSP-IPV4-IN(AS9280-53848-IPV4-IN) in
+router bgp 38195 neighbor 202.60.93.191 address-family ipv4 unicast route-policy SLCAU-CUST-IPV4-FULLPLUSDEFAULT-OUT out
+router bgp 38195 neighbor 202.60.93.191 address-family ipv4 unicast default-originate
+router bgp 38195 neighbor 202.60.93.191 address-family ipv4 unicast remove-private-AS
+router bgp 38195 neighbor 202.60.93.191 address-family ipv4 unicast soft-reconfiguration inbound always
+router bgp 38195 neighbor 203.153.16.13 
+no shutdown
+router bgp 38195 neighbor 203.153.16.13 remote-as 133129
+router bgp 38195 neighbor 203.153.16.13 timers 60 180
+router bgp 38195 neighbor 203.153.16.13 description Cust:CapitalB-20684
+router bgp 38195 neighbor 203.153.16.13 address-family ipv4 unicast
+router bgp 38195 neighbor 203.153.16.13 address-family ipv4 unicast maximum-prefix 10 75
+router bgp 38195 neighbor 203.153.16.13 address-family ipv4 unicast send-community-ebgp
+router bgp 38195 neighbor 203.153.16.13 address-family ipv4 unicast route-policy SLCAU-CUST-IPV4-IN(AS133129-20684-IPV4-IN) in
+router bgp 38195 neighbor 203.153.16.13 address-family ipv4 unicast route-policy SLCAU-CUST-IPV4-DEFAULTONLY-OUT out
+router bgp 38195 neighbor 203.153.16.13 address-family ipv4 unicast default-originate
+router bgp 38195 neighbor 203.153.16.13 address-family ipv4 unicast remove-private-AS
+router bgp 38195 neighbor 203.153.16.13 address-family ipv4 unicast soft-reconfiguration inbound always
+router bgp 38195 neighbor 203.153.16.39 
+no shutdown
+router bgp 38195 neighbor 203.153.16.39 remote-as 64590
+router bgp 38195 neighbor 203.153.16.39 timers 10 30
+router bgp 38195 neighbor 203.153.16.39 description Cust:SLC-LAB-487702
+router bgp 38195 neighbor 203.153.16.39 ignore-connected-check
+router bgp 38195 neighbor 203.153.16.39 session-open-mode passive-only
+router bgp 38195 neighbor 203.153.16.39 address-family ipv4 unicast
+router bgp 38195 neighbor 203.153.16.39 address-family ipv4 unicast maximum-prefix 100 90 restart 15
+router bgp 38195 neighbor 203.153.16.39 address-family ipv4 unicast send-community-ebgp
+router bgp 38195 neighbor 203.153.16.39 address-family ipv4 unicast route-policy SLCAU-DOSP-IPV4-IN(AS64590-487702-IPV4-IN) in
+router bgp 38195 neighbor 203.153.16.39 address-family ipv4 unicast route-policy SLCAU-CUST-IPV4-DEFAULTONLY-OUT out
+router bgp 38195 neighbor 203.153.16.39 address-family ipv4 unicast default-originate
+router bgp 38195 neighbor 203.153.16.39 address-family ipv4 unicast remove-private-AS
+router bgp 38195 neighbor 203.153.16.93 
+no shutdown
+router bgp 38195 neighbor 203.153.16.93 remote-as 65153
+router bgp 38195 neighbor 203.153.16.93 timers 10 30
+router bgp 38195 neighbor 203.153.16.93 description Cust:Alt VFX Pty Ltd-34164
+router bgp 38195 neighbor 203.153.16.93 ignore-connected-check
+router bgp 38195 neighbor 203.153.16.93 address-family ipv4 unicast
+router bgp 38195 neighbor 203.153.16.93 address-family ipv4 unicast maximum-prefix 500 90 restart 15
+router bgp 38195 neighbor 203.153.16.93 address-family ipv4 unicast send-community-ebgp
+router bgp 38195 neighbor 203.153.16.93 address-family ipv4 unicast route-policy SLCAU-ENTERPRISE-IPV4-IN(AS65153-34164-IPV4-IN) in
+router bgp 38195 neighbor 203.153.16.93 address-family ipv4 unicast route-policy SLCAU-CUST-IPV4-DEFAULTONLY-OUT out
+router bgp 38195 neighbor 203.153.16.93 address-family ipv4 unicast default-originate
+router bgp 38195 neighbor 203.153.16.93 address-family ipv4 unicast remove-private-AS
+router bgp 38195 neighbor 203.153.16.93 address-family ipv4 unicast soft-reconfiguration inbound always
+router bgp 38195 neighbor 203.153.19.74 
+no shutdown
+router bgp 38195 neighbor 203.153.19.74 remote-as 63920
+router bgp 38195 neighbor 203.153.19.74 timers 10 30
+router bgp 38195 neighbor 203.153.19.74 description Cust:Bigair Community Broadband-500458
+router bgp 38195 neighbor 203.153.19.74 ignore-connected-check
+router bgp 38195 neighbor 203.153.19.74 address-family ipv4 unicast
+router bgp 38195 neighbor 203.153.19.74 address-family ipv4 unicast maximum-prefix 500 90 restart 15
+router bgp 38195 neighbor 203.153.19.74 address-family ipv4 unicast send-community-ebgp
+router bgp 38195 neighbor 203.153.19.74 address-family ipv4 unicast route-policy SLCAU-DOSP-IPV4-IN(AS63920-500458-IPV4-IN) in
+router bgp 38195 neighbor 203.153.19.74 address-family ipv4 unicast route-policy SLCAU-CUST-IPV4-FULLPLUSDEFAULT-OUT out
+router bgp 38195 neighbor 203.153.19.74 address-family ipv4 unicast default-originate
+router bgp 38195 neighbor 203.153.19.74 address-family ipv4 unicast remove-private-AS
+router bgp 38195 neighbor 203.153.19.74 address-family ipv4 unicast soft-reconfiguration inbound always
+
+router bgp 38195 neighbor 27.122.113.17 
+no shutdown
+router bgp 38195 neighbor 27.122.113.17 remote-as 65535
+router bgp 38195 neighbor 27.122.113.17 timers 10 30
+router bgp 38195 neighbor 27.122.113.17 description Cust:SUPERLOOP-25225
+router bgp 38195 neighbor 27.122.113.17 ignore-connected-check
+router bgp 38195 neighbor 27.122.113.17 address-family ipv4 unicast
+router bgp 38195 neighbor 27.122.113.17 address-family ipv4 unicast maximum-prefix 50 75
+router bgp 38195 neighbor 27.122.113.17 address-family ipv4 unicast send-community-ebgp
+router bgp 38195 neighbor 27.122.113.17 address-family ipv4 unicast route-policy SLCAU-ENTERPRISE-IPV4-IN(AS65535-25225-IPV4-IN) in
+router bgp 38195 neighbor 27.122.113.17 address-family ipv4 unicast route-policy SLCAU-CUST-IPV4-DEFAULTONLY-OUT out
+router bgp 38195 neighbor 27.122.113.17 address-family ipv4 unicast default-originate
+router bgp 38195 neighbor 27.122.113.78 
+no shutdown
+router bgp 38195 neighbor 27.122.113.78 remote-as 136612
+router bgp 38195 neighbor 27.122.113.78 timers 10 30
+router bgp 38195 neighbor 27.122.113.78 description Cust:Aurizon-EMP-32807
+router bgp 38195 neighbor 27.122.113.78 ignore-connected-check
+router bgp 38195 neighbor 27.122.113.78 address-family ipv4 unicast
+router bgp 38195 neighbor 27.122.113.78 address-family ipv4 unicast maximum-prefix 50 75
+router bgp 38195 neighbor 27.122.113.78 address-family ipv4 unicast send-community-ebgp
+router bgp 38195 neighbor 27.122.113.78 address-family ipv4 unicast route-policy SLCAU-DOSP-IPV4-IN(AS136612-32807-IPV4-IN) in
+router bgp 38195 neighbor 27.122.113.78 address-family ipv4 unicast route-policy SLCAU-CUST-IPV4-FULLPLUSDEFAULT-OUT out
+router bgp 38195 neighbor 27.122.113.78 address-family ipv4 unicast default-originate
+router bgp 38195 neighbor 27.122.113.78 address-family ipv4 unicast remove-private-AS
+router bgp 38195 neighbor 27.122.113.89 
+no shutdown
+router bgp 38195 neighbor 27.122.113.89 remote-as 131268
+router bgp 38195 neighbor 27.122.113.89 timers 10 30
+router bgp 38195 neighbor 27.122.113.89 description Cust:Bigair Community Broadband Pty Ltd-480157
+router bgp 38195 neighbor 27.122.113.89 ignore-connected-check
+router bgp 38195 neighbor 27.122.113.89 address-family ipv4 unicast
+router bgp 38195 neighbor 27.122.113.89 address-family ipv4 unicast maximum-prefix 500 90 restart 15
+router bgp 38195 neighbor 27.122.113.89 address-family ipv4 unicast send-community-ebgp
+router bgp 38195 neighbor 27.122.113.89 address-family ipv4 unicast route-policy SLCAU-DOSP-IPV4-IN(AS131268-480157-IPV4-IN) in
+router bgp 38195 neighbor 27.122.113.89 address-family ipv4 unicast route-policy SLCAU-CUST-IPV4-DEFAULTONLY-OUT out
+router bgp 38195 neighbor 27.122.113.89 address-family ipv4 unicast default-originate
+router bgp 38195 neighbor 27.122.113.89 address-family ipv4 unicast remove-private-AS
+router bgp 38195 neighbor 27.122.113.89 address-family ipv4 unicast soft-reconfiguration inbound always
+router bgp 38195 neighbor 27.122.120.51 
+no shutdown
+router bgp 38195 neighbor 27.122.120.51 remote-as 65451
+router bgp 38195 neighbor 27.122.120.51 local-as 65450 no-prepend replace-as
+router bgp 38195 neighbor 27.122.120.51 timers 10 30
+router bgp 38195 neighbor 27.122.120.51 description SLCAU:bdr01-pex-454stpau-bne.au
+router bgp 38195 neighbor 27.122.120.51 address-family ipv4 unicast
+router bgp 38195 neighbor 27.122.120.51 address-family ipv4 unicast maximum-prefix 1600 80
+router bgp 38195 neighbor 27.122.120.51 address-family ipv4 unicast send-community-ebgp
+router bgp 38195 neighbor 27.122.120.51 address-family ipv4 unicast route-policy TEST-IN-10G in
+router bgp 38195 neighbor 27.122.120.51 address-family ipv4 unicast route-policy SLCAU-CUST-IPV4-DEFAULTONLY-OUT out
+router bgp 38195 neighbor 27.122.120.51 address-family ipv4 unicast default-originate
+router bgp 38195 neighbor 27.122.120.51 address-family ipv4 unicast next-hop-self
+router bgp 38195 neighbor 27.122.120.51 address-family ipv4 unicast soft-reconfiguration inbound always
+
+router bgp 38195 neighbor 103.200.14.245 
+no shutdown
+router bgp 38195 neighbor 103.200.14.245 remote-as 65451
+router bgp 38195 neighbor 103.200.14.245 local-as 65450 no-prepend replace-as
+router bgp 38195 neighbor 103.200.14.245 timers 10 30
+router bgp 38195 neighbor 103.200.14.245 description SLCAU bdr01-pex-454stpau-bne.au
+router bgp 38195 neighbor 103.200.14.245 address-family ipv4 unicast
+router bgp 38195 neighbor 103.200.14.245 address-family ipv4 unicast maximum-prefix 1600 80
+router bgp 38195 neighbor 103.200.14.245 address-family ipv4 unicast send-community-ebgp
+router bgp 38195 neighbor 103.200.14.245 address-family ipv4 unicast route-policy TEST-IN in
+router bgp 38195 neighbor 103.200.14.245 address-family ipv4 unicast route-policy SLCAU-CUST-IPV4-DEFAULTONLY-OUT out
+router bgp 38195 neighbor 103.200.14.245 address-family ipv4 unicast default-originate
+router bgp 38195 neighbor 103.200.14.245 address-family ipv4 unicast next-hop-self
+router bgp 38195 neighbor 103.200.14.245 address-family ipv4 unicast soft-reconfiguration inbound always
+
+

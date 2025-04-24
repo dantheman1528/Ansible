@@ -1,0 +1,45 @@
+---
+- name: Send user mode command to FortiGate using raw
+  hosts: "{{ variable_host }}"
+  gather_facts: no #if yes, Ansible automatically tries to collect system information (facts) using default modules, FortiGate doesn't support the authentication method Ansible is trying. Else, use FortiOS-specific fact gathering.
+
+  vars_prompt:
+    #It ask for user inputs
+    - name: "variable_host"
+      prompt: "Host or Host Group" #Ansible checks your host inventory
+      private: no
+
+    #It ask you if you want to test a dry run first before making changes
+    - name: "dry_run"
+      prompt: "Enable dry run? (yes/no)" #if you want to see the commands and not apply them, type yes. otherwise, type no
+      private: no
+      default: "no"
+
+  tasks:
+    #It reads a template file (fortigate_template.j2) that has pre-written commands.
+    - name: Read command template
+      template:
+        src: fortigate_template.j2
+        dest: "/tmp/fortigate_commands.txt" #Then, it saves those commands in a file (/tmp/fortigate_commands.txt) on your system
+
+      #If dry run mode is ON (yes), it reads and displays the commands without running them.
+    - name: Show commands for dry run
+      command: cat /tmp/fortigate_commands.txt
+      register: dry_run_output #It registers (saves) the output in a variable called dry_run_output.
+      when: dry_run == "yes"
+
+    - name: Print dry run output #t prints the commands so you can see what would be run.
+      debug:
+        var: dry_run_output.stdout_lines
+      when: dry_run == "yes"
+
+    #If dry run mode is OFF (no), it runs the commands on the FortiGate device.
+    - name: Execute commands from template
+      raw: "ssh admin@{{ inventory_hostname }} < /tmp/fortigate_commands.txt"
+      register: result_fortigate #The output is saved in a variable called result_fortigate
+      when: dry_run == "no"
+
+    - name: Print FortiGate output
+      debug:
+        var: result_fortigate.stdout_lines #It prints the output of the commands that were run on the FortiGate device.
+      when: dry_run == "no"

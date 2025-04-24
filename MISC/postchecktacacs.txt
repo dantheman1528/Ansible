@@ -1,0 +1,340 @@
+TASK [send command to Junos] *****************************************************************************************************************************************************************************************************************************************
+[WARNING]: arguments wait_for, match, rpcs are not supported when using transport=cli
+ok: [mse01-pex-20wharfs-bne.au.superloop.net.co]
+ok: [mse01-pex-132frank-adl.au.superloop.net.co]
+ok: [mse01-pex-220queen-akl.nz.superloop.net.co]
+ok: [mse01-pex-274hindl-adl.au.superloop.net.co]
+ok: [mse01-pex-1william-per.au.superloop.net.co]
+ok: [mse01-pex-47bourke-syd.au.superloop.net.co]
+ok: [mse01-pex-454stpau-bne.au.superloop.net.co]
+ok: [mse01-pex-4millros-per.au.superloop.net.co]
+ok: [mse01-pex-27harvey-drw.au.superloop.network]
+ok: [mse01-pex-4edenpar-syd.au.superloop.net.co]
+ok: [mse01-pex-530colli-mel.au.superloop.net.co]
+ok: [mse01-pex-826lorim-mel.au.superloop.net.co]
+
+TASK [print Junos debug info] ****************************************************************************************************************************************************************************************************************************************
+ok: [mse01-pex-132frank-adl.au.superloop.net.co] => {
+    "result_junos.stdout_lines": [
+        [
+            "100.127.254.44 {",
+            "    port 1128;",
+            "    secret \"$9$QJcPF9t0OIEylu0-VwsZGCtu0RSWLxN-wIE-VwYoaHqmf5F/CpREy9CX7-dsYfTQ\"; ## SECRET-DATA",
+            "    source-address 10.200.195.17;",
+            "}",
+            "100.127.254.108 {",
+            "    port 1128;",
+            "    secret \"$9$Hq5zn6CtO13nvWLXwsTz3nA0cylKvLCtvWLxdVoJGDjqfTFAtO5TrevMXxDiH\"; ## SECRET-DATA",
+            "    source-address 10.200.195.17;",
+            "}"
+        ],
+        [
+            "\u0007show configuration system authentication-order ",
+            "authentication-order tacplus;"
+        ],
+        [
+            "\u0007show configuration system accounting ",
+            "events [ login change-log interactive-commands ];",
+            "destination {",
+            "    tacplus;",
+            "}"
+        ]
+    ]
+}
+ok: [mse01-pex-20wharfs-bne.au.superloop.net.co] => {
+    "result_junos.stdout_lines": [
+        [
+            "100.127.254.44 {",
+            "    port 1128;",
+            "    secret \"$9$hJ2SKWXx-VYgLXk.Pf6/vWLXdsZUjHkP-Vk.P5F3p0BIRSev8dVYKvDikqf5IEh\"; ## SECRET-DATA",
+            "    source-address 10.200.194.25;",
+            "}",
+            "100.127.254.108 {",
+            "    port 1128;",
+            "    secret \"$9$2s4GjkqP5FnHk1RhcMWUjHkfzAp0B1hP51RhSeK7-Vws4ZUif5FGUuO1IcSwY2\"; ## SECRET-DATA",
+            "    source-address 10.200.194.25;",
+            "}"
+        ],
+        [
+            "\u0007show configuration system authentication-order ",
+            "authentication-order tacplus;"
+        ],
+        [
+            "\u0007show configuration system accounting ",
+            "events [ login change-log interactive-commands ];",
+            "destination {",
+            "    tacplus;",
+            "}"
+        ]
+    ]
+}
+ok: [mse01-pex-1william-per.au.superloop.net.co] => {
+    "result_junos.stdout_lines": [
+        [
+            "100.127.254.44 {",
+            "    port 1128;",
+            "    secret \"$9$MBS8NVsY4aUjwsz36/OB-VwsoG.P5Qz64az369puhSreK87-boaUN-fTzF/9evM\"; ## SECRET-DATA",
+            "    source-address 10.200.196.17;",
+            "}",
+            "100.127.254.108 {",
+            "    port 1128;",
+            "    secret \"$9$a.ZiqPfQF/CmPhSrlXxHqmPz60BIEhrQFhSreW8VwYg4ZjH.zF/iH1Rhclegoa\"; ## SECRET-DATA",
+            "    source-address 10.200.196.17;",
+            "}"
+        ],
+        [
+            "\u0007show configuration system authentication-order ",
+            "authentication-order tacplus;"
+        ],
+        [
+            "\u0007show configuration system accounting ",
+            "events [ login change-log interactive-commands ];",
+            "destination {",
+            "    tacplus;",
+            "}"
+        ]
+    ]
+}
+ok: [mse01-pex-274hindl-adl.au.superloop.net.co] => {
+    "result_junos.stdout_lines": [
+        [
+            "100.127.254.44 {",
+            "    port 1128;",
+            "    secret \"$9$0UTmBhyeKWLNdleZUji5Tcyle87YgoJZjWLZUjHmPn/CtpBEcr8LNhc4aZGiHtu0\"; ## SECRET-DATA",
+            "    source-address 10.200.195.25;",
+            "}",
+            "100.127.254.108 {",
+            "    port 1128;",
+            "    secret \"$9$gEoUiq.fT36kqIEcSW8Dikq5FtuO1IcfTIEcyKvNdbsYoGDH5T3UD0BIRSys2g\"; ## SECRET-DATA",
+            "    source-address 10.200.195.25;",
+            "}"
+        ],
+        [
+            "\u0007show configuration system authentication-order ",
+            "authentication-order tacplus;"
+        ],
+        [
+            "\u0007show configuration system accounting ",
+            "events [ login change-log interactive-commands ];",
+            "destination {",
+            "    tacplus;",
+            "}"
+        ]
+    ]
+}
+ok: [mse01-pex-220queen-akl.nz.superloop.net.co] => {
+    "result_junos.stdout_lines": [
+        [
+            "100.127.254.44 {",
+            "    port 1128;",
+            "    secret \"$9$dPbgaGUikP5ZGtuOByr4aZGHm369AtOiktuO1hcM8X7Nb24JHkPg4/CtpB17-d\"; ## SECRET-DATA",
+            "    source-address 10.200.199.17;",
+            "}",
+            "100.127.254.108 {",
+            "    port 1128;",
+            "    secret \"$9$k.TF6/ApBIn6M8XxsYQFn6tOSrevMXApM8X7VbaZUji.5Q3tpBTQlKMWx7jHk\"; ## SECRET-DATA",
+            "    source-address 10.200.199.17;",
+            "}"
+        ],
+        [
+            "\u0007show configuration system authentication-order ",
+            "authentication-order tacplus;"
+        ],
+        [
+            "\u0007show configuration system accounting ",
+            "events [ login change-log interactive-commands ];",
+            "destination {",
+            "    tacplus;",
+            "}"
+        ]
+    ]
+}
+ok: [mse01-pex-27harvey-drw.au.superloop.network] => {
+    "result_junos.stdout_lines": [
+        [
+            "100.127.254.44 {",
+            "    port 1128;",
+            "    secret \"$9$R35hlv8L7-wYW8ik.m3nevW8NbaZUji.7-ik.PQzAp0B1hreMN-wleGDiHmPBIR\"; ## SECRET-DATA",
+            "    source-address 10.200.198.17;",
+            "}",
+            "100.127.254.108 {",
+            "    port 1128;",
+            "    secret \"$9$hEWSKWXx-VYgLXk.Pf6/vWLXdsZUjHkP-Vk.P5F3p0BIRSev8dVYKvDikqf5IEh\"; ## SECRET-DATA",
+            "    source-address 10.200.198.17;",
+            "}"
+        ],
+        [
+            "\u0007show configuration system authentication-order ",
+            "authentication-order tacplus;"
+        ],
+        [
+            "\u0007show configuration system accounting ",
+            "events [ login change-log interactive-commands ];",
+            "destination {",
+            "    tacplus;",
+            "}"
+        ]
+    ]
+}
+ok: [mse01-pex-454stpau-bne.au.superloop.net.co] => {
+    "result_junos.stdout_lines": [
+        [
+            "100.127.254.44 {",
+            "    port 1128;",
+            "    secret \"$9$rG1e8x-dwYoJN-P5QzAtLxN-s4jHqmPQwYP5QF/9BIEcSeWL7sYo8Lk.PfzFcyr\"; ## SECRET-DATA",
+            "    source-address 10.200.194.17;",
+            "}",
+            "100.127.254.108 {",
+            "    port 1128;",
+            "    secret \"$9$P53/At0BEcCAX7-d4on/CAORevWLX-0BX7-VY2UjHq.5Fn9OBE3nM8XxdVqmP\"; ## SECRET-DATA",
+            "    source-address 10.200.194.17;",
+            "}"
+        ],
+        [
+            "\u0007show configuration system authentication-order ",
+            "authentication-order tacplus;"
+        ],
+        [
+            "\u0007show configuration system accounting ",
+            "events [ login change-log interactive-commands ];",
+            "destination {",
+            "    tacplus;",
+            "}"
+        ]
+    ]
+}
+ok: [mse01-pex-4edenpar-syd.au.superloop.net.co] => {
+    "result_junos.stdout_lines": [
+        [
+            "100.127.254.44 {",
+            "    port 1128;",
+            "    secret \"$9$zjPl3CpOBRhre0OdbsYGUAp0OEy8X7-dsRhdbs2aJk.P5T39AuEhrCAxNdVY25Qz\"; ## SECRET-DATA",
+            "    source-address 10.200.192.17;",
+            "}",
+            "100.127.254.108 {",
+            "    port 1128;",
+            "    secret \"$9$JVGH.f5z39APfcylex7k.PfF/O1Rhclz3cylK8Lbs24oGikmF39HkIEcSeK4aJ\"; ## SECRET-DATA",
+            "    source-address 10.200.192.17;",
+            "}"
+        ],
+        [
+            "\u0007show configuration system authentication-order ",
+            "authentication-order tacplus;"
+        ],
+        [
+            "\u0007show configuration system accounting ",
+            "events [ login change-log interactive-commands ];",
+            "destination {",
+            "    tacplus;",
+            "}"
+        ]
+    ]
+}
+ok: [mse01-pex-47bourke-syd.au.superloop.net.co] => {
+    "result_junos.stdout_lines": [
+        [
+            "100.127.254.44 {",
+            "    port 1128;",
+            "    secret \"$9$S00rML7NVwgox7.P5T9CWLx7b2UjHq.5Vw.P5Qn60BIEhrvWXbwgMWik.mTQEcS\"; ## SECRET-DATA",
+            "    source-address 10.200.192.25;",
+            "}",
+            "100.127.254.108 {",
+            "    port 1128;",
+            "    secret \"$9$rCMe8x-dwYoJN-P5QzAtLxN-s4jHqmPQwYP5QF/9BIEcSeWL7sYo8Lk.PfzFcyr\"; ## SECRET-DATA",
+            "    source-address 10.200.192.25;",
+            "}"
+        ],
+        [
+            "\u0007show configuration system authentication-order ",
+            "authentication-order tacplus;"
+        ],
+        [
+            "\u0007show configuration system accounting ",
+            "events [ login change-log interactive-commands ];",
+            "destination {",
+            "    tacplus;",
+            "}"
+        ]
+    ]
+}
+ok: [mse01-pex-4millros-per.au.superloop.net.co] => {
+    "result_junos.stdout_lines": [
+        [
+            "100.127.254.44 {",
+            "    port 1128;",
+            "    secret \"$9$Ai17p1ESyevLxcS4aZG.mIEcSK8VwYg4Zev4aZUHkQFn/9pBIhKvL1Is24oGU/CA\"; ## SECRET-DATA",
+            "    source-address 10.200.196.25;",
+            "}",
+            "100.127.254.108 {",
+            "    port 1128;",
+            "    secret \"$9$IuEErKW8xNbsMWjHq.F3lKMW7VoJGDjqxNjHqmTQCtuOBEylv7NbrlZUji.mO1I\"; ## SECRET-DATA",
+            "    source-address 10.200.196.25;",
+            "}"
+        ],
+        [
+            "\u0007show configuration system authentication-order ",
+            "authentication-order tacplus;"
+        ],
+        [
+            "\u0007show configuration system accounting ",
+            "events [ login change-log interactive-commands ];",
+            "destination {",
+            "    tacplus;",
+            "}"
+        ]
+    ]
+}
+ok: [mse01-pex-530colli-mel.au.superloop.net.co] => {
+    "result_junos.stdout_lines": [
+        [
+            "100.127.254.44 {",
+            "    port 1128;",
+            "    secret \"$9$ryae8x-dwYoJN-P5QzAtLxN-s4jHqmPQwYP5QF/9BIEcSeWL7sYo8Lk.PfzFcyr\"; ## SECRET-DATA",
+            "    source-address 10.200.193.25;",
+            "}",
+            "100.127.254.108 {",
+            "    port 1128;",
+            "    secret \"$9$Hq5zn6CtO13nvWLXwsTz3nA0cylKvLCtvWLxdVoJGDjqfTFAtO5TrevMXxDiH\"; ## SECRET-DATA",
+            "    source-address 10.200.193.25;",
+            "}"
+        ],
+        [
+            "\u0007show configuration system authentication-order ",
+            "authentication-order tacplus;"
+        ],
+        [
+            "\u0007show configuration system accounting ",
+            "events [ login change-log interactive-commands ];",
+            "destination {",
+            "    tacplus;",
+            "}"
+        ]
+    ]
+}
+ok: [mse01-pex-826lorim-mel.au.superloop.net.co] => {
+    "result_junos.stdout_lines": [
+        [
+            "100.127.254.44 {",
+            "    port 1128;",
+            "    secret \"$9$5Q6CpuBIcytp7-VbaJ/Ctp1hvWLx7VBI7-Vwg4jHqmPQn/A1Ic6/8X7Nbwmf5\"; ## SECRET-DATA",
+            "    source-address 10.200.193.17;",
+            "}",
+            "100.127.254.108 {",
+            "    port 1128;",
+            "    secret \"$9$OxIn1crKv8X-VeKGDiHTQSreKLN24aZGi8XGDikPf69Apu1hSlLX-cSoJGUHkp0O\"; ## SECRET-DATA",
+            "    source-address 10.200.193.17;",
+            "}"
+        ],
+        [
+            "\u0007show configuration system authentication-order ",
+            "authentication-order tacplus;"
+        ],
+        [
+            "\u0007show configuration system accounting ",
+            "events [ login change-log interactive-commands ];",
+            "destination {",
+            "    tacplus;",
+            "}"
+        ]
+    ]
+}

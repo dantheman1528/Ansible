@@ -1,0 +1,23 @@
+---
+- name: Send user mode command to FortiGate using raw
+  hosts: "{{ variable_host }}"
+  gather_facts: no
+
+  vars_prompt:
+    - name: "variable_host"
+      prompt: "Host or Host Group"
+      private: no
+
+  tasks:
+    - name: Read command template
+      template:
+        src: fortigate_template.j2
+        dest: "/tmp/fortigate_commands.txt"
+
+    - name: Execute commands from template
+      raw: "ssh admin@{{ inventory_hostname }} < /tmp/fortigate_commands.txt"
+      register: result_fortigate
+
+    - name: Print FortiGate output
+      debug:
+        var: result_fortigate.stdout_lines

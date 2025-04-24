@@ -1,0 +1,33 @@
+int Te0/0/0/1/3
+no shutdown
+int Te0/0/0/11/3
+no shutdown
+
+router bgp 38195
+ neighbor 27.122.113.123
+  remote-as 7585
+  no shutdown
+ !
+ neighbor 27.122.113.227
+  remote-as 7585
+  no shutdown
+ !
+
+    interface Bundle-Ether40.100
+    interface Bundle-Ether40.100 description Prov: Cust PEX INTERNET (AS7585)[10000Mbit]{14552}
+    interface Bundle-Ether40.100 service-policy input AS38195-DSCP-REWRITE-IN
+    interface Bundle-Ether40.100 ipv4 mtu 1500
+    interface Bundle-Ether40.100 ipv4 address 27.122.113.122 255.255.255.254
+    interface Bundle-Ether40.100 ipv4 unreachables disable
+    interface Bundle-Ether40.100 load-interval 30
+    interface Bundle-Ether40.100 flow ipv4 monitor netflow-ipv4 sampler 1in1k ingress
+    interface Bundle-Ether40.100 encapsulation dot1q 100
+    interface Bundle-Ether40.101
+    interface Bundle-Ether40.101 description Prov: Cust PEX CGNAT (AS7585)[10000Mbit]{14553}
+    interface Bundle-Ether40.101 service-policy input AS38195-DSCP-REWRITE-IN
+    interface Bundle-Ether40.101 ipv4 mtu 1500
+    interface Bundle-Ether40.101 ipv4 address 27.122.113.226 255.255.255.254
+    interface Bundle-Ether40.101 ipv4 unreachables disable
+    interface Bundle-Ether40.101 load-interval 30
+    interface Bundle-Ether40.101 flow ipv4 monitor netflow-ipv4 sampler 1in1k ingress
+    interface Bundle-Ether40.101 encapsulation dot1q 101

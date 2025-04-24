@@ -1,0 +1,38 @@
+---
+- name: send user mode command to device
+  hosts: "{{ variable_host }}"
+  gather_facts: no
+
+  vars_prompt:
+    - name: "variable_host"
+      prompt: "Host or Host Group"
+      private: no
+
+    - name: "command"
+      prompt: "Command"
+      private: no
+
+    - name: "ansible_user"
+      prompt: "Username"
+      private: no
+
+    - name: "ansible_ssh_pass"
+      prompt: "Password"
+      private: yes
+
+  tasks:
+    - name: stop further execution when command is not 'show|ping' command
+      fail:
+        msg: "must be 'show|ping' or command"
+      when: command is not match("((^|,)?(sho?w?|ping)\s[^,]+)+")
+
+    - name: send command to Junos
+      junipernetworks.junos.junos_command:
+        commands: "{{ command }}"
+      when: (ansible_network_os == 'junos')
+      register: result_junos
+
+    - name: print Junos debug info
+      debug:
+        var: result_junos.stdout_lines
+      when: (ansible_network_os == 'junos')

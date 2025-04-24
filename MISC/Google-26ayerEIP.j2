@@ -1,0 +1,12 @@
+interface Hu0/0/0/19 ipv6 address 2001:4860:1:1::16b9/127
+interface Hu0/0/0/19 ipv4 address 209.85.168.251 255.255.255.254
+
+
+router bgp 64590
+neighbor 209.85.168.250 
+no shutdown
+
+
+router bgp 64590
+neighbor 2001:4860:1:1::16b8 
+no shutdown

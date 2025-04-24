@@ -1,0 +1,314 @@
+Ansible supports different ways to communicate with network devices like FortiGate, Cisco, or Juniper. Two major transport modes are:
+1. httpapi (REST API)
+Uses FortiGate's REST API to communicate with the firewall.
+Faster and more efficient than CLI because it doesn’t rely on screen scraping.
+Recommended for automation and large-scale changes.
+
+In your inventory file (hosts), set ansible_connection to httpapi:
+
+
+[fortigates]
+fortigate1 ansible_host=192.168.1.1 ansible_user=admin ansible_password=yourpassword ansible_network_os=fortinet.fortios ansible_connection=httpapi
+
+This tells Ansible: 
+✅ Use Fortinet's API instead of SSH.
+✅ Handle configuration changes as structured API calls.
+
+Advantages of httpapi
+✅ Faster execution (no SSH delays).
+✅ More reliable (structured API calls, no CLI parsing).
+✅ Better error handling (JSON responses vs. CLI text).
+
+Disadvantages
+❌ Requires API access and credentials.
+❌ Might be disabled on some devices by default.
+
+
+2. ssh Transport (CLI Mode)
+Uses raw SSH commands (like how you'd manually log in).
+Can run FortiGate CLI commands directly (show, config commands).
+Used when APIs are not available.
+
+[fortigates]
+fortigate1 ansible_host=192.168.1.1 ansible_user=admin ansible_ssh_pass=yourpassword ansible_network_os=fortinet.fortios ansible_connection=ssh
+
+
+This tells Ansible: 
+✅ Connect over SSH.
+✅ Run CLI commands just like a human would.
+
+Advantages of ssh
+✅ Works on all FortiGate models (no API needed).
+✅ Can send any CLI command (even hidden ones).
+
+Disadvantages
+❌ Slower than httpapi (SSH login overhead).
+❌ Harder to parse CLI output. (Parsing means taking messy information and making it easy to understand. )
+❌ More prone to connection timeouts or authentication issues.
+
+
+httpapi → Uses REST API, faster & structured, but needs API access.
+ssh → Uses CLI over SSH, slower & less structured, but works everywhere.
+
+
+
+Step 1: Enable the REST API
+Log in to your FortiGate via SSH or Web GUI.
+Enter config mode:
+
+config system api-user
+Create an API user (replace ansible-admin with your username):
+
+edit "ansible-admin"
+Set the API key authentication:
+
+set api-key "YourSecureAPIKeyHere"
+Assign read/write permissions:
+
+set accprofile "super_admin"
+set vdom "root"
+Allow access from Ansible's IP:
+
+set trusthost 100.127.254.36 255.255.255.255 
+(Replace 192.168.1.100 with your Ansible server’s IP.)>>>in our case it is 100.127.254.36 ---spongeIP
+Save and exit:
+next
+end
+Step 2: Enable HTTPS Administrative Access
+Ensure HTTPS access is allowed on the FortiGate:
+
+
+config system interface
+    edit "wan1"
+        set allowaccess ping https ssh
+    next
+end
+(Replace wan1 with the correct interface.)
+
+Step 3: Configure Ansible to Use HTTPAPI
+Modify your Ansible inventory file (inventory.ini):
+
+
+[fortigates]
+fortigate ansible_host=192.168.1.1
+
+[fortigates:vars]
+ansible_network_os=fortinet.fortios.fortios
+ansible_httpapi_use_ssl=True
+ansible_httpapi_validate_certs=False
+ansible_user=ansible-admin
+ansible_password=YourSecureAPIKeyHere
+ansible_connection=httpapi
+Replace:
+
+192.168.1.1 → Your FortiGate IP.
+
+
+
+config system api-user
+    edit "ansible-api"
+        set accprofile "super_admin"
+        set vdom "root"
+        set api-key "<your-secure-api-key>"
+        set comments "API user for Ansible"
+        config trusthost
+            edit 1
+                set ipv4-trusthost 100.127.254.36 255.255.255.255  # Allow access from the jumphost only
+            next
+        end
+    next
+en
+
+
+lab01-cgn-20wharfs-bne (global) # get system admin list
+username             local          device                         vdom     profile               remote                 started
+admin                ssh            port1:10.205.105.135:22        root     super_admin           100.127.254.36:54486   2025-03-18 10:51:49
+
+
+
+3. NETCONF - XML-based Automation (Cisco, Juniper, Huawei, etc.)
+ Uses: Cisco IOS-XR, Juniper Junos, Huawei, Nokia
+🔹 Transport Protocol: SSH with NETCONF
+🔹 Best For: Managing structured configuration data
+
+✅ Advantages:
+✔ More structured than CLI
+✔ Supports configuration rollback
+✔ Works over SSH
+
+❌ Disadvantages:
+✖ Not all devices support NETCONF
+✖ XML-based, which can be complex
+
+🔹 Example Configuration (Cisco IOS-XR via NETCONF)
+
+
+cisco_netconf:
+  ansible_host: 192.168.1.3
+  ansible_connection: ansible.netcommon.netconf
+  ansible_network_os: cisco.iosxr.iosxr
+  ansible_user: admin
+  ansible_password: mypassword
+
+4. RESTCONF - JSON-Based (Modern Cisco Devices)
+🔹 Uses: Cisco IOS-XE, Cisco NX-OS, Juniper
+🔹 Transport Protocol: HTTPS (REST API over JSON)
+🔹 Best For: Structured and API-driven network automation
+
+✅ Advantages:
+✔ Uses JSON (easier than XML in NETCONF)
+✔ More modern approach than SSH
+
+❌ Disadvantages:
+✖ Not all devices support RESTCONF
+✖ Requires RESTCONF to be enabled on devices
+
+🔹 Example Configuration (Cisco IOS-XE via RESTCONF)
+
+
+cisco_restconf:
+  ansible_host: 192.168.1.4
+  ansible_connection: httpapi
+  ansible_httpapi_use_ssl: yes
+  ansible_httpapi_validate_certs: no
+  ansible_network_os: cisco.ios.ios
+  ansible_user: admin
+  ansible_password: mypassword
+
+
+
+1️⃣ If you want Ansible to communicate via HTTP(S) instead of SSH, use HTTPAPI.
+2️⃣ If you want to configure and monitor Cisco IOS-XR using a RESTful API, use RESTCONF.
+3️⃣ You need both! HTTPAPI is the transport mode in Ansible, and RESTCONF is the actual API that HTTPAPI will use.
+
+📌 Key Takeaway:
+🔹 RESTCONF is an API protocol, while HTTPAPI is a transport mode in Ansible that can use RESTCONF.
+🔹 RESTCONF is a way to interact with the router, while HTTPAPI tells Ansible how to send requests (e.g., over HTTPS).
+📌 Key Takeaway:
+🔹 HTTPAPI is a transport method—it tells Ansible to use HTTP(S) instead of SSH to talk to the router.
+🔹 It can use RESTCONF, but also other APIs depending on the network OS.
+
+
+Step 1: Enable RESTCONF on Cisco IOS-XR
+You need to enable RESTCONF because Ansible's HTTPAPI uses it to interact with Cisco IOS-XR.
+
+Run these commands on your IOS-XR router:
+
+conf t
+! Enable the HTTP/HTTPS server
+http server
+http secure-server
+! Allow RESTCONF access
+restconf
+commit
+Step 2: Create a User for RESTCONF
+Create a new user or modify an existing one with privilege level 15 for full access.
+
+
+conf t
+username ansible privilege 15 secret MySecurePass
+commit
+Step 3: Verify RESTCONF is Enabled
+Check if RESTCONF is running:
+
+
+show configuration running | include restconf
+You should see "restconf" in the output.
+
+Also, check if the HTTPS server is running:
+
+
+show configuration running | include http
+Ensure "http secure-server" is present.
+
+
+
+
+
+
+enable cisco_netconf:
+
+
+Using NETCONF for Cisco IOS-XR with HTTPAPI in Ansible
+NETCONF is another protocol that can be used for managing Cisco IOS-XR devices, and it can be accessed via Ansible's HTTPAPI transport mode.
+
+1️⃣ Enable NETCONF on Cisco IOS-XR
+Before using NETCONF in Ansible, you need to enable NETCONF on the Cisco IOS-XR device.
+
+🔹 Run the following commands on the IOS-XR router:
+
+configure
+ netconf-yang agent ssh
+ commit
+📌 What This Does?
+
+Enables NETCONF over SSH, which is required for Ansible to communicate using NETCONF.
+
+2️⃣ Configure Ansible Inventory for NETCONF over HTTPAPI
+Now, configure your Ansible inventory to use NETCONF via HTTPAPI.
+
+🔹 Inventory Example (hosts.yml):
+yaml
+
+iosxr_router:
+  ansible_host: 192.168.1.1
+  ansible_connection: httpapi
+  ansible_network_os: cisco.iosxr.iosxr
+  ansible_httpapi_use_ssl: no   # Change to yes if using HTTPS
+  ansible_httpapi_validate_certs: no
+  ansible_httpapi_port: 830      # Default port for NETCONF
+  ansible_user: ansible
+  ansible_password: MySecurePass
+  ansible_httpapi_path_prefix: "/restconf/data"
+📌 Key Configurations:
+
+ansible_connection: httpapi → Uses HTTPAPI instead of SSH.
+ansible_network_os: cisco.iosxr.iosxr → Specifies Cisco IOS-XR.
+ansible_httpapi_port: 830 → NETCONF runs on TCP port 830.
+ansible_httpapi_path_prefix: "/restconf/data" → NETCONF data path (used by RESTCONF too).
+
+3️⃣ Ansible Playbook for NETCONF on IOS-XR
+Now, let's create an Ansible playbook that configures an interface using NETCONF.
+
+🔹 Playbook Example (configure_iosxr_netconf.yml):
+yaml
+
+- name: Configure Cisco IOS-XR using NETCONF via HTTPAPI
+  hosts: iosxr_router
+  gather_facts: no
+  tasks:
+    - name: Set Interface Configuration via NETCONF
+      netconf_config:
+        target: candidate
+        config: |
+          <config>
+            <interfaces xmlns="http://openconfig.net/yang/interfaces">
+              <interface>
+                <name>GigabitEthernet0/0/0/0</name>
+                <config>
+                  <name>GigabitEthernet0/0/0/0</name>
+                  <description>Configured via NETCONF</description>
+                  <enabled>true</enabled>
+                </config>
+              </interface>
+            </interfaces>
+          </config>
+      register: netconf_result
+
+    - name: Print NETCONF Response
+      debug:
+        var: netconf_result
+📌 What This Playbook Does?
+
+Uses NETCONF to configure the interface GigabitEthernet0/0/0/0.
+Sets the description to "Configured via NETCONF".
+Enables the interface.
+Registers the result and prints the response.
+
+4️⃣ Verifying NETCONF on Cisco IOS-XR
+After running the playbook, check if NETCONF is working by running this command on your router:
+
+bash
+
+show netconf-yang sessions
+If NETCONF is active, it should show an active session.
